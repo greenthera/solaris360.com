@@ -7,10 +7,25 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies & build output
 node_modules
 dist
 dist-ssr
 *.local
+
+# TypeScript / tooling caches
+*.tsbuildinfo
+.eslintcache
+coverage
+.vite
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Deploy (gh-pages worktree)
+.gh-pages-cache
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +37,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# OS / misc
+Thumbs.db
+*.tgz

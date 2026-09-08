@@ -1,0 +1,48 @@
+/** EPC + system content - verbatim from /epc-services/ and /solar-pv-system/. */
+
+export const epcScope = [
+  'Electrical, Civil & Structural Design',
+  'Permits & Liasoning from GEDA & DISCOM (Torrent / DGVCL / MGVCL)',
+  'Supply of Solar Panels, Inverter & Mounting Structures',
+  'Electrical & Structural Installation including earthing',
+  'Commissioning',
+  'Five years service warranty',
+]
+
+export const epcBlocks = [
+  {
+    title: 'Balance of System (BOS)',
+    body: 'BOS is the collection of components in a photovoltaic system or solar power plant. We promise to provide the most suitable components available in the market for your need.',
+  },
+  {
+    title: 'Solar Panel',
+    body: 'The solar panel is the most important part of a solar installation. The panels we use: 72-cell, 320–330 W, approx. 1 × 2 m; 10 years product warranty; 25 years performance warranty. Certification: IEC 61215, IEC 61730, IEC 62804, IEC 61701.',
+  },
+  {
+    title: 'Mounting Structure',
+    body: 'The mounting structure used for our installations is galvanized / hot-dipped MS sections, sized as per requirement for longer life.',
+  },
+  {
+    title: 'Solar Inverters',
+    body: 'Solar inverters play an important role in generation. Ours have an in-built Wi-Fi system and in-built DC SPD protection, with a 5-year standard manufacturer’s warranty. Certification: IEC 60068, IEC 61683, IEC 60529.',
+  },
+  {
+    title: 'Miscellaneous',
+    body: 'AC cables: 2-core mm², RR/Polycab. DC cables: single-core, RR/Polycab. MC4 connectors: Phoenix/Nordics or equivalent. Cable ties: UV resistant. Earthing cable: single-core 4 mm², RR/Polycab/Neocab. DC/AC earthing: maintenance-free chemical earthing. MCB: Schneider/Ficco. Array junction box: TRIBOX. Terminals: Phoenix/Elmex. Conduits (pipe/elbow/tee): Precision Pipe.',
+  },
+]
+
+export const systemTypes = [
+  {
+    title: 'Off-Grid / Standalone Solar Power System',
+    body: 'A stand-alone (off-grid) solar power system is an off-the-grid electricity system for locations not fitted with an electricity distribution network. Typical systems include one or more methods of electricity generation, energy storage and regulation, and are independent of the utility grid. Storage is typically a battery bank; power drawn directly from the battery is extra-low-voltage DC, used especially for lighting and DC appliances. An inverter generates low-voltage AC for more typical appliances.',
+  },
+  {
+    title: 'Grid-Connected Solar Power System',
+    body: 'A grid-connected solar power plant generates electricity and is connected to the utility grid. It consists of solar panels and one or several inverters, ranging from small residential and commercial rooftop systems to large utility-scale stations. Unlike stand-alone systems, it rarely includes an integrated battery, as they are still very expensive. When conditions are right, the system supplies excess power - beyond the connected load - to the utility grid.',
+  },
+  {
+    title: 'Hybrid Solar Power System',
+    body: 'A hybrid system combines the two above. It uses solar power when the sun is available, charges the battery, and - in the absence of grid power - uses the battery as the source of power. The cost of such a system is higher and it affects the overall payback period of the project.',
+  },
+]

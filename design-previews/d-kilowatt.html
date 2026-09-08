@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Solaris360 — Watch your roof generate</title>
+<meta name="description" content="Rooftop solar in Surat, measured in kWh saved and CO2 avoided. Solaris360 designs, installs and monitors your system." />
+<meta property="og:title" content="Solaris360 — Watch your roof generate" />
+<meta property="og:description" content="Rooftop solar EPC in Surat. Every kilowatt-hour accounted for." />
+<meta property="og:type" content="website" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<script>
+tailwind.config={theme:{extend:{
+ colors:{ink:'#0f0e24',navy:'#17163f',panel:'#1e1c4a',paper:'#fdfdfc',orange:'#f3a02e',ash:'#9b98b8'},
+ fontFamily:{display:['Sora','sans-serif'],mono:['"IBM Plex Mono"','monospace'],body:['Inter','sans-serif']},
+ fontWeight:{400:'400',500:'500',600:'600',700:'700',800:'800'}}}}
+</script>
+<style>
+ html{scroll-behavior:smooth}
+ body{font-family:Inter,sans-serif;background:#0f0e24;color:#fdfdfc}
+ h1,h2,h3{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+ .num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+ .mesh{background:
+   radial-gradient(60% 60% at 15% 10%,rgba(243,160,46,.20),transparent 60%),
+   radial-gradient(50% 50% at 90% 30%,rgba(90,80,220,.28),transparent 60%),
+   #0f0e24}
+ .wire{background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px}
+ .loader{position:fixed;inset:0;background:#0f0e24;display:grid;place-items:center;z-index:80;transition:opacity .5s,visibility .5s}
+ .loader.done{opacity:0;visibility:hidden}
+ .load-num{font-family:"IBM Plex Mono",monospace;color:#f3a02e;font-size:2rem}
+ .reveal{opacity:0;transform:translateY(14px);transition:.6s}.reveal.in{opacity:1;transform:none}
+ @media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body class="antialiased">
+<div class="loader" id="loader"><div class="text-center"><div class="load-num" id="lnum">0.00</div><p class="text-xs tracking-widest text-ash mt-2">kWh · SOLARIS360</p></div></div>
+
+<div class="bg-ink border-b border-white/10 text-[13px] text-ash"><div class="mx-auto max-w-6xl px-6 py-2 flex flex-wrap justify-between gap-3">
+  <span>GF/21, Palladium, VIP Road, Vesu, Surat – 395007</span>
+  <span class="flex gap-5"><a href="tel:+919998117531" class="hover:text-orange">+91 (999) 811-7531</a><a href="mailto:info@solaris360.com" class="hover:text-orange">info@solaris360.com</a></span></div></div>
+
+<header class="sticky top-0 z-40 bg-ink/85 backdrop-blur border-b border-white/10">
+  <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+    <a href="#" class="font-display text-lg font-800">SOLARIS<span class="text-orange">360</span></a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm text-ash">
+      <div class="group relative"><button class="py-2 hover:text-paper">About</button><div class="absolute hidden group-hover:block bg-navy border border-white/10 p-1 w-52 -left-3">
+        <a class="block px-3 py-2 hover:bg-panel" href="#">Solaris 360</a><a class="block px-3 py-2 hover:bg-panel" href="#">Why Solar</a><a class="block px-3 py-2 hover:bg-panel" href="#">Why Solaris 360</a></div></div>
+      <div class="group relative"><button class="py-2 hover:text-paper">EPC Services</button><div class="absolute hidden group-hover:block bg-navy border border-white/10 p-1 w-56 -left-3">
+        <a class="block px-3 py-2 hover:bg-panel" href="#services">Solar PV System</a><a class="block px-3 py-2 hover:bg-panel" href="#features">System Features</a><a class="block px-3 py-2 hover:bg-panel" href="#gallery">Project Gallery</a><a class="block px-3 py-2 hover:bg-panel" href="#">Execution Process</a></div></div>
+      <div class="group relative"><button class="py-2 hover:text-paper">Other Services</button><div class="absolute hidden group-hover:block bg-navy border border-white/10 p-1 w-52 -left-3">
+        <a class="block px-3 py-2 hover:bg-panel" href="#">Shadow Analysis</a><a class="block px-3 py-2 hover:bg-panel" href="#">Stability Certificate</a><a class="block px-3 py-2 hover:bg-panel" href="#">Warranty</a></div></div>
+      <div class="group relative"><button class="py-2 hover:text-paper">Knowledge</button><div class="absolute hidden group-hover:block bg-navy border border-white/10 p-1 w-52 -left-3">
+        <a class="block px-3 py-2 hover:bg-panel" href="#">Blog</a><a class="block px-3 py-2 hover:bg-panel" href="#">How Solar Power Works</a><a class="block px-3 py-2 hover:bg-panel" href="#">FAQ</a><a class="block px-3 py-2 hover:bg-panel" href="#emi">EMI Calculator</a></div></div>
+      <a href="#" class="py-2 hover:text-paper">Shop</a>
+    </nav>
+    <a href="https://wa.me/919998117531?text=Hi%20Solaris360%2C%20I%27d%20like%20a%20solar%20quote." class="bg-orange text-ink text-sm font-700 px-4 py-2">Get Quote</a>
+  </div>
+</header>
+
+<section class="relative mesh overflow-hidden">
+  <div class="absolute inset-0 wire opacity-60"></div>
+  <div class="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <p class="text-sm text-ash">Rooftop solar EPC · Surat</p>
+    <h1 class="mt-3 text-4xl md:text-6xl leading-[1.05] max-w-3xl">Your roof is a power plant. Meter it.</h1>
+    <p class="mt-5 text-lg text-ash max-w-xl">Gone solar? Look around — your neighbours have. Solaris360 designs, builds and monitors rooftop systems so every unit shows up on the dashboard.</p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="https://wa.me/919998117531?text=Hi%20Solaris360%2C%20I%27d%20like%20a%20solar%20quote." class="bg-orange text-ink px-6 py-3 font-700">Go Solar now</a>
+      <a href="#emi" class="border border-white/25 px-6 py-3 font-600">Estimate my EMI</a>
+    </div>
+    <div class="mt-14 grid sm:grid-cols-3 gap-3">
+      <div class="bg-white/5 border border-white/10 p-5"><p class="num text-3xl text-orange" id="gen">0.0</p><p class="text-xs text-ash mt-1">kWh generated today (live demo)</p></div>
+      <div class="bg-white/5 border border-white/10 p-5"><p class="num text-3xl" id="rup">0</p><p class="text-xs text-ash mt-1">₹ saved this month</p></div>
+      <div class="bg-white/5 border border-white/10 p-5"><p class="num text-3xl" id="co2">0.0</p><p class="text-xs text-ash mt-1">t CO₂ avoided this year</p></div>
+    </div>
+    <p class="mt-6 text-sm text-ash">Call <a href="tel:+919998117531" class="text-paper font-600">+91 (999) 811-7531</a> to Go Solar now!</p>
+  </div>
+</section>
+
+<section id="services" class="mx-auto max-w-6xl px-6 py-16 reveal">
+  <h2 class="text-3xl">What we install</h2>
+  <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div class="bg-navy border border-white/10 p-6"><h3 class="text-lg">Solar PV System</h3><p class="mt-2 text-sm text-ash">Grid-tied, hybrid, off-grid — sized to your load curve.</p></div>
+    <div class="bg-navy border border-white/10 p-6"><h3 class="text-lg">System Features</h3><p class="mt-2 text-sm text-ash">Live monitoring, DC isolation, anti-theft mounts.</p></div>
+    <div class="bg-navy border border-white/10 p-6"><h3 class="text-lg">Execution Process</h3><p class="mt-2 text-sm text-ash">Survey, design, supply, install, net meter.</p></div>
+    <div class="bg-navy border border-white/10 p-6" id="gallery"><h3 class="text-lg">Project Gallery</h3><p class="mt-2 text-sm text-ash">Homes, factories, institutions across Gujarat.</p></div>
+  </div>
+</section>
+
+<section id="features" class="border-y border-white/10 bg-navy">
+  <div class="mx-auto max-w-6xl px-6 py-16 grid md:grid-cols-2 gap-10 items-center reveal">
+    <div>
+      <h2 class="text-3xl">Numbers you can check</h2>
+      <ul class="mt-6 space-y-3 text-sm text-ash">
+        <li class="num border-l-2 border-orange pl-4">Shadow analysis before procurement</li>
+        <li class="num border-l-2 border-orange pl-4">Wind-rated structure for coastal Surat</li>
+        <li class="num border-l-2 border-orange pl-4">Structural stability certificate at handover</li>
+        <li class="num border-l-2 border-orange pl-4">O&amp;M: cleaning kits, sprinklers, nano-coating</li>
+      </ul>
+    </div>
+    <div class="aspect-video bg-ink border border-white/10 grid place-items-center text-ash text-sm wire">AI video — generation dashboard overlay</div>
+  </div>
+</section>
+
+<section id="emi" class="mx-auto max-w-6xl px-6 py-16 grid md:grid-cols-2 gap-10 items-start reveal">
+  <div><h2 class="text-3xl">EMI calculator</h2><p class="mt-3 text-ash text-sm max-w-md">Estimate the monthly cost against the bill it replaces.</p></div>
+  <form class="bg-navy border border-white/10 p-6 space-y-4" oninput="emi()">
+    <label class="block text-sm">System cost ₹ <input id="p" type="range" min="150000" max="2000000" step="10000" value="500000" class="w-full accent-orange"></label>
+    <label class="block text-sm">Down payment ₹ <input id="d" type="range" min="0" max="600000" step="5000" value="100000" class="w-full accent-orange"></label>
+    <label class="block text-sm">Tenure (months) <input id="n" type="range" min="12" max="84" step="6" value="60" class="w-full accent-orange"></label>
+    <label class="block text-sm">Interest % p.a. <input id="r" type="range" min="7" max="16" step="0.5" value="10" class="w-full accent-orange"></label>
+    <p class="pt-3 border-t border-white/10 num text-lg">EMI / month <span id="out" class="text-orange">₹ —</span></p>
+  </form>
+</section>
+
+<section class="relative mesh overflow-hidden">
+  <div class="absolute inset-0 wire opacity-50"></div>
+  <div class="relative mx-auto max-w-6xl px-6 py-20 text-center reveal">
+    <h2 class="text-3xl md:text-5xl">Go Green, Go Solar.</h2>
+    <p class="mt-4 text-ash">Send a photo of your electricity bill. We'll send back a sized system and a payback figure.</p>
+    <a href="https://wa.me/919998117531?text=Hi%20Solaris360%2C%20here%27s%20my%20electricity%20bill%20for%20a%20solar%20proposal." class="inline-block mt-8 bg-orange text-ink px-8 py-3 font-700">Send bill on WhatsApp</a>
+  </div>
+</section>
+
+<footer class="bg-ink border-t border-white/10">
+  <div class="mx-auto max-w-6xl px-6 py-14 grid sm:grid-cols-4 gap-8 text-sm">
+    <div><p class="font-display font-800">SOLARIS<span class="text-orange">360</span></p><p class="mt-3 text-ash">GF/21, Palladium, VIP Road, Vesu, Surat – 395007</p></div>
+    <div><p class="font-600 text-paper">Company</p><ul class="mt-3 space-y-2 text-ash"><li>About</li><li>Why Solar</li><li>Project Gallery</li></ul></div>
+    <div><p class="font-600 text-paper">Policies</p><ul class="mt-3 space-y-2 text-ash"><li>Terms &amp; Conditions</li><li>Privacy Policy</li><li>Warranty</li><li>Return &amp; Cancellation</li></ul></div>
+    <div><p class="font-600 text-paper">Keep in touch</p><p class="mt-3 text-ash"><a href="tel:+919998117531">+91 (999) 811-7531</a><br><a href="mailto:info@solaris360.com">info@solaris360.com</a></p></div>
+  </div>
+  <div class="border-t border-white/10 py-5 text-center text-xs text-ash">© <span id="yr"></span> Solaris360 · Developed by <a href="https://shivantra.com" class="text-paper font-600">Shivantra</a></div>
+</footer>
+
+<a href="https://wa.me/919998117531?text=Hi%20Solaris360%2C%20I%27d%20like%20a%20solar%20quote." aria-label="Chat on WhatsApp"
+  class="fixed bottom-5 right-5 z-50 flex items-center gap-2 bg-[#25D366] text-white rounded-full shadow-xl pl-3 pr-4 py-3 hover:scale-105 transition">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.3c-.2.2-.3.4-.2.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.9-.1 1.4z"/></svg>
+  <span class="text-sm font-600 hidden sm:block">Chat with us</span>
+</a>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QPCP96RNWK"></script>
+<script>
+ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-QPCP96RNWK');
+ document.getElementById('yr').textContent=new Date().getFullYear();
+ // loader count
+ const hideLoader=()=>document.getElementById('loader').classList.add('done');
+ let lv=0;const lt=setInterval(()=>{lv+=Math.random()*3;if(lv>=18.4){lv=18.4;clearInterval(lt);setTimeout(hideLoader,250)}document.getElementById('lnum').textContent=lv.toFixed(2)},60);
+ setTimeout(hideLoader,2200);
+ // live-ish counters
+ let g=18.4,rup=2140,c=4.7;
+ setInterval(()=>{g+=Math.random()*.05;rup+=Math.round(Math.random()*3);c+=Math.random()*.002;
+   gen.textContent=g.toFixed(1);document.getElementById('rup').textContent=rup.toLocaleString('en-IN');co2.textContent=c.toFixed(2);},1200);
+ const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.15});
+ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+ function emi(){const P=+p.value-+d.value,r=(+document.getElementById('r').value)/1200,n=+document.getElementById('n').value;
+   const m=r?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;
+   document.getElementById('out').textContent='₹ '+Math.round(m).toLocaleString('en-IN');}
+ emi();
+</script>
+</body>
+</html>

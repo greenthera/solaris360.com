@@ -1,0 +1,116 @@
+/** Small structured content blocks shared across pages. Verbatim from the live site. */
+
+export const heroSlogan = {
+  lines: [
+    'Gone Solar? Look around! Your neighbours have!',
+    'Let your roof catch the sun.',
+    'Go solar and make your roof sustainable.',
+  ],
+  cta: 'Go Green, Go Solar!',
+  call: 'Call +91 (999) 811-7531 to Go Solar now!',
+}
+
+export const whySolar = [
+  {
+    value: 'Up to 60%',
+    label: 'More saving',
+    body: 'One of the main reasons: going solar saves up to 60% cost compared to grid electricity and diesel generators.',
+  },
+  {
+    value: '₹0',
+    label: 'Low operating cost',
+    body: 'The photovoltaic process doesn’t need fuel and has no variable cost.',
+  },
+  {
+    value: '20+ yrs',
+    label: 'Solar is limitless',
+    body: 'The solar energy available is limitless and the life span of the plant is more than 20 years. It makes going solar a smart move.',
+  },
+]
+
+export const whyUs = [
+  {
+    title: '100% Success Ratio',
+    body: '“If it’s not worth it, we will not install it.” Our plants give 100% of expected output. With us you are in safe hands - you get what we promise.',
+  },
+  {
+    title: 'All-in Reliability',
+    body: 'This is our business and we are responsible. If something is not right, we fix it. We are accountable for our actions and outcomes, and do all the necessary work from start to end for our customers.',
+  },
+  {
+    title: 'Zero Defect Delivery',
+    body: 'Our success is directly linked to the quality of service we deliver. We are extremely responsive to requests, we seek to understand needs and priorities, and we proactively share ideas.',
+  },
+]
+
+export const systemFeatures = [
+  { value: 25, unit: 'Years', label: 'Module warranty' },
+  { value: 10, unit: 'Years', label: 'Inverter warranty' },
+  { value: 5, unit: 'Years', label: 'Plant service warranty', pad: 2 },
+  { value: 4, unit: 'Years', label: 'Payback period', pad: 2 },
+  { value: null, unit: '', label: 'Web monitoring', text: 'Included' },
+  { value: 25, unit: '%', label: 'Gov. subsidy', prefix: 'Up to ' },
+  { value: null, unit: '', label: 'Toll-free inverter support', text: '24 × 7' },
+]
+
+export const executionSteps = [
+  {
+    n: 1,
+    title: 'System Proposal',
+    body: 'We assess your usage, roof area and sanctioned load and prepare a sized system proposal.',
+  },
+  {
+    n: 2,
+    title: 'GEDA Approval',
+    body: 'We handle permits and liasoning with GEDA and your DISCOM (Torrent / DGVCL / MGVCL).',
+  },
+  {
+    n: 3,
+    title: 'Execution',
+    body: 'Supply, structural and electrical installation, earthing and commissioning. The whole process takes about 3 months after receiving GEDA approval.',
+  },
+]
+
+export const faq = [
+  {
+    q: 'How do I decide solar power plant size?',
+    a: 'It mainly depends on four things: your usage, your budget, the shadow-free south-facing area available, and your sanctioned load. Whichever is minimum could be your plant size.',
+  },
+  {
+    q: 'Does solar power work during a power cut?',
+    a: 'No. Grid-tied inverters are designed so that in the absence of an AC power signal from the grid, they stop converting and sending power from the solar panels. This is required by safety norms to avoid any casualty during grid maintenance.',
+  },
+  {
+    q: 'Does my existing power back-up inverter work with solar?',
+    a: 'Power back-up inverters and solar inverters are two different things for two different purposes. The solar inverter has nothing to do with your existing power back-up inverter.',
+  },
+  {
+    q: 'What are the appliances that can run on solar?',
+    a: 'AC, refrigerator, TV, washing machine, etc. can run on a rooftop solar power plant - whatever the wattage.',
+  },
+  {
+    q: 'What is the area needed for a solar power plant?',
+    a: 'A 1 kW solar power plant occupies around 70–90 sq ft of space. The actual area varies case to case. Please call us to know more.',
+  },
+]
+
+export const usefulLinks = [
+  { label: 'Surya Gujarat', url: 'https://suryagujarat.guvnl.in/' },
+  { label: 'GEDA - Gujarat Energy Development Agency', url: 'https://geda.gujarat.gov.in' },
+  { label: 'Torrent Power - solar connection portal', url: 'https://connect.torrentpower.com/tplcp/index.php' },
+  { label: 'DGVCL', url: 'https://www.dgvcl.com/dgvclweb/index.php' },
+]
+
+/** Marquee content - DISCOMs / agencies + certifications, all from the live site. */
+export const marqueeItems = [
+  'GEDA',
+  'Torrent Power',
+  'DGVCL',
+  'MGVCL',
+  'Surya Gujarat',
+  'MNRE',
+  'IEC 61215',
+  'IEC 61730',
+  'IEC 62804',
+  'IEC 61701',
+]
