@@ -37,8 +37,8 @@ export function VideoShowcase() {
     <section className="relative flex min-h-[28rem] items-end overflow-hidden border-y border-white/10 md:min-h-[34rem]">
       <video
         ref={ref}
-        data-src="/media/website-bg.mp4"
-        poster="/media/website-bg-poster.jpg"
+        data-src={`${import.meta.env.BASE_URL}media/website-bg.mp4`}
+        poster={`${import.meta.env.BASE_URL}media/website-bg-poster.jpg`}
         muted
         loop
         playsInline
