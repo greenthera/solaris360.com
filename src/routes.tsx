@@ -17,6 +17,7 @@ export const routes: RouteRecord[] = [
       { path: 'about/', ...page(() => import('./pages/About')) },
       { path: 'why-solar/', ...page(() => import('./pages/WhySolar')) },
       { path: 'why-us/', ...page(() => import('./pages/WhyUs')) },
+      { path: 'reviews/', ...page(() => import('./pages/Reviews')) },
 
       { path: 'epc-services/', ...page(() => import('./pages/EpcServices')) },
       { path: 'solar-pv-system/', ...page(() => import('./pages/SolarPvSystem')) },

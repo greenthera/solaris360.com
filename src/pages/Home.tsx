@@ -7,6 +7,7 @@ import { VideoShowcase } from '../components/home/VideoShowcase'
 import { EmiTeaser } from '../components/home/EmiTeaser'
 import { SolarSchematic } from '../components/home/SolarSchematic'
 import { FaqSolarLoop } from '../components/home/FaqSolarLoop'
+import { Testimonials } from '../components/home/Testimonials'
 import { Marquee } from '../components/ui/Marquee'
 import { Counter } from '../components/ui/Counter'
 import { Accordion } from '../components/ui/Accordion'
@@ -15,6 +16,14 @@ import { Section, SectionTitle, FeatureCard } from '../components/ui/primitives'
 import { whySolar, whyUs, systemFeatures, executionSteps, faq, marqueeItems } from '../content/site'
 import { epcBlocks } from '../content/services'
 import { company } from '../content/company'
+import { testimonials } from '../content/testimonials'
+
+/** Punchy English reviews for the home slider; the full set lives on /reviews/. */
+const isMostlyLatin = (s: string) =>
+  [...s].filter((c) => c.charCodeAt(0) < 0x250).length / s.length > 0.9
+const homeTestimonials = testimonials
+  .filter((t) => t.text.length >= 90 && t.text.length <= 300 && isMostlyLatin(t.text))
+  .slice(0, 8)
 
 export default function Home() {
   return (
@@ -131,6 +140,21 @@ export default function Home() {
         </Reveal>
       </Section>
 
+      {/* Reviews */}
+      <Section className="border-b border-white/10">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-orange">Reviews</p>
+          <h2 className="text-2xl md:text-4xl">Rated {company.reviews.average} on Google</h2>
+        </Reveal>
+        <div className="mt-10">
+          <Testimonials items={homeTestimonials} />
+        </div>
+        <p className="mt-8 text-center text-sm text-muted">
+          <Link to="/reviews/" className="text-orange underline">
+            Read all {company.reviews.count} reviews
+          </Link>
+        </p>
+      </Section>
 
       {/* EMI teaser */}
       <Section className="border-b border-white/10">

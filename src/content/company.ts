@@ -52,6 +52,14 @@ export const company = {
     youtube: 'https://www.youtube.com/channel/UCInkRQ7l75_8u5xVVPeFnAw',
   },
 
+  /** Google Business reviews (snapshot from the 2026-09-09 export). */
+  reviews: {
+    count: 104,
+    average: 4.9,
+    googleUrl:
+      'https://search.google.com/local/reviews?placeid=ChIJQf2x6L9P4DsR3OGAIG3Vakg&q=*&hl=en',
+  },
+
   developer: { name: 'Shivantra', url: 'https://shivantra.com' },
 
   ga4: 'G-QPCP96RNWK',

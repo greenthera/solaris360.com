@@ -1,0 +1,183 @@
+/**
+ * Customer reviews (Google, via Outscraper export 2026-09-09).
+ * Verbatim review text; ordered longer / substantive first.
+ */
+
+export interface Testimonial {
+ author: string
+ /** 1-5 */
+ rating: number
+ /** e.g. "Aug 2026" - may be empty */
+ date: string
+ text: string
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    author: 'DHARAM PATEL',
+    rating: 5,
+    date: 'Sep 2025',
+    text: `I had a great experience with Solaris 360 for my home solar installation. From the very beginning, their team was professional, responsive, and incredibly knowledgeable. They took the time to explain every step of the process and answered all my questions without any pressure.
+The installation itself was smooth and efficient—everything was completed on schedule, and the crew left the work area spotless. The panels look great, and the system is already performing beyond my expectations. I’m seeing noticeable savings on my electricity bills, and it feels good to be reducing my carbon footprint.
+Special thanks to the Solaris 360 team for their outstanding service and attention to detail. I highly recommend them to anyone considering switching to solar!`,
+  },
+  {
+    author: 'Naresh Ghael',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `When i contact solaris they have provided excellent service for replacement of inverter and befote that all my electrical contacts and wirings were perfectly checked even after that my all fixation of wiring very efficiently checked and fixed by them .Their staff are very humble,cooperative and polite
+I do appreciate solaris for their quick and efficient service and like to recommend to take the benefit for service or repairation of
+Solar system
+Wisu you all sucess,
+Naresh ghael
+49,anand row house,
+Adajan
+Surat`,
+  },
+  {
+    author: 'Alok Jhaveri',
+    rating: 5,
+    date: 'Apr 2025',
+    text: `We have a very good experience with them. They are knowledgeable, the quality of their panels and installation work is also good. They have always responded promptly for any minor issue. Very good after sales service also. I highly recommend them for anyone who is planning to install solar panels`,
+  },
+  {
+    author: 'himanshu padhya',
+    rating: 5,
+    date: 'Apr 2025',
+    text: `Well, the service is good and staff is polite. They helped me for long time in setup and made sure that the set up is done properly. It is very important that client also understands the working of solar plant, and for that, they always help. Full marks for them. Go for it.....`,
+  },
+  {
+    author: 'Ikka Chitte',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `Very professional and friendly solar energy company. Smooth installation process, clear communication, and reliable service. Many customers report quick responses and great workmanship. Highly recommended for home solar panel installations. -Solaris 360`,
+  },
+  {
+    author: 'vishal rana',
+    rating: 5,
+    date: 'Aug 2025',
+    text: `Clean energy, real savings!"
+Since switching to solar, my electricity bills have gone down drastically. The panels are sleek, quiet, and require almost no maintenance. Highly recommend!
+Thank you for solaris 360`,
+  },
+  {
+    author: 'Deep Pastagia',
+    rating: 5,
+    date: 'Apr 2026',
+    text: `They made the process of going solar easy and straightforward. From the initial consultation to installation, everything was handled professionally. I’m thrilled with my new panels and the savings they bring.`,
+  },
+  {
+    author: 'Sidharat Kumar',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `I’m delighted with the solar solutions provided to my industrial facility. The team was knowledgeable and offered valuable insights during the consultation. The installation was efficient and hassle-free!`,
+  },
+  {
+    author: 'Bu Ba',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `Their expertise in solar structural design really impressed me. They ensured everything was tailored to my house's specifications. The installation was quick, and I love how the panels look on my roof!`,
+  },
+  {
+    author: 'Xo Joy',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `The design support was incredible! They guided me through the civil and electrical aspects, ensuring everything was compatible. The final result looks amazing, and I’m excited about my energy savings.`,
+  },
+  {
+    author: 'Snehal Munshi',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `Their expertise in solar EPC services really shines through. The project was well-managed, and the installation was precise. I highly recommend them for anyone looking to make the switch to solar.`,
+  },
+  {
+    author: 'bhavesh pasiawala',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `My rooftop solar installation went smoothly and was completed on time. The staff was professional and friendly, and they kept me informed throughout the project. Highly recommend their services!`,
+  },
+  {
+    author: 'cuty mahiii',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `They did an excellent job with my commercial solar installation. The team was punctual and courteous. I appreciate their attention to detail and the thoroughness of their work. Highly recommend!`,
+  },
+  {
+    author: 'samkit bothra',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `I highly recommend them for residential solar rooftop projects. The installation was neat, and the team was respectful of my home. They cleaned up after themselves, which I greatly appreciated!`,
+  },
+  {
+    author: 'Dalal Nilesh',
+    rating: 5,
+    date: 'May 2026',
+    text: `I received fantastic service from start to finish! The team was communicative and professional. They guided me through the entire process, making it easy and stress-free. Great job overall!`,
+  },
+  {
+    author: 'Baghel Jyoti',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `I was impressed with their professional earthing and commissioning process. Everything was handled with care, ensuring safety and performance. I now have peace of mind with my solar setup!`,
+  },
+  {
+    author: 'Ketan Bandhara',
+    rating: 5,
+    date: 'Apr 2026',
+    text: `Their solar maintenance services are top-notch. I feel confident knowing they’ll be there to help if I need anything in the future. Their dedication to customer service is evident`,
+  },
+  {
+    author: 'Bhavesh Jain',
+    rating: 5,
+    date: 'Jul 2025',
+    text: `Good service at great price.
+Owner also very much responsive and ready to solve your issues.
+All team members good with follow up.
+Sales, technical, etc`,
+  },
+  {
+    author: 'Anand Sharma',
+    rating: 5,
+    date: 'Jul 2025',
+    text: `I’m highly satisfied with their service and the performance of the solar panels. They handled everything from start to finish without any hassle.`,
+  },
+  {
+    author: 'yaxbhai',
+    rating: 5,
+    date: 'Jul 2025',
+    text: `All the team members has very well technical knowledge. And excellent sales after service. I will recommended this company for roof top solar.`,
+  },
+  {
+    author: 'Ashok Jain',
+    rating: 5,
+    date: 'May 2025',
+    text: `Kuch problam aati hai to hamare yaha Sanny bhai 24 hour me aakar repair kar dete very good Sarvies Sumit bhai & Sanny bhai`,
+  },
+  {
+    author: 'Punam Dudhwala',
+    rating: 5,
+    date: 'Apr 2026',
+    text: `Team give us good services and have a nice conversation`,
+  },
+  {
+    author: 'Bijal Desai',
+    rating: 5,
+    date: 'Oct 2025',
+    text: `best service, quick follow up &
+skilled technician`,
+  },
+  {
+    author: 'Dhansukhbhai Patel',
+    rating: 5,
+    date: 'Apr 2026',
+    text: `Good sarvesh`,
+  },
+  {
+    author: 'Rakesh Kumar',
+    rating: 5,
+    date: 'Feb 2026',
+    text: `બવ સરસ અને સારૂ કામ છે અને સન્તોશ કાર છે
+મટીરીયલ પણ બ્રન્ડેડ કંપની નુ વાપરેલ છે
+માણસો ની કામ કરવાની પધ્ધતિ પણ સારી છે મને સોલારિસ360 નૂ કામ બવ સારુ લાગ્યું`,
+  },
+]
