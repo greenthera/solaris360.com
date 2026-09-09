@@ -55,7 +55,7 @@ export const company = {
   /** Google Business reviews (snapshot from the 2026-09-09 export). */
   reviews: {
     count: 104,
-    average: 4.9,
+    average: '5.0',
     googleUrl:
       'https://search.google.com/local/reviews?placeid=ChIJQf2x6L9P4DsR3OGAIG3Vakg&q=*&hl=en',
   },

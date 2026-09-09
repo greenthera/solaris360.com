@@ -14,7 +14,7 @@ export default function Reviews() {
       url: company.domain,
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: company.reviews.average,
+        ratingValue: Number(company.reviews.average),
         reviewCount: company.reviews.count,
         bestRating: 5,
       },
