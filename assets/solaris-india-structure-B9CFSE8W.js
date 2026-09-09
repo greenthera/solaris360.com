@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/solaris-india-structure-DuM44U_l.webp`;export{e as t};

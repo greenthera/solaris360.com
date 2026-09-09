@@ -1,1 +1,0 @@
-var e=`/solaris360.com/assets/solar-carport-fLN9EHSG.webp`;export{e as t};
