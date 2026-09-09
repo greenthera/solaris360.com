@@ -1,8 +1,8 @@
 import type { AdvancedResult, AmortRow, SimpleEmiResult } from './emi'
 import { company } from '../content/company'
-import logoDataUrl from '../assets/logo-pdf.png?inline'
+import logoDataUrl from '../assets/logo-mark.png?inline'
 
-/** Intrinsic size (px) of logo-pdf.png -> keeps the PDF placement in proportion. */
+/** Intrinsic size (px) of logo-mark.png -> keeps the PDF placement in proportion. */
 const LOGO_W = 380
 const LOGO_H = 78
 

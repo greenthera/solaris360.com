@@ -31,6 +31,14 @@ function cleanHtml(file) {
     .replace(/<link[^>]*rel="preload"[^>]*as="image"(?![^>]*data-rh)[^>]*>/gi, '')
     // any stray charset — we re-add it first
     .replace(/<meta[^>]*charset[^>]*>/gi, '')
+    // make the app stylesheet non-render-blocking so the inline boot splash
+    // paints immediately on slow connections (the splash masks any FOUC)
+    .replace(
+      /<link rel="stylesheet"([^>]*href="[^"]*\/assets\/[^"]*\.css"[^>]*)>/i,
+      (m, attrs) =>
+        `<link rel="stylesheet"${attrs} media="print" onload="this.media='all';this.onload=null">` +
+        `<noscript>${m}</noscript>`,
+    )
 
   head = `<meta charset="utf-8">${head.trim()}`
   writeFileSync(file, h.slice(0, headStart) + head + h.slice(headEnd))

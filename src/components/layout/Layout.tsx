@@ -21,34 +21,37 @@ function DelayedLoader() {
   return show ? <Loader /> : null
 }
 
+/** Dismiss the static boot splash from index.html once the app is ready. */
+function dismissBootSplash() {
+  const boot = document.getElementById('boot')
+  if (!boot) return
+
+  let seen: boolean
+  try {
+    seen = sessionStorage.getItem(BOOT_KEY) === '1'
+  } catch {
+    seen = true
+  }
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const hold = seen ? 0 : reduced ? 400 : 1500
+
+  window.setTimeout(() => {
+    boot.classList.add('done')
+    try {
+      sessionStorage.setItem(BOOT_KEY, '1')
+    } catch {
+      /* ignore */
+    }
+    window.setTimeout(() => boot.remove(), 500)
+  }, hold)
+}
+
 export function Layout() {
   const { pathname } = useLocation()
-  const [booted, setBooted] = useState(true)
 
   useEffect(() => {
     initReveal()
-
-    let seen: boolean
-    try {
-      seen = sessionStorage.getItem(BOOT_KEY) === '1'
-    } catch {
-      seen = true
-    }
-    if (seen) return
-
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setBooted(false)
-    const done = () => {
-      try {
-        sessionStorage.setItem(BOOT_KEY, '1')
-      } catch {
-        /* ignore */
-      }
-      setBooted(true)
-    }
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const t = window.setTimeout(done, reduced ? 300 : 1900)
-    return () => window.clearTimeout(t)
+    dismissBootSplash()
   }, [])
 
   useEffect(() => {
@@ -58,7 +61,6 @@ export function Layout() {
   return (
     <>
       <ScrollToTop />
-      <Loader done={booted} />
       <Header />
       <main id="main">
         <Suspense fallback={<DelayedLoader />}>

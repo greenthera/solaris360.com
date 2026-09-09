@@ -576,43 +576,63 @@
   z-index: 90;
   display: grid;
   place-items: center;
-  background:
-    radial-gradient(55% 45% at 50% 44%, #f3a02e12, transparent 70%),
-    var(--color-ink);
+  background: var(--color-ink);
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 .loader[data-done='true'] { opacity: 0; visibility: hidden; pointer-events: none; }
 
-.loader-mark { width: clamp(120px, 24vw, 176px); overflow: visible; }
-.loader-arc,
-.loader-base { stroke-dasharray: 220; stroke-dashoffset: 220; animation: loader-draw 0.85s var(--ease-expo) forwards; }
-.loader-base { animation-delay: 0.42s; }
-.loader-ray { transform-box: fill-box; transform-origin: center; opacity: 0; animation: loader-ray 0.5s var(--ease-expo) forwards; }
-.loader-ray:nth-of-type(1) { animation-delay: 0.62s; }
-.loader-ray:nth-of-type(2) { animation-delay: 0.72s; }
-.loader-ray:nth-of-type(3) { animation-delay: 0.82s; }
-.loader-halo { transform-box: fill-box; transform-origin: center; animation: loader-glow 2.6s ease-in-out 0.9s infinite; }
-.loader-orbit { transform-box: fill-box; transform-origin: center; animation: loader-spin 1.2s cubic-bezier(.6,.1,.4,.9) 0.7s infinite; }
-.loader-word {
-  margin-top: 1.4rem;
-  font: 700 0.72rem/1 var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.5em;
-  color: color-mix(in srgb, var(--color-paper) 55%, transparent);
+.loader-inner {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+.loader-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  translate: -50% -60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f3a02e26, transparent 68%);
+  animation: loader-glow 2.8s ease-in-out infinite;
+}
+.loader-logo {
+  position: relative;
+  width: clamp(160px, 40vw, 248px);
+  height: auto;
   opacity: 0;
-  animation: loader-word 0.6s ease 0.7s forwards;
+  animation: loader-logo 0.7s var(--ease-expo) 0.05s forwards;
+}
+.loader-track {
+  position: relative;
+  width: clamp(140px, 34vw, 220px);
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-paper) 12%, transparent);
+  opacity: 0;
+  animation: loader-logo 0.5s ease 0.35s forwards;
+}
+.loader-bar {
+  position: absolute;
+  inset: 0;
+  width: 42%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, var(--color-orange), transparent);
+  animation: loader-bar 1.15s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
-@keyframes loader-draw { to { stroke-dashoffset: 0; } }
-@keyframes loader-ray { from { opacity: 0; transform: scale(0.3) translateY(6px); } to { opacity: 1; transform: none; } }
-@keyframes loader-glow { 0%, 100% { opacity: 0.06; transform: scale(1); } 50% { opacity: 0.16; transform: scale(1.14); } }
-@keyframes loader-word { from { opacity: 0; letter-spacing: 0.5em; } to { opacity: 1; letter-spacing: 0.3em; } }
-@keyframes loader-spin { 0% { opacity: 1; transform: rotate(0deg); } 100% { opacity: 1; transform: rotate(360deg); } }
+@keyframes loader-logo { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes loader-glow { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.08); } }
+@keyframes loader-bar { 0% { transform: translateX(-120%); } 100% { transform: translateX(360%); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .loader-arc, .loader-base, .loader-ray, .loader-halo, .loader-orbit, .loader-word { animation: none !important; }
-  .loader-arc, .loader-base { stroke-dashoffset: 0; }
-  .loader-ray, .loader-word, .loader-orbit { opacity: 1; }
+  .loader-logo, .loader-track { opacity: 1; animation: none; }
+  .loader-glow { animation: none; opacity: 0.7; }
+  .loader-bar { animation: none; width: 100%; opacity: 0.5; }
 }
 
 .faq-module-scene { overflow: hidden; border: 1px solid #ffffff18; border-radius: 18px; padding: 24px; background: radial-gradient(ellipse at 55% 35%,#f3a02e10,transparent 65%),linear-gradient(145deg,#201d3a,#0e1022); box-shadow: inset 0 1px 0 #ffffff08,0 25px 60px #0002; }
