@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/hero-substation-dusk.webp'
-import contentImg from '../assets/array-daytime.webp'
+import pageHeroImg from '../assets/inverters-wall.webp'
+import contentImg from '../assets/rooftop-parapet-city.webp'
 import { PageHero, Section, ImageBand } from '../components/ui/primitives'
 import { Accordion } from '../components/ui/Accordion'
 import { faq } from '../content/site'

@@ -3,20 +3,26 @@ import { Seo } from '../components/layout/Seo'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { Lightbox } from '../components/ui/Lightbox'
-import arr1 from '../assets/array-daytime.webp'
-import arr2 from '../assets/array-crew-dusk.webp'
-import arr3 from '../assets/hero-substation-dusk.webp'
-import arr4 from '../assets/site-overview-dusk.webp'
-import arr5 from '../assets/hero-array-sunset.webp'
+import shotIndustrial from '../assets/rooftop-industrial-aerial.webp'
+import shotCityscape from '../assets/rooftop-array-cityscape.webp'
+import shotResidence from '../assets/array-elevated-residence.webp'
+import shotCarport from '../assets/solar-carport.webp'
+import shotParapet from '../assets/rooftop-parapet-city.webp'
+import shotInverters from '../assets/inverters-wall.webp'
+import shotResidentialDusk from '../assets/rooftop-residential-dusk.webp'
+import shotStructure from '../assets/mounting-structure-build.webp'
 
 type Cat = 'All' | 'Residential' | 'Commercial' | 'Industrial'
 
 const shots: { src: string; cat: Exclude<Cat, 'All'>; title: string; alt: string }[] = [
-  { src: arr1, cat: 'Commercial', title: 'Rooftop array, daylight', alt: 'Rooftop solar array under a bright sky' },
-  { src: arr2, cat: 'Industrial', title: 'Ground-mount with crew', alt: 'Ground-mount array with the install crew at dusk' },
-  { src: arr3, cat: 'Commercial', title: 'Array beside substation', alt: 'Array beside a substation at dusk' },
-  { src: arr4, cat: 'Industrial', title: 'Site overview, blue hour', alt: 'Wide site view at blue hour' },
-  { src: arr5, cat: 'Residential', title: 'Panel rows at sunset', alt: 'Converging rows of panels at sunset' },
+  { src: shotIndustrial, cat: 'Industrial', title: 'Industrial rooftop array', alt: 'Aerial view along a large industrial rooftop solar array with a maintenance walkway' },
+  { src: shotCityscape, cat: 'Commercial', title: 'City-centre rooftop', alt: 'A rooftop solar array overlooking the city skyline' },
+  { src: shotResidence, cat: 'Residential', title: 'Elevated home array', alt: 'An elevated tilted solar array above a residential terrace' },
+  { src: shotCarport, cat: 'Commercial', title: 'Solar carport', alt: 'An elevated solar carport structure over a paved yard' },
+  { src: shotParapet, cat: 'Commercial', title: 'Parapet-mounted array', alt: 'Solar panels mounted along a building parapet' },
+  { src: shotInverters, cat: 'Industrial', title: 'Inverter wall', alt: 'Wall-mounted string inverters and DC junction boxes' },
+  { src: shotResidentialDusk, cat: 'Residential', title: 'Home rooftop at dusk', alt: 'A residential rooftop solar array at dusk' },
+  { src: shotStructure, cat: 'Residential', title: 'Structure install', alt: 'A mounting structure being erected on a rooftop during installation' },
 ]
 
 export default function ProjectGallery() {
@@ -81,12 +87,12 @@ export default function ProjectGallery() {
         </Reveal>
 
         <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted/70">
-          Images are illustrative renderings.
+          Photos from recent Solaris360 installations.
         </p>
       </Section>
 
       <Lightbox
-        items={filtered.map((s) => ({ src: s.src, alt: s.alt, title: s.title, meta: `${s.cat} · illustrative rendering` }))}
+        items={filtered.map((s) => ({ src: s.src, alt: s.alt, title: s.title, meta: `${s.cat} project` }))}
         index={active}
         onClose={() => setActive(null)}
         onIndex={setActive}

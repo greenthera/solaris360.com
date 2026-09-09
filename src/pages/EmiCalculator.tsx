@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/hero-substation-dusk.webp'
+import pageHeroImg from '../assets/inverters-wall.webp'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Field } from '../components/emi/Field'
 import { BalanceChart } from '../components/emi/BalanceChart'

@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/array-daytime.webp'
-import contentImg from '../assets/hero-array-sunset.webp'
+import pageHeroImg from '../assets/rooftop-parapet-city.webp'
+import contentImg from '../assets/solar-carport.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { systemTypes } from '../content/services'
@@ -34,7 +34,7 @@ export default function SolarPvSystem() {
           intro="Send your latest electricity bill and roof details - we'll recommend a system and size."
         />
       </Section>
-      <ImageBand image={contentImg} alt="Grid-connected solar array at golden hour" />
+      <ImageBand image={contentImg} alt="A grid-connected solar carport array" />
     </>
   )
 }

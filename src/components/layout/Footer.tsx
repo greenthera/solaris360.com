@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Logo } from './Logo'
 import { footerNav } from '../../content/nav'
 import { company, wa, waMsg } from '../../content/company'
-import ctaImg from '../../assets/array-crew-dusk.webp'
+import ctaImg from '../../assets/array-elevated-residence.webp'
 
 const policies = [
   { label: 'Terms', to: '/terms/' },

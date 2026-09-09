@@ -9,8 +9,8 @@ export function Logo({ className }: { className?: string }) {
     <img
       src={logoLight}
       alt="Solaris360"
-      width={1442}
-      height={423}
+      width={1128}
+      height={232}
       decoding="async"
       className={['w-auto', className ?? 'h-7'].filter(Boolean).join(' ')}
     />

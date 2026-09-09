@@ -16,8 +16,8 @@ export function Hero() {
         className="hero-photo absolute inset-0 h-full w-full object-cover opacity-45"
         fetchPriority="high"
         decoding="async"
-        width={1600}
-        height={873}
+        width={1360}
+        height={765}
       />
       <div
         className="absolute inset-0 bg-linear-to-r from-ink via-ink/85 to-ink/40"

@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/hero-substation-dusk.webp'
-import contentImg from '../assets/array-crew-dusk.webp'
+import pageHeroImg from '../assets/inverters-wall.webp'
+import contentImg from '../assets/array-elevated-residence.webp'
 import { PageHero, Section, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { Counter } from '../components/ui/Counter'
@@ -39,7 +39,7 @@ export default function SystemFeatures() {
           and your eligibility.
         </p>
       </Section>
-      <ImageBand image={contentImg} alt="Every system is installed and commissioned by our own crew" />
+      <ImageBand image={contentImg} alt="The Solaris360 crew commissioning an elevated rooftop array" />
     </>
   )
 }

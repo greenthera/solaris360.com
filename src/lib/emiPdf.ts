@@ -3,8 +3,8 @@ import { company } from '../content/company'
 import logoDataUrl from '../assets/logo-pdf.png?inline'
 
 /** Intrinsic size (px) of logo-pdf.png -> keeps the PDF placement in proportion. */
-const LOGO_W = 360
-const LOGO_H = 106
+const LOGO_W = 380
+const LOGO_H = 78
 
 const WA_URL = `https://wa.me/${company.phone.mainDigits}`
 const dashless = (s: string) => s.replace(/[–—]/g, '-')
@@ -28,10 +28,10 @@ function drawHeader(doc: import('jspdf').jsPDF) {
   doc.rect(0, 0, pageW, 74, 'F')
 
   // logo (light artwork, sits on the navy bar) -> links to the site
-  const logoH = 22
+  const logoH = 19
   const logoW = (LOGO_W / LOGO_H) * logoH
-  doc.addImage(logoDataUrl, 'PNG', M, 16, logoW, logoH, 'sol-logo', 'SLOW')
-  doc.link(M, 16, logoW, logoH, { url: company.domain })
+  doc.addImage(logoDataUrl, 'PNG', M, 18, logoW, logoH, 'sol-logo', 'SLOW')
+  doc.link(M, 18, logoW, logoH, { url: company.domain })
 
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(11)

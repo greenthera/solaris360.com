@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/site-overview-dusk.webp'
-import contentImg from '../assets/array-daytime.webp'
+import pageHeroImg from '../assets/rooftop-array-cityscape.webp'
+import contentImg from '../assets/rooftop-parapet-city.webp'
 import { PageHero, Section, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { company, wa } from '../content/company'
@@ -60,7 +60,7 @@ export default function ShadowAnalysis() {
             </div>
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="String layout planned clear of shade" />
+      <ImageBand image={contentImg} alt="A rooftop array with an unshaded panel layout" />
     </>
   )
 }

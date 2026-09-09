@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/array-crew-dusk.webp'
-import contentImg from '../assets/hero-substation-dusk.webp'
+import pageHeroImg from '../assets/array-elevated-residence.webp'
+import contentImg from '../assets/inverters-wall.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { epcScope, epcBlocks } from '../content/services'
@@ -42,7 +42,7 @@ export default function EpcServices() {
           </Reveal>
       </Section>
 
-      <ImageBand image={contentImg} alt="Array and substation connection on a Solaris360 EPC project" />
+      <ImageBand image={contentImg} alt="Wall-mounted inverters and DC junction boxes on a Solaris360 project" />
     </>
   )
 }

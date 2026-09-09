@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/array-daytime.webp'
-import contentImg from '../assets/array-daytime.webp'
+import pageHeroImg from '../assets/rooftop-parapet-city.webp'
+import contentImg from '../assets/rooftop-parapet-city.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { whySolar } from '../content/site'
@@ -26,7 +26,7 @@ export default function WhySolar() {
             ))}
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="A completed rooftop-scale solar array" />
+      <ImageBand image={contentImg} alt="Rooftop solar panels running along a building parapet" />
     </>
   )
 }

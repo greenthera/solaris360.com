@@ -1,7 +1,7 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/site-overview-dusk.webp'
-import contentImg from '../assets/array-crew-dusk.webp'
-import introImg from '../assets/array-daytime.webp'
+import pageHeroImg from '../assets/rooftop-array-cityscape.webp'
+import contentImg from '../assets/array-elevated-residence.webp'
+import introImg from '../assets/solaris360-office-sign.webp'
 import { PageHero, Section, SectionTitle, Card, ImageBand, MediaRow } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { whyUs } from '../content/site'
@@ -21,7 +21,7 @@ export default function About() {
       />
 
       <Section>
-        <MediaRow image={introImg} alt="A completed Solaris360 solar array">
+        <MediaRow image={introImg} alt="The Solaris360 rooftop solar power office signboard">
           <div className="space-y-4 text-muted">
             <p>
               As a solar installer, we deal in grid-connected and off-grid standalone solar plants.
@@ -48,7 +48,7 @@ export default function About() {
           </Reveal>
       </Section>
 
-      <ImageBand image={contentImg} alt="Solaris360 crew on a commissioned solar site at dusk" />
+      <ImageBand image={contentImg} alt="The Solaris360 crew on an elevated rooftop installation" />
     </>
   )
 }

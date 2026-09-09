@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/hero-substation-dusk.webp'
-import contentImg from '../assets/site-overview-dusk.webp'
+import pageHeroImg from '../assets/inverters-wall.webp'
+import contentImg from '../assets/rooftop-array-cityscape.webp'
 import { PageHero, Section, SectionTitle, Card, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { whyUs } from '../content/site'
@@ -25,7 +25,7 @@ export default function WhyUs() {
             ))}
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="A Solaris360 project at handover" />
+      <ImageBand image={contentImg} alt="A finished rooftop array overlooking the city" />
     </>
   )
 }
