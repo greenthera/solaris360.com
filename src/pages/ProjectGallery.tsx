@@ -3,26 +3,20 @@ import { Seo } from '../components/layout/Seo'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { Lightbox } from '../components/ui/Lightbox'
-import shotIndustrial from '../assets/rooftop-industrial-aerial.webp'
-import shotCityscape from '../assets/rooftop-array-cityscape.webp'
-import shotResidence from '../assets/array-elevated-residence.webp'
-import shotCarport from '../assets/solar-carport.webp'
-import shotParapet from '../assets/rooftop-parapet-city.webp'
-import shotInverters from '../assets/inverters-wall.webp'
-import shotResidentialDusk from '../assets/rooftop-residential-dusk.webp'
-import shotStructure from '../assets/mounting-structure-build.webp'
+import shotIndustrial from '../assets/solaris-india-industrial.webp'
+import shotResidence from '../assets/solaris-india-residential.webp'
+import shotService from '../assets/solaris-india-service.webp'
+import shotConsultation from '../assets/solaris-india-consultation.webp'
+import shotStructure from '../assets/solaris-india-structure.webp'
 
 type Cat = 'All' | 'Residential' | 'Commercial' | 'Industrial'
 
 const shots: { src: string; cat: Exclude<Cat, 'All'>; title: string; alt: string }[] = [
-  { src: shotIndustrial, cat: 'Industrial', title: 'Industrial rooftop array', alt: 'Aerial view along a large industrial rooftop solar array with a maintenance walkway' },
-  { src: shotCityscape, cat: 'Commercial', title: 'City-centre rooftop', alt: 'A rooftop solar array overlooking the city skyline' },
-  { src: shotResidence, cat: 'Residential', title: 'Elevated home array', alt: 'An elevated tilted solar array above a residential terrace' },
-  { src: shotCarport, cat: 'Commercial', title: 'Solar carport', alt: 'An elevated solar carport structure over a paved yard' },
-  { src: shotParapet, cat: 'Commercial', title: 'Parapet-mounted array', alt: 'Solar panels mounted along a building parapet' },
-  { src: shotInverters, cat: 'Industrial', title: 'Inverter wall', alt: 'Wall-mounted string inverters and DC junction boxes' },
-  { src: shotResidentialDusk, cat: 'Residential', title: 'Home rooftop at dusk', alt: 'A residential rooftop solar array at dusk' },
-  { src: shotStructure, cat: 'Residential', title: 'Structure install', alt: 'A mounting structure being erected on a rooftop during installation' },
+  { src: shotResidence, cat: 'Residential', title: 'Residential solar installation', alt: 'Indian installers in orange and navy workwear securing solar panels on a residential terrace' },
+  { src: shotIndustrial, cat: 'Industrial', title: 'Industrial rooftop inspection', alt: 'Two Indian engineers reviewing a tablet between rows of industrial rooftop solar panels' },
+  { src: shotService, cat: 'Commercial', title: 'Inverter service and monitoring', alt: 'Indian solar technicians inspecting wall-mounted inverters on a commercial rooftop' },
+  { src: shotConsultation, cat: 'Residential', title: 'Home solar consultation', alt: 'Indian solar consultant discussing a rooftop plan with homeowners on their veranda' },
+  { src: shotStructure, cat: 'Commercial', title: 'Elevated solar carport', alt: 'Indian engineer inspecting the steel support of an elevated solar carport' },
 ]
 
 export default function ProjectGallery() {
@@ -34,10 +28,10 @@ export default function ProjectGallery() {
     <>
       <Seo
         title="Project Gallery"
-        description="Rooftop and ground-mount solar projects by Solaris360 across residential, commercial and industrial sites in and around Surat."
+        description="Illustrative images of residential, commercial and industrial solar installation and maintenance in India."
         path="/project-gallery/"
       />
-      <PageHero eyebrow="EPC Services" title="Photo gallery" intro="A look at systems we've designed and built." />
+      <PageHero eyebrow="EPC Services" title="Photo gallery" intro="Explore residential, industrial and commercial solar in an Indian setting." />
       <Section>
         <div className="mb-8 flex flex-wrap gap-2">
           {(['All', 'Residential', 'Commercial', 'Industrial'] as Cat[]).map((c) => (
@@ -87,12 +81,12 @@ export default function ProjectGallery() {
         </Reveal>
 
         <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted/70">
-          Photos from recent Solaris360 installations.
+          AI-generated illustrations of solar installation and service in India.
         </p>
       </Section>
 
       <Lightbox
-        items={filtered.map((s) => ({ src: s.src, alt: s.alt, title: s.title, meta: `${s.cat} project` }))}
+        items={filtered.map((s) => ({ src: s.src, alt: s.alt, title: s.title, meta: `${s.cat} · Illustrative image` }))}
         index={active}
         onClose={() => setActive(null)}
         onIndex={setActive}

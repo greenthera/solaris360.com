@@ -1,5 +1,5 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/rooftop-array-cityscape.webp'
+import pageHeroImg from '../assets/solaris-india-service.webp'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { warranty } from '../content/legal/warranty'

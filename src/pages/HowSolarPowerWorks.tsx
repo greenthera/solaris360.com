@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/rooftop-parapet-city.webp'
-import contentImg from '../assets/solar-carport.webp'
+import pageHeroImg from '../assets/solaris-india-residential.webp'
+import contentImg from '../assets/solaris-india-structure.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { SolarSchematic } from '../components/home/SolarSchematic'
@@ -96,7 +96,7 @@ export default function HowSolarPowerWorks() {
         </p>
       </Section>
 
-      <ImageBand image={contentImg} alt="An elevated solar carport structure" />
+      <ImageBand image={contentImg} alt="Indian engineer inspecting the steel support of an elevated solar carport" />
     </>
   )
 }

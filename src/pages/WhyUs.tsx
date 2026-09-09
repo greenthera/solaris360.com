@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/inverters-wall.webp'
-import contentImg from '../assets/rooftop-array-cityscape.webp'
+import pageHeroImg from '../assets/solaris-india-consultation.webp'
+import contentImg from '../assets/solaris-india-industrial.webp'
 import { PageHero, Section, SectionTitle, Card, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { whyUs } from '../content/site'
@@ -25,7 +25,7 @@ export default function WhyUs() {
             ))}
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="A finished rooftop array overlooking the city" />
+      <ImageBand image={contentImg} alt="Indian engineers inspecting an industrial rooftop solar array" />
     </>
   )
 }

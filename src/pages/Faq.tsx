@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/inverters-wall.webp'
-import contentImg from '../assets/rooftop-parapet-city.webp'
+import pageHeroImg from '../assets/solaris-india-service.webp'
+import contentImg from '../assets/solaris-india-consultation.webp'
 import { PageHero, Section, ImageBand } from '../components/ui/primitives'
 import { Accordion } from '../components/ui/Accordion'
 import { faq } from '../content/site'
@@ -29,7 +29,7 @@ export default function Faq() {
       <Section>
         <Accordion items={faq.map((f) => ({ q: f.q, a: f.a }))} />
       </Section>
-      <ImageBand image={contentImg} alt="A Solaris360 rooftop installation" />
+      <ImageBand image={contentImg} alt="Indian solar consultant discussing a rooftop plan with homeowners on their veranda" />
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/array-elevated-residence.webp'
-import contentImg from '../assets/mounting-structure-build.webp'
+import pageHeroImg from '../assets/solaris-india-consultation.webp'
+import contentImg from '../assets/solaris-india-residential.webp'
 import { PageHero, Section, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { executionSteps } from '../content/site'
@@ -31,7 +31,7 @@ export default function ExecutionProcess() {
             ))}
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="A mounting structure going up on a rooftop during installation" />
+      <ImageBand image={contentImg} alt="Indian technicians installing solar panels on a residential terrace" />
     </>
   )
 }

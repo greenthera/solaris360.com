@@ -1,6 +1,6 @@
 import { Seo } from './layout/Seo'
 import { PageHero, Section, Prose } from './ui/primitives'
-import legalHeroImg from '../assets/rooftop-array-cityscape.webp'
+import legalHeroImg from '../assets/solaris-india-industrial.webp'
 import type { LegalDoc } from '../content/legal/types'
 
 export function LegalPage({ doc, path }: { doc: LegalDoc; path: string }) {

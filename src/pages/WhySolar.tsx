@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/rooftop-parapet-city.webp'
-import contentImg from '../assets/rooftop-parapet-city.webp'
+import pageHeroImg from '../assets/solaris-india-residential.webp'
+import contentImg from '../assets/solaris-india-consultation.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { whySolar } from '../content/site'
@@ -26,7 +26,7 @@ export default function WhySolar() {
             ))}
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="Rooftop solar panels running along a building parapet" />
+      <ImageBand image={contentImg} alt="Indian solar consultant discussing a rooftop plan with homeowners on their veranda" />
     </>
   )
 }

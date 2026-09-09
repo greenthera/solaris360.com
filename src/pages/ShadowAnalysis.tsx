@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/rooftop-array-cityscape.webp'
-import contentImg from '../assets/rooftop-parapet-city.webp'
+import pageHeroImg from '../assets/solaris-india-industrial.webp'
+import contentImg from '../assets/solaris-india-consultation.webp'
 import { PageHero, Section, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { company, wa } from '../content/company'
@@ -60,7 +60,7 @@ export default function ShadowAnalysis() {
             </div>
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="A rooftop array with an unshaded panel layout" />
+      <ImageBand image={contentImg} alt="Indian solar consultant discussing a rooftop plan with homeowners on their veranda" />
     </>
   )
 }

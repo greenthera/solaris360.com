@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/rooftop-array-cityscape.webp'
+import pageHeroImg from '../assets/solaris-india-consultation.webp'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { company, wa } from '../content/company'
