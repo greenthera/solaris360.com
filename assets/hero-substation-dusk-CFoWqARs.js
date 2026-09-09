@@ -1,1 +1,0 @@
-var e=`/solaris360.com/assets/hero-substation-dusk-7Ax09Yau.webp`;export{e as t};

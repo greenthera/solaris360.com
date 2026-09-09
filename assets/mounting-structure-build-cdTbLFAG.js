@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/mounting-structure-build-DZVtFVaf.webp`;export{e as t};

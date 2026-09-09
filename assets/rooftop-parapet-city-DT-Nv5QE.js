@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/rooftop-parapet-city-Dl1W0Ll4.webp`;export{e as t};

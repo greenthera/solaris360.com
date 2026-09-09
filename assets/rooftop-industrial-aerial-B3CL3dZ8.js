@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/rooftop-industrial-aerial-B0zpC3RY.webp`;export{e as t};

@@ -1,1 +1,0 @@
-var e=`/solaris360.com/assets/hero-array-sunset-B1Sk3B-S.webp`;export{e as t};

@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/inverters-wall-Kdnm6azv.webp`;export{e as t};

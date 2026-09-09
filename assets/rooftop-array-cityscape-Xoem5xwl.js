@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/rooftop-array-cityscape-BdzVZlw3.webp`;export{e as t};
