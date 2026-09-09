@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/solaris-square-epc-CN72mpg4.webp`;export{e as t};

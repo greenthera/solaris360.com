@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/solaris-square-why-us-D8SyqQqz.webp`;export{e as t};

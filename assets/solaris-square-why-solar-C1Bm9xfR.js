@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/solaris-square-why-solar-BOMOfU-T.webp`;export{e as t};

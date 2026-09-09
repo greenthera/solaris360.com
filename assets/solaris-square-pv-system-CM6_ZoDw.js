@@ -1,0 +1,1 @@
+var e=`/solaris360.com/assets/solaris-square-pv-system-BuOElEUH.webp`;export{e as t};
