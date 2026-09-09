@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/solaris-india-residential.webp'
-import contentImg from '../assets/solaris-india-consultation.webp'
+import pageHeroImg from '../assets/solaris-square-why-solar.webp'
+import contentImg from '../assets/solaris-panorama-why-solar.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { whySolar } from '../content/site'
@@ -26,7 +26,7 @@ export default function WhySolar() {
             ))}
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="Indian solar consultant discussing a rooftop plan with homeowners on their veranda" />
+      <ImageBand image={contentImg} alt="Solar rooftops across a leafy Indian neighborhood at sunrise" />
     </>
   )
 }

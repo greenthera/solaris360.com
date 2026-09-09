@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/solaris-india-industrial.webp'
-import contentImg from '../assets/solaris-india-residential.webp'
+import pageHeroImg from '../assets/solaris-square-about.webp'
+import contentImg from '../assets/solaris-panorama-about.webp'
 import introImg from '../assets/solaris-india-consultation.webp'
 import { PageHero, Section, SectionTitle, Card, ImageBand, MediaRow } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
@@ -48,7 +48,7 @@ export default function About() {
           </Reveal>
       </Section>
 
-      <ImageBand image={contentImg} alt="Indian technicians installing solar panels on a residential terrace" />
+      <ImageBand image={contentImg} alt="Solar engineering team outside a solar-powered operations campus in Gujarat" />
     </>
   )
 }

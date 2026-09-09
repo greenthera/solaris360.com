@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
 import pageHeroImg from '../assets/solaris-india-consultation.webp'
-import contentImg from '../assets/solaris-india-residential.webp'
+import contentImg from '../assets/solaris-panorama-execution.webp'
 import { PageHero, Section, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { executionSteps } from '../content/site'
@@ -31,7 +31,7 @@ export default function ExecutionProcess() {
             ))}
           </Reveal>
       </Section>
-      <ImageBand image={contentImg} alt="Indian technicians installing solar panels on a residential terrace" />
+      <ImageBand image={contentImg} alt="Solar installation crew positioning a panel on a terrace mounting frame" />
     </>
   )
 }

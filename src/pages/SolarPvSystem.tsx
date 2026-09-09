@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/solaris-india-residential.webp'
-import contentImg from '../assets/solaris-india-industrial.webp'
+import pageHeroImg from '../assets/solaris-square-pv-system.webp'
+import contentImg from '../assets/solaris-panorama-pv-system.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { systemTypes } from '../content/services'
@@ -34,7 +34,7 @@ export default function SolarPvSystem() {
           intro="Send your latest electricity bill and roof details - we'll recommend a system and size."
         />
       </Section>
-      <ImageBand image={contentImg} alt="Indian engineers inspecting an industrial rooftop solar array" />
+      <ImageBand image={contentImg} alt="Completed photovoltaic array on a contemporary Indian home" />
     </>
   )
 }

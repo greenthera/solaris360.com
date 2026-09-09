@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/solaris-india-service.webp'
-import contentImg from '../assets/solaris-india-residential.webp'
+import pageHeroImg from '../assets/solaris-square-features.webp'
+import contentImg from '../assets/solaris-panorama-features.webp'
 import { PageHero, Section, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { Counter } from '../components/ui/Counter'
@@ -39,7 +39,7 @@ export default function SystemFeatures() {
           and your eligibility.
         </p>
       </Section>
-      <ImageBand image={contentImg} alt="Indian technicians installing solar panels on a residential terrace" />
+      <ImageBand image={contentImg} alt="Organized solar inverters, protection boxes and electrical conduits" />
     </>
   )
 }

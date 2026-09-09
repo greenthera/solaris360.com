@@ -1,0 +1,71 @@
+{
+  "generator": "Built-in image_gen",
+  "images": [
+    {
+      "name": "about",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-80815bda-3d63-4156-b904-6579f06cb7a6.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 about page. A broad Gujarat solar company operations campus, small engineering team together in foreground, workshop and solar roof behind, welcoming documentary photography. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-about.webp"
+    },
+    {
+      "name": "why-solar",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-399d9588-d3a3-4cec-8645-713f1c0de228.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 why-solar page. An Indian residential neighborhood with rooftop solar, leafy streets and warm sunrise, wide elevated aerial view, no people close up. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-why-solar.webp"
+    },
+    {
+      "name": "why-us",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-4dfc869b-d493-40d8-b278-e1b06ea63f55.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 why-us page. Solar quality inspection on a commercial roof in Gujarat, two engineers with helmets checking aligned panels using a handheld instrument, complete people comfortably inside frame. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-why-us.webp"
+    },
+    {
+      "name": "epc",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-dbe526e9-7b64-41d3-96dc-01f5ceb1d6a3.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 epc page. Large industrial rooftop solar installation beside a Gujarat textile factory, broad aerial establishing shot with neat blue panel rows and factory buildings. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-epc.webp"
+    },
+    {
+      "name": "pv-system",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-701162cb-4873-4ab8-9434-ee12c1a7e4aa.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 pv-system page. Completed rooftop photovoltaic array on a contemporary Indian house, side view showing entire house terrace and panels against clear sky. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-pv-system.webp"
+    },
+    {
+      "name": "features",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-1f5447e5-fed8-4a08-b5a2-0cd4962626ff.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 features page. Clean sheltered solar equipment bay, neatly installed inverters, protection boxes and organized conduits with array visible outside, architectural photography. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-features.webp"
+    },
+    {
+      "name": "execution",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-c3caf586-4fb9-42b9-a0d9-d0a21ab53e46.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 execution page. Indian solar installation crew lifting a panel onto a low mounting frame on a spacious protected terrace, hard hats and gloves, all figures completely in frame. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-execution.webp"
+    },
+    {
+      "name": "shadow",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-64223110-772e-4f70-bd5c-b106cb3ef7c3.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 shadow page. Elevated view of rooftop solar panels with clear afternoon shadows cast by nearby rooftop structures, wide architectural study. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-shadow.webp"
+    },
+    {
+      "name": "stability",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-b450fc70-6f88-43e3-9348-697c20d9ed3d.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 stability page. Wide view beneath a robust galvanized steel solar canopy in India, complete columns, diagonal braces, foundations and panel underside clearly visible. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-stability.webp"
+    },
+    {
+      "name": "how-solar",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-55300a7f-2b54-4de2-b7c5-17a8f63b0e40.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 how-solar page. Indian solar-powered home at dusk, panels on terrace, warm windows and lush garden, wide architectural exterior. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-how-solar.webp"
+    },
+    {
+      "name": "faq",
+      "source": "/Users/work/.codex/generated_images/01a08486-906a-7ba0-a12c-adf7da8c0403/exec-dac6130a-ac59-4c1e-9262-1e968cea6cea.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: full-width panoramic website image for Solaris360 faq page. Indian homeowner and solar advisor seated at a garden table reviewing a tablet, completed solar terrace in background, wide environmental portrait. Generate a single premium realistic photograph, panoramic 3:1 aspect ratio, preferably 2400x800. Wide establishing composition, entire key subjects visible with generous breathing space at all edges. Natural colors, detailed blue photovoltaic cells, believable Indian architecture. No text, logos, watermarks, collage, borders or typography.",
+      "output": "src/assets/solaris-panorama-faq.webp"
+    }
+  ]
+}

@@ -20,16 +20,6 @@ export function PageHero({
 }) {
   return (
     <header className="relative overflow-hidden border-b border-white/10 vg-mesh">
-      {image && (
-        <img
-          src={image}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.12] lg:hidden"
-        />
-      )}
       <VectorGround variant="wire" />
       <div
         className={`container-x relative grid items-center gap-10 py-14 md:py-20 ${
@@ -64,17 +54,17 @@ export function PageHero({
         </div>
 
         {image && (
-          <div className="relative hidden aspect-4/3 overflow-hidden border border-white/12 lg:block">
+          <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-white/12 lg:ml-auto lg:mr-0">
             <img
               src={image}
               alt=""
               aria-hidden="true"
-              width={1200}
-              height={900}
+              width={1536}
+              height={1536}
               decoding="async"
-              className="h-full w-full object-cover"
+              className="block h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-ink/60 to-transparent" aria-hidden="true" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-ink/60 to-transparent" aria-hidden="true" />
             <span className="absolute bottom-3 left-3 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-paper/80">
               Solaris360 · Surat
             </span>
@@ -102,8 +92,8 @@ export function MediaRow({
 }) {
   return (
     <Reveal className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
-      <div className={`relative aspect-4/3 overflow-hidden border border-white/12 ${flip ? 'md:order-2' : ''}`}>
-        <img src={image} alt={alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+      <div className={`relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-white/12 ${flip ? 'md:order-2' : ''}`}>
+        <img src={image} alt={alt} loading="lazy" decoding="async" className="block h-full w-full object-cover" />
         <div className="absolute inset-0 bg-linear-to-t from-ink/40 to-transparent" aria-hidden="true" />
       </div>
       <div className={flip ? 'md:order-1' : ''}>{children}</div>
@@ -115,12 +105,11 @@ export function MediaRow({
 export function ImageBand({ image, alt, caption }: { image: string; alt: string; caption?: string }) {
   return (
     <figure className="relative">
-      <div className="relative h-56 overflow-hidden border-y border-white/10 md:h-80">
-        <img src={image} alt={alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-linear-to-r from-ink/70 via-ink/30 to-ink/60" aria-hidden="true" />
+      <div className="aspect-[3/1] overflow-hidden border-y border-white/10">
+        <img src={image} alt={alt} loading="lazy" decoding="async" width={2400} height={800} className="block h-full w-full object-cover" />
       </div>
       {caption && (
-        <figcaption className="container-x -mt-8 relative font-mono text-[0.65rem] uppercase tracking-[0.2em] text-paper/80">
+        <figcaption className="container-x py-3 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-paper/80">
           {caption}
         </figcaption>
       )}

@@ -1,6 +1,6 @@
 import { Seo } from '../components/layout/Seo'
-import pageHeroImg from '../assets/solaris-india-industrial.webp'
-import contentImg from '../assets/solaris-india-service.webp'
+import pageHeroImg from '../assets/solaris-square-epc.webp'
+import contentImg from '../assets/solaris-panorama-epc.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { epcScope, epcBlocks } from '../content/services'
@@ -42,7 +42,7 @@ export default function EpcServices() {
           </Reveal>
       </Section>
 
-      <ImageBand image={contentImg} alt="Indian solar technicians inspecting wall-mounted inverters" />
+      <ImageBand image={contentImg} alt="Aerial view of a large rooftop solar installation on an Indian textile factory" />
     </>
   )
 }

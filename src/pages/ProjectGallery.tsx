@@ -9,9 +9,22 @@ import shotService from '../assets/solaris-india-service.webp'
 import shotConsultation from '../assets/solaris-india-consultation.webp'
 import shotStructure from '../assets/solaris-india-structure.webp'
 
+import newShot0 from '../assets/solaris-square-about.webp'
+import newShot1 from '../assets/solaris-square-why-solar.webp'
+import newShot2 from '../assets/solaris-square-why-us.webp'
+import newShot3 from '../assets/solaris-square-epc.webp'
+import newShot4 from '../assets/solaris-square-pv-system.webp'
+import newShot5 from '../assets/solaris-square-features.webp'
+
 type Cat = 'All' | 'Residential' | 'Commercial' | 'Industrial'
 
 const shots: { src: string; cat: Exclude<Cat, 'All'>; title: string; alt: string }[] = [
+  { src: newShot0, cat: 'Industrial', title: 'Engineering and preparation', alt: 'Solar engineers planning work around a workshop bench, wearing navy and orange workwear' },
+  { src: newShot1, cat: 'Residential', title: 'Homeowner rooftop visit', alt: 'Solar technician showing a homeowner a completed rooftop installation, wearing navy and orange workwear' },
+  { src: newShot2, cat: 'Industrial', title: 'Thermal quality inspection', alt: 'Engineer checking a solar panel with a thermal inspection instrument, wearing navy and orange workwear' },
+  { src: newShot3, cat: 'Industrial', title: 'Industrial project planning', alt: 'Project engineer overseeing solar installation at a textile factory, wearing navy and orange workwear' },
+  { src: newShot4, cat: 'Residential', title: 'Photovoltaic panel details', alt: 'Technician demonstrating photovoltaic cells on a residential terrace, wearing navy and orange workwear' },
+  { src: newShot5, cat: 'Commercial', title: 'Electrical protection systems', alt: 'Electrician checking solar protection boxes and inverter equipment, wearing navy and orange workwear' },
   { src: shotResidence, cat: 'Residential', title: 'Residential solar installation', alt: 'Indian installers in orange and navy workwear securing solar panels on a residential terrace' },
   { src: shotIndustrial, cat: 'Industrial', title: 'Industrial rooftop inspection', alt: 'Two Indian engineers reviewing a tablet between rows of industrial rooftop solar panels' },
   { src: shotService, cat: 'Commercial', title: 'Inverter service and monitoring', alt: 'Indian solar technicians inspecting wall-mounted inverters on a commercial rooftop' },
@@ -54,7 +67,7 @@ export default function ProjectGallery() {
 
         <Reveal stagger className="grid grid-cols-2 gap-2 md:grid-cols-3">
           {filtered.map((s, i) => (
-            <figure key={s.src} className="group relative aspect-[4/3] overflow-hidden border border-white/10 bg-navy">
+            <figure key={s.src} className="group relative aspect-square overflow-hidden border border-white/10 bg-navy">
               <button
                 type="button"
                 onClick={() => setActive(i)}
@@ -65,9 +78,9 @@ export default function ProjectGallery() {
                   src={s.src}
                   alt={s.alt}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover"
                   width={800}
-                  height={600}
+                  height={800}
                 />
               </button>
               <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-linear-to-t from-ink/85 to-transparent p-3">

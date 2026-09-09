@@ -1,0 +1,55 @@
+{
+  "generator": "Built-in image_gen",
+  "reference": "src/assets/solaris-india-industrial.webp",
+  "prompt": "New square photorealistic solar scenes in Gujarat, India. Match reference clothing: navy long-sleeved work shirts with orange shoulder yokes, navy trousers, black shoes, white safety helmets for site staff. Natural warm light, realistic anatomy and equipment, generous subject margins. No text, logos or watermark.",
+  "images": [
+    {
+      "output": "src/assets/solaris-square-about.webp",
+      "scene": "Solar engineers planning work around a workshop bench",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "output": "src/assets/solaris-square-why-solar.webp",
+      "scene": "Solar technician showing a homeowner a completed rooftop installation",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "output": "src/assets/solaris-square-why-us.webp",
+      "scene": "Engineer checking a solar panel with a thermal inspection instrument",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "output": "src/assets/solaris-square-epc.webp",
+      "scene": "Project engineer overseeing solar installation at a textile factory",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "output": "src/assets/solaris-square-pv-system.webp",
+      "scene": "Technician demonstrating photovoltaic cells on a residential terrace",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "output": "src/assets/solaris-square-features.webp",
+      "scene": "Electrician checking solar protection boxes and inverter equipment",
+      "size": [
+        1254,
+        1254
+      ]
+    }
+  ]
+}

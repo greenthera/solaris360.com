@@ -47,7 +47,6 @@ function cleanHtml(file) {
 // old solaris360.com path -> new path
 const REDIRECTS = {
   'about-us': '/about/',
-  'why-us': '/why-us/',
   'contact-us2': '/contact/',
   'privacy-policy-2': '/privacy/',
   'terms-and-conditions': '/terms/',
