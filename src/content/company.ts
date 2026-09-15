@@ -60,7 +60,10 @@ export const company = {
       'https://search.google.com/local/reviews?placeid=ChIJQf2x6L9P4DsR3OGAIG3Vakg&q=*&hl=en',
   },
 
-  developer: { name: 'Shivantra', url: 'https://shivantra.com' },
+  developer: {
+    name: 'Shivantra',
+    url: 'https://shivantra.com/?utm_source=solaris360.com&utm_medium=referral&utm_campaign=client_footer',
+  },
 
   ga4: 'G-QPCP96RNWK',
   domain: 'https://www.solaris360.com',
