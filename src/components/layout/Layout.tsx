@@ -1,5 +1,5 @@
-import { Suspense, useEffect, useState } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Outlet, useLocation, useNavigation } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { Loader } from './Loader'
@@ -7,7 +7,7 @@ import { WhatsAppFab } from './WhatsAppFab'
 import { ScrollToTop } from './ScrollToTop'
 import { waMsg } from '../../content/company'
 import { initReveal } from '../../lib/reveal'
-import { trackPageView } from '../../lib/analytics'
+import { initConversionTracking, trackPageView } from '../../lib/analytics'
 
 const BOOT_KEY = 'sol_boot'
 
@@ -48,9 +48,11 @@ function dismissBootSplash() {
 
 export function Layout() {
   const { pathname } = useLocation()
+  const navigation = useNavigation()
 
   useEffect(() => {
     initReveal()
+    initConversionTracking()
     dismissBootSplash()
   }, [])
 
@@ -62,10 +64,12 @@ export function Layout() {
     <>
       <ScrollToTop />
       <Header />
+      {/* No <Suspense> here: routes use router `lazy`, so the next page's chunk loads
+          during navigation (shown by the loader) and SSG HTML keeps page content inside
+          <main> - React 19 moves large Suspense content to a hidden div after the footer. */}
+      {navigation.state === 'loading' && <DelayedLoader />}
       <main id="main">
-        <Suspense fallback={<DelayedLoader />}>
-          <Outlet />
-        </Suspense>
+        <Outlet />
       </main>
       <Footer />
       <WhatsAppFab message={waMsg.quote} />

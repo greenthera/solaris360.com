@@ -2,13 +2,16 @@
 //  1. clean every built HTML head — charset first, drop the template's stale
 //     SEO tags (react-helmet-async owns the per-route ones), drop auto image
 //     preloads that compete with the real LCP hint
-//  2. generate sitemap.xml + robots.txt
+//  2. generate sitemap.xml + robots.txt (into dist/ and public/)
 //  3. write meta-refresh stubs for the old WordPress URLs
 import { readdirSync, statSync, writeFileSync, readFileSync, mkdirSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 const DIST = 'dist'
 const ORIGIN = 'https://www.solaris360.com'
+// vite `base` as built (e.g. "/solaris360.com/" on GitHub Pages, "/" on the apex domain)
+const BASE =
+  readFileSync(join(DIST, 'index.html'), 'utf8').match(/src="([^"]*\/)assets\/app-[^"]*\.js"/)?.[1] ?? '/'
 
 /* ---------------------------------------------------------------- *
  * 1. Clean HTML heads
@@ -53,13 +56,14 @@ const REDIRECTS = {
   'return-cancellation-policy': '/returns/',
   'shipping-transportation-policy': '/shipping/',
 }
-for (const [oldPath, dest] of Object.entries(REDIRECTS)) {
+for (const [oldPath, page] of Object.entries(REDIRECTS)) {
+  const dest = BASE + page.slice(1)
   const dir = join(DIST, oldPath)
   mkdirSync(dir, { recursive: true })
   writeFileSync(
     join(dir, 'index.html'),
     `<!doctype html><html lang="en"><head><meta charset="utf-8">` +
-      `<link rel="canonical" href="${ORIGIN}${dest}">` +
+      `<link rel="canonical" href="${ORIGIN}${page}">` +
       `<meta http-equiv="refresh" content="0; url=${dest}">` +
       `<title>Moved</title></head><body>` +
       `<p>This page has moved to <a href="${dest}">${dest}</a>.</p>` +
@@ -95,14 +99,13 @@ const body = uniq
   .map((u) => `  <url><loc>${ORIGIN}${u}</loc><changefreq>monthly</changefreq></url>`)
   .join('\n')
 
-writeFileSync(
-  join(DIST, 'sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`,
-)
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`
+const robots = `User-agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`
 
-writeFileSync(
-  join(DIST, 'robots.txt'),
-  `User-agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`,
-)
+// dist/ is what gets deployed; public/ keeps a committed copy in sync with the routes
+for (const dir of [DIST, 'public']) {
+  writeFileSync(join(dir, 'sitemap.xml'), sitemap)
+  writeFileSync(join(dir, 'robots.txt'), robots)
+}
 
 console.log(`[sitemap] ${uniq.length} URLs written`)

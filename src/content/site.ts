@@ -97,8 +97,9 @@ export const faq = [
 export const usefulLinks = [
   { label: 'Surya Gujarat', url: 'https://suryagujarat.guvnl.in/' },
   { label: 'GEDA - Gujarat Energy Development Agency', url: 'https://geda.gujarat.gov.in' },
-  { label: 'Torrent Power - solar connection portal', url: 'https://connect.torrentpower.com/tplcp/index.php' },
-  { label: 'DGVCL', url: 'https://www.dgvcl.com/dgvclweb/index.php' },
+  // the live site's /tplcp/index.php and /dgvclweb/index.php links now 404
+  { label: 'Torrent Power - solar connection portal', url: 'https://connect.torrentpower.com/tplcp/' },
+  { label: 'DGVCL', url: 'https://dgvcl.com/' },
 ]
 
 /** Marquee content - DISCOMs / agencies + certifications, all from the live site. */

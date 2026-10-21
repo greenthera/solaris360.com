@@ -59,6 +59,7 @@ export default function Contact() {
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                autoComplete="name"
                 className="w-full border border-white/15 bg-ink px-3 py-2 text-paper"
               />
             </label>
@@ -67,7 +68,9 @@ export default function Contact() {
               <input
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                type="tel"
                 inputMode="tel"
+                autoComplete="tel"
                 className="w-full border border-white/15 bg-ink px-3 py-2 text-paper"
               />
             </label>

@@ -10,6 +10,8 @@ export default function Reviews() {
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
+      // same entity as the site-wide LocalBusiness block (Seo.tsx) - merge, don't duplicate
+      '@id': `${company.domain}/#business`,
       name: company.legalName,
       url: company.domain,
       aggregateRating: {

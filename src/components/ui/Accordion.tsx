@@ -12,9 +12,12 @@ interface AccordionProps {
   className?: string
   /** stagger each row in on scroll-reveal (home page only) */
   reveal?: boolean
+  /** heading level of each question - 2 when the accordion sits directly under the page h1 */
+  headingLevel?: 2 | 3
 }
 
-export function Accordion({ items, defaultOpen = 0, className, reveal = false }: AccordionProps) {
+export function Accordion({ items, defaultOpen = 0, className, reveal = false, headingLevel = 3 }: AccordionProps) {
+  const Heading = headingLevel === 2 ? 'h2' : 'h3'
   const [open, setOpen] = useState<number | null>(defaultOpen)
   const baseId = useId()
   const root = useRef<HTMLDivElement>(null)
@@ -54,7 +57,7 @@ export function Accordion({ items, defaultOpen = 0, className, reveal = false }:
         const panelId = `${baseId}-p-${i}`
         return (
           <div key={i}>
-            <h3 className="m-0">
+            <Heading className="m-0">
               <button
                 id={btnId}
                 type="button"
@@ -73,7 +76,7 @@ export function Accordion({ items, defaultOpen = 0, className, reveal = false }:
                   +
                 </span>
               </button>
-            </h3>
+            </Heading>
             <div
               id={panelId}
               role="region"

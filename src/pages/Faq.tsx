@@ -27,7 +27,7 @@ export default function Faq() {
       />
       <PageHero image={pageHeroImg} eyebrow="Knowledge Center" title="Frequently asked questions" intro="Most frequent questions and answers." />
       <Section>
-        <Accordion items={faq.map((f) => ({ q: f.q, a: f.a }))} />
+        <Accordion headingLevel={2} items={faq.map((f) => ({ q: f.q, a: f.a }))} />
       </Section>
       <ImageBand image={contentImg} alt="Homeowner and solar advisor reviewing a tablet beside a solar-equipped home" />
     </>

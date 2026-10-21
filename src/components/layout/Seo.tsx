@@ -91,11 +91,14 @@ export function Seo({
 
   const blocks: object[] = [businessLd, websiteLd, ...jsonLd]
 
-  if (breadcrumbs && breadcrumbs.length) {
+  // default trail for indexable inner pages: Home > this page
+  const trail = breadcrumbs ?? (path !== '/' && !noindex ? [{ name: title, path }] : undefined)
+
+  if (trail && trail.length) {
     blocks.push({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      itemListElement: [{ name: 'Home', path: '/' }, ...breadcrumbs].map((c, i) => ({
+      itemListElement: [{ name: 'Home', path: '/' }, ...trail].map((c, i) => ({
         '@type': 'ListItem',
         position: i + 1,
         name: c.name,
