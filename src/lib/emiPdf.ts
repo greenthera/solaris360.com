@@ -15,6 +15,8 @@ const rs = (n: number) => `Rs ${rsFmt.format(Math.round(n))}`
 
 const ORANGE: [number, number, number] = [243, 160, 46]
 const NAVY: [number, number, number] = [23, 22, 63]
+/** Shivantra brand colour (#01014f) for the "Developed by" credit. */
+const SHIVANTRA: [number, number, number] = [1, 1, 79]
 const M = 40
 
 async function loadJsPdf() {
@@ -53,13 +55,14 @@ function drawFooter(doc: import('jspdf').jsPDF, note: string) {
   const pageH = doc.internal.pageSize.getHeight()
   const pages = doc.getNumberOfPages()
   const GREY: [number, number, number] = [120, 116, 118]
-  const waLabel = `wa.me/${company.phone.mainDigits}`
+  // show the number itself (still links to WhatsApp): "+91 9998117531"
+  const waLabel = `+91 ${company.phone.mainDigits.replace(/^91/, '')}`
 
   for (let p = 1; p <= pages; p++) {
     doc.setPage(p)
     doc.setFontSize(7.5)
 
-    // line 1: brand (-> website) + address (-> map) + WhatsApp (-> wa.me)
+    // line 1: brand (-> website) + address (-> map) + phone number (-> WhatsApp)
     let x = M
     const y1 = pageH - 34
     doc.setTextColor(...ORANGE)
@@ -80,7 +83,7 @@ function drawFooter(doc: import('jspdf').jsPDF, note: string) {
     // line 3: developed by Shivantra (-> shivantra.com)
     doc.text('Developed by ', M, pageH - 14)
     const w = doc.getTextWidth('Developed by ')
-    doc.setTextColor(...ORANGE)
+    doc.setTextColor(...SHIVANTRA)
     doc.textWithLink(company.developer.name, M + w, pageH - 14, { url: company.developer.url })
 
     // page number

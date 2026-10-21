@@ -206,6 +206,8 @@ export function Prose({ children, className }: { children: ReactNode; className?
       className={[
         'max-w-[68ch] space-y-4 text-[0.95rem] leading-relaxed text-muted',
         '[&_h2]:mt-10 [&_h2]:font-display [&_h2]:text-xl [&_h2]:font-700 [&_h2]:text-paper',
+        // legal pages wrap each heading + its paragraphs in a <section>: space them too
+        '[&_section]:space-y-3',
         '[&_h3]:mt-6 [&_h3]:font-display [&_h3]:text-base [&_h3]:font-600 [&_h3]:text-paper',
         '[&_a]:text-orange [&_a]:underline [&_a]:underline-offset-2',
         '[&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1',
