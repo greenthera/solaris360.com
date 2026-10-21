@@ -43,6 +43,10 @@
         transition: opacity 0.45s ease, visibility 0.45s ease;
       }
       #boot.done { opacity: 0; visibility: hidden; pointer-events: none; }
+      /* The app CSS loads non-blocking; keep the page unpainted until it applies
+         (globals.css flips this) so slow connections never see - or count as layout
+         shift - an unstyled render. */
+      #root { visibility: hidden; }
       #boot .boot-glow {
         position: absolute;
         top: 50%;
@@ -128,6 +132,8 @@
       } catch (e) {}
       /* failsafe: never trap the viewer on the splash if the app fails to load */
       setTimeout(function () {
+        var r = document.getElementById('root')
+        if (r) r.style.visibility = 'visible'
         var b = document.getElementById('boot')
         if (b && !b.classList.contains('done')) {
           b.classList.add('done')

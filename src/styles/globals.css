@@ -89,8 +89,7 @@
   html,
   body {
     overflow-x: clip;
-  }
-  body {
+  }  body {
     margin: 0;
     background: var(--color-ink);
     color: var(--color-paper);
@@ -206,7 +205,11 @@
   html.anim .reveal[data-stagger].reveal-in > *:nth-child(n + 6) { transition-delay: 300ms; }
 
   /* Hero load-in (CSS, axenr-style) */
-  html.anim .hero-rise { opacity: 0; animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  /* Not gated on html.anim (added after hydration): that re-hid the already-painted
+     hero and replayed it, pushing LCP to hydration time. Plays once as the CSS applies. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-rise { animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     html.anim .reveal,
@@ -645,3 +648,7 @@
 .faq-module-heading span:last-child { color: #f3a02e; }
 .faq-module-scene svg { display: block; width: 100%; height: auto; margin-block: 12px; }
 .faq-module-footer { border-top: 1px solid #ffffff12; padding-top: 20px; font-size: 8px; }
+
+/* index.html hides #root until this stylesheet has applied (no unstyled flash).
+   Unlayered on purpose: a layered rule would lose to the inline unlayered one. */
+html #root { visibility: visible; }

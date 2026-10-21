@@ -3,7 +3,7 @@ import { VectorGround } from '../ui/VectorGround'
 import { LiveMeter } from './LiveMeter'
 import { HeroSolarScene } from './HeroSolarScene'
 import { wa, waMsg, company } from '../../content/company'
-import { heroBgUrl as heroImg } from '../../lib/heroBg'
+import { heroBgUrl as heroImg, heroBgSrcSet } from '../../lib/heroBg'
 
 /** Hero load-in is pure CSS (`hero-rise`, gated by `html.anim`). */
 export function Hero() {
@@ -11,6 +11,8 @@ export function Hero() {
     <section className="solar-hero relative overflow-hidden border-b border-white/10">
       <img
         src={heroImg}
+        srcSet={heroBgSrcSet}
+        sizes="100vw"
         alt=""
         aria-hidden="true"
         className="hero-photo absolute inset-0 h-full w-full object-cover opacity-45"
