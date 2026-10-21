@@ -1,7 +1,6 @@
 /**
  * Navigation tree - mirrors the current solaris360.com mega-menu, minus the
- * shop and blog (removed for this build), plus:
- *   - Other Services > Warranty
+ * shop, blog and Other Services (removed for this build), plus:
  *   - Knowledge Center > EMI Calculator
  */
 
@@ -48,18 +47,6 @@ export const nav: NavGroup[] = [
     ],
   },
   {
-    label: 'Other Services',
-    columns: [
-      {
-        links: [
-          { label: 'Shadow Analysis', to: '/shadow-analysis/' },
-          { label: 'Stability Certificate', to: '/stability-certificate/' },
-          { label: 'Warranty', to: '/warranty/' },
-        ],
-      },
-    ],
-  },
-  {
     label: 'Knowledge Center',
     columns: [
       {
@@ -93,14 +80,11 @@ export const footerNav = {
     { label: 'EPC Services', to: '/epc-services/' },
     { label: 'Solar PV System', to: '/solar-pv-system/' },
     { label: 'System Features', to: '/system-features/' },
-    { label: 'Shadow Analysis', to: '/shadow-analysis/' },
-    { label: 'Stability Certificate', to: '/stability-certificate/' },
   ],
   Support: [
     { label: 'How Solar Power Works', to: '/how-solar-power-works/' },
     { label: 'FAQ', to: '/faq/' },
     { label: 'Useful Links', to: '/useful-links/' },
-    { label: 'Warranty', to: '/warranty/' },
     { label: 'EMI Calculator', to: '/emi-calculator/' },
   ],
   Policies: [

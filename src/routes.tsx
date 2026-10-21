@@ -26,10 +26,6 @@ export const routes: RouteRecord[] = [
       { path: 'project-gallery/', lazy: () => import('./pages/ProjectGallery').then(page) },
       { path: 'execution-process/', lazy: () => import('./pages/ExecutionProcess').then(page) },
 
-      { path: 'shadow-analysis/', lazy: () => import('./pages/ShadowAnalysis').then(page) },
-      { path: 'stability-certificate/', lazy: () => import('./pages/StabilityCertificate').then(page) },
-      { path: 'warranty/', lazy: () => import('./pages/Warranty').then(page) },
-
       { path: 'how-solar-power-works/', lazy: () => import('./pages/HowSolarPowerWorks').then(page) },
       { path: 'faq/', lazy: () => import('./pages/Faq').then(page) },
       { path: 'useful-links/', lazy: () => import('./pages/UsefulLinks').then(page) },
