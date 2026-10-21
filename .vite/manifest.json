@@ -1,6 +1,6 @@
 {
-  "_Accordion-CQage1KJ.js": {
-    "file": "assets/Accordion-CQage1KJ.js",
+  "_Accordion-B6H15AAP.js": {
+    "file": "assets/Accordion-B6H15AAP.js",
     "name": "Accordion",
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
@@ -10,34 +10,34 @@
       "node_modules/gsap/index.js"
     ]
   },
-  "_Counter-CTUbLtIk.js": {
-    "file": "assets/Counter-CTUbLtIk.js",
+  "_Counter-BbkPNCuZ.js": {
+    "file": "assets/Counter-BbkPNCuZ.js",
     "name": "Counter",
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
       "index.html"
     ]
   },
-  "_LegalPage-CU5MtY0y.js": {
-    "file": "assets/LegalPage-CU5MtY0y.js",
+  "_LegalPage-BlQBWlSJ.js": {
+    "file": "assets/LegalPage-BlQBWlSJ.js",
     "name": "LegalPage",
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_solaris-india-industrial-C5AyaeWD.js"
     ]
   },
-  "_Seo-OIywA5AH.js": {
-    "file": "assets/Seo-OIywA5AH.js",
+  "_Seo-Dzo8aomm.js": {
+    "file": "assets/Seo-Dzo8aomm.js",
     "name": "Seo",
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
       "index.html"
     ]
   },
-  "_SolarSchematic-_trOgLiy.js": {
-    "file": "assets/SolarSchematic-_trOgLiy.js",
+  "_SolarSchematic-Bbxcj66x.js": {
+    "file": "assets/SolarSchematic-Bbxcj66x.js",
     "name": "SolarSchematic",
     "imports": [
       "index.html"
@@ -47,12 +47,48 @@
     "file": "assets/emi-B_ya98CO.js",
     "name": "emi"
   },
-  "_primitives-B0tGbzRT.js": {
-    "file": "assets/primitives-B0tGbzRT.js",
+  "_primitives-CFypKVKn.js": {
+    "file": "assets/primitives-CFypKVKn.js",
     "name": "primitives",
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
       "index.html"
+    ],
+    "assets": [
+      "assets/solaris-india-consultation-480-DJIzPTou.webp",
+      "assets/solaris-india-consultation-800-BJwmm5oA.webp",
+      "assets/solaris-india-consultation-y1_pUL9w.webp",
+      "assets/solaris-india-industrial-1200-DmbEW0zf.webp",
+      "assets/solaris-india-industrial-480-B5KLbWFF.webp",
+      "assets/solaris-india-industrial-800-BlpOFSzv.webp",
+      "assets/solaris-india-industrial-C34XJWf_.webp",
+      "assets/solaris-india-residential-480-BQLxQ0yW.webp",
+      "assets/solaris-india-residential-800-B0OKih5I.webp",
+      "assets/solaris-india-residential-vVphWFh0.webp",
+      "assets/solaris-india-service-480-D_bJQ_oB.webp",
+      "assets/solaris-india-service-800-DOiaLtf8.webp",
+      "assets/solaris-india-service-B-1TGW88.webp",
+      "assets/solaris-india-structure-480-BIjODuPw.webp",
+      "assets/solaris-india-structure-800-DWjRJqQW.webp",
+      "assets/solaris-india-structure-DuM44U_l.webp",
+      "assets/solaris-square-about-480-DD10UFA0.webp",
+      "assets/solaris-square-about-800-o-PLvB5e.webp",
+      "assets/solaris-square-about-DypjfxkT.webp",
+      "assets/solaris-square-epc-480-BsSkPZVT.webp",
+      "assets/solaris-square-epc-800-DBMqG1N1.webp",
+      "assets/solaris-square-epc-CN72mpg4.webp",
+      "assets/solaris-square-features-480-CsIz9mdM.webp",
+      "assets/solaris-square-features-800-DQAkRD1b.webp",
+      "assets/solaris-square-features-C-HiY-ly.webp",
+      "assets/solaris-square-pv-system-480-B6fTJ4yU.webp",
+      "assets/solaris-square-pv-system-800-8TUB0C1T.webp",
+      "assets/solaris-square-pv-system-BuOElEUH.webp",
+      "assets/solaris-square-why-solar-480-CkmrBQBr.webp",
+      "assets/solaris-square-why-solar-800-CdMZanog.webp",
+      "assets/solaris-square-why-solar-BOMOfU-T.webp",
+      "assets/solaris-square-why-us-480-Cq8cIsK6.webp",
+      "assets/solaris-square-why-us-800-Dn3m3M0F.webp",
+      "assets/solaris-square-why-us-D8SyqQqz.webp"
     ]
   },
   "_rolldown-runtime-hePW80VL.js": {
@@ -142,7 +178,7 @@
     "name": "testimonials"
   },
   "index.html": {
-    "file": "assets/app-IO-UIckO.js",
+    "file": "assets/app-DqXpLB8e.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
@@ -183,7 +219,7 @@
     ]
   },
   "node_modules/canvg/lib/index.es.js": {
-    "file": "assets/index.es-DVoAMbHT.js",
+    "file": "assets/index.es-B1GOmmhs.js",
     "name": "index.es",
     "src": "node_modules/canvg/lib/index.es.js",
     "isDynamicEntry": true,
@@ -220,7 +256,7 @@
     "isDynamicEntry": true
   },
   "node_modules/jspdf/dist/jspdf.es.min.js": {
-    "file": "assets/jspdf.es.min-Bmxt4lur.js",
+    "file": "assets/jspdf.es.min-A0n4Zofm.js",
     "name": "jspdf.es.min",
     "src": "node_modules/jspdf/dist/jspdf.es.min.js",
     "isDynamicEntry": true,
@@ -235,7 +271,7 @@
     ]
   },
   "node_modules/react-dom/client.js": {
-    "file": "assets/client-BDUJc8wg.js",
+    "file": "assets/client-BreQImBH.js",
     "name": "client",
     "src": "node_modules/react-dom/client.js",
     "isDynamicEntry": true,
@@ -252,9 +288,25 @@
     "file": "assets/logo-mark-B43SQ9fv.png",
     "src": "src/assets/logo-mark.png"
   },
+  "src/assets/solaris-india-consultation-480.webp": {
+    "file": "assets/solaris-india-consultation-480-DJIzPTou.webp",
+    "src": "src/assets/solaris-india-consultation-480.webp"
+  },
+  "src/assets/solaris-india-consultation-800.webp": {
+    "file": "assets/solaris-india-consultation-800-BJwmm5oA.webp",
+    "src": "src/assets/solaris-india-consultation-800.webp"
+  },
   "src/assets/solaris-india-consultation.webp": {
     "file": "assets/solaris-india-consultation-y1_pUL9w.webp",
     "src": "src/assets/solaris-india-consultation.webp"
+  },
+  "src/assets/solaris-india-industrial-1200.webp": {
+    "file": "assets/solaris-india-industrial-1200-DmbEW0zf.webp",
+    "src": "src/assets/solaris-india-industrial-1200.webp"
+  },
+  "src/assets/solaris-india-industrial-480.webp": {
+    "file": "assets/solaris-india-industrial-480-B5KLbWFF.webp",
+    "src": "src/assets/solaris-india-industrial-480.webp"
   },
   "src/assets/solaris-india-industrial-800.webp": {
     "file": "assets/solaris-india-industrial-800-BlpOFSzv.webp",
@@ -264,13 +316,37 @@
     "file": "assets/solaris-india-industrial-C34XJWf_.webp",
     "src": "src/assets/solaris-india-industrial.webp"
   },
+  "src/assets/solaris-india-residential-480.webp": {
+    "file": "assets/solaris-india-residential-480-BQLxQ0yW.webp",
+    "src": "src/assets/solaris-india-residential-480.webp"
+  },
+  "src/assets/solaris-india-residential-800.webp": {
+    "file": "assets/solaris-india-residential-800-B0OKih5I.webp",
+    "src": "src/assets/solaris-india-residential-800.webp"
+  },
   "src/assets/solaris-india-residential.webp": {
     "file": "assets/solaris-india-residential-vVphWFh0.webp",
     "src": "src/assets/solaris-india-residential.webp"
   },
+  "src/assets/solaris-india-service-480.webp": {
+    "file": "assets/solaris-india-service-480-D_bJQ_oB.webp",
+    "src": "src/assets/solaris-india-service-480.webp"
+  },
+  "src/assets/solaris-india-service-800.webp": {
+    "file": "assets/solaris-india-service-800-DOiaLtf8.webp",
+    "src": "src/assets/solaris-india-service-800.webp"
+  },
   "src/assets/solaris-india-service.webp": {
     "file": "assets/solaris-india-service-B-1TGW88.webp",
     "src": "src/assets/solaris-india-service.webp"
+  },
+  "src/assets/solaris-india-structure-480.webp": {
+    "file": "assets/solaris-india-structure-480-BIjODuPw.webp",
+    "src": "src/assets/solaris-india-structure-480.webp"
+  },
+  "src/assets/solaris-india-structure-800.webp": {
+    "file": "assets/solaris-india-structure-800-DWjRJqQW.webp",
+    "src": "src/assets/solaris-india-structure-800.webp"
   },
   "src/assets/solaris-india-structure.webp": {
     "file": "assets/solaris-india-structure-DuM44U_l.webp",
@@ -312,82 +388,142 @@
     "file": "assets/solaris-panorama-why-us-Btfk8ogy.webp",
     "src": "src/assets/solaris-panorama-why-us.webp"
   },
+  "src/assets/solaris-square-about-480.webp": {
+    "file": "assets/solaris-square-about-480-DD10UFA0.webp",
+    "src": "src/assets/solaris-square-about-480.webp"
+  },
+  "src/assets/solaris-square-about-800.webp": {
+    "file": "assets/solaris-square-about-800-o-PLvB5e.webp",
+    "src": "src/assets/solaris-square-about-800.webp"
+  },
   "src/assets/solaris-square-about.webp": {
     "file": "assets/solaris-square-about-DypjfxkT.webp",
     "src": "src/assets/solaris-square-about.webp"
+  },
+  "src/assets/solaris-square-epc-480.webp": {
+    "file": "assets/solaris-square-epc-480-BsSkPZVT.webp",
+    "src": "src/assets/solaris-square-epc-480.webp"
+  },
+  "src/assets/solaris-square-epc-800.webp": {
+    "file": "assets/solaris-square-epc-800-DBMqG1N1.webp",
+    "src": "src/assets/solaris-square-epc-800.webp"
   },
   "src/assets/solaris-square-epc.webp": {
     "file": "assets/solaris-square-epc-CN72mpg4.webp",
     "src": "src/assets/solaris-square-epc.webp"
   },
+  "src/assets/solaris-square-features-480.webp": {
+    "file": "assets/solaris-square-features-480-CsIz9mdM.webp",
+    "src": "src/assets/solaris-square-features-480.webp"
+  },
+  "src/assets/solaris-square-features-800.webp": {
+    "file": "assets/solaris-square-features-800-DQAkRD1b.webp",
+    "src": "src/assets/solaris-square-features-800.webp"
+  },
   "src/assets/solaris-square-features.webp": {
     "file": "assets/solaris-square-features-C-HiY-ly.webp",
     "src": "src/assets/solaris-square-features.webp"
+  },
+  "src/assets/solaris-square-pv-system-480.webp": {
+    "file": "assets/solaris-square-pv-system-480-B6fTJ4yU.webp",
+    "src": "src/assets/solaris-square-pv-system-480.webp"
+  },
+  "src/assets/solaris-square-pv-system-800.webp": {
+    "file": "assets/solaris-square-pv-system-800-8TUB0C1T.webp",
+    "src": "src/assets/solaris-square-pv-system-800.webp"
   },
   "src/assets/solaris-square-pv-system.webp": {
     "file": "assets/solaris-square-pv-system-BuOElEUH.webp",
     "src": "src/assets/solaris-square-pv-system.webp"
   },
+  "src/assets/solaris-square-why-solar-480.webp": {
+    "file": "assets/solaris-square-why-solar-480-CkmrBQBr.webp",
+    "src": "src/assets/solaris-square-why-solar-480.webp"
+  },
+  "src/assets/solaris-square-why-solar-800.webp": {
+    "file": "assets/solaris-square-why-solar-800-CdMZanog.webp",
+    "src": "src/assets/solaris-square-why-solar-800.webp"
+  },
   "src/assets/solaris-square-why-solar.webp": {
     "file": "assets/solaris-square-why-solar-BOMOfU-T.webp",
     "src": "src/assets/solaris-square-why-solar.webp"
+  },
+  "src/assets/solaris-square-why-us-480.webp": {
+    "file": "assets/solaris-square-why-us-480-Cq8cIsK6.webp",
+    "src": "src/assets/solaris-square-why-us-480.webp"
+  },
+  "src/assets/solaris-square-why-us-800.webp": {
+    "file": "assets/solaris-square-why-us-800-Dn3m3M0F.webp",
+    "src": "src/assets/solaris-square-why-us-800.webp"
   },
   "src/assets/solaris-square-why-us.webp": {
     "file": "assets/solaris-square-why-us-D8SyqQqz.webp",
     "src": "src/assets/solaris-square-why-us.webp"
   },
-  "src/pages/About.tsx": {
-    "file": "assets/About-DQPAoayF.js",
-    "name": "About",
-    "src": "src/pages/About.tsx",
+  "src/lib/emiPdf.ts": {
+    "file": "assets/emiPdf-CM0k6S8e.js",
+    "name": "emiPdf",
+    "src": "src/lib/emiPdf.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
-      "index.html",
-      "_solaris-square-about-CPJdjDRW.js",
-      "_solaris-panorama-about-Ci-7hGAy.js",
-      "_primitives-B0tGbzRT.js",
-      "_site-CVl6yjuE.js"
-    ]
-  },
-  "src/pages/Contact.tsx": {
-    "file": "assets/Contact-BRM1qNl8.js",
-    "name": "Contact",
-    "src": "src/pages/Contact.tsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "_rolldown-runtime-hePW80VL.js",
-      "_Seo-OIywA5AH.js",
-      "index.html",
-      "_primitives-B0tGbzRT.js"
-    ]
-  },
-  "src/pages/EmiCalculator.tsx": {
-    "file": "assets/EmiCalculator-CKrMqVWp.js",
-    "name": "EmiCalculator",
-    "src": "src/pages/EmiCalculator.tsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "_rolldown-runtime-hePW80VL.js",
-      "_Seo-OIywA5AH.js",
-      "index.html",
-      "_primitives-B0tGbzRT.js",
-      "_emi-B_ya98CO.js"
+      "index.html"
     ],
     "dynamicImports": [
       "node_modules/jspdf/dist/jspdf.es.min.js",
       "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.mjs"
     ]
   },
+  "src/pages/About.tsx": {
+    "file": "assets/About-DZWxeRQm.js",
+    "name": "About",
+    "src": "src/pages/About.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Seo-Dzo8aomm.js",
+      "index.html",
+      "_solaris-square-about-CPJdjDRW.js",
+      "_solaris-panorama-about-Ci-7hGAy.js",
+      "_primitives-CFypKVKn.js",
+      "_site-CVl6yjuE.js"
+    ]
+  },
+  "src/pages/Contact.tsx": {
+    "file": "assets/Contact-Rxy6XFWh.js",
+    "name": "Contact",
+    "src": "src/pages/Contact.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_Seo-Dzo8aomm.js",
+      "index.html",
+      "_primitives-CFypKVKn.js"
+    ]
+  },
+  "src/pages/EmiCalculator.tsx": {
+    "file": "assets/EmiCalculator-Be1u3VNZ.js",
+    "name": "EmiCalculator",
+    "src": "src/pages/EmiCalculator.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_Seo-Dzo8aomm.js",
+      "index.html",
+      "_primitives-CFypKVKn.js",
+      "_emi-B_ya98CO.js"
+    ],
+    "dynamicImports": [
+      "src/lib/emiPdf.ts"
+    ]
+  },
   "src/pages/EpcServices.tsx": {
-    "file": "assets/EpcServices-CO_Z-4fi.js",
+    "file": "assets/EpcServices-Bo88HXQj.js",
     "name": "EpcServices",
     "src": "src/pages/EpcServices.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_solaris-square-epc-CgHduD4Q.js",
       "_services-BJGDrADp.js"
     ],
@@ -396,14 +532,14 @@
     ]
   },
   "src/pages/ExecutionProcess.tsx": {
-    "file": "assets/ExecutionProcess-1nHUf_HY.js",
+    "file": "assets/ExecutionProcess-BfL4gd9o.js",
     "name": "ExecutionProcess",
     "src": "src/pages/ExecutionProcess.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_site-CVl6yjuE.js"
     ],
     "assets": [
@@ -411,59 +547,60 @@
     ]
   },
   "src/pages/Faq.tsx": {
-    "file": "assets/Faq-B5epmd6c.js",
+    "file": "assets/Faq-DZMKYB5w.js",
     "name": "Faq",
     "src": "src/pages/Faq.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_site-CVl6yjuE.js",
       "_solaris-india-service-DaGUTFNj.js",
-      "_Accordion-CQage1KJ.js"
+      "_Accordion-B6H15AAP.js"
     ],
     "assets": [
       "assets/solaris-panorama-faq-CKK-zBXr.webp"
     ]
   },
   "src/pages/Home.tsx": {
-    "file": "assets/Home-CNWzuRRB.js",
+    "file": "assets/Home-B0mKKAQr.js",
     "name": "Home",
     "src": "src/pages/Home.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_site-CVl6yjuE.js",
       "_emi-B_ya98CO.js",
       "_services-BJGDrADp.js",
-      "_Accordion-CQage1KJ.js",
-      "_SolarSchematic-_trOgLiy.js",
+      "_Accordion-B6H15AAP.js",
+      "_SolarSchematic-Bbxcj66x.js",
       "_solaris-india-industrial-C5AyaeWD.js",
-      "_Counter-CTUbLtIk.js",
+      "_Counter-BbkPNCuZ.js",
       "_testimonials-BMSEVI5n.js"
     ],
     "dynamicImports": [
       "node_modules/gsap/index.js"
     ],
     "assets": [
+      "assets/solaris-india-industrial-1200-DmbEW0zf.webp",
       "assets/solaris-india-industrial-800-BlpOFSzv.webp"
     ]
   },
   "src/pages/HowSolarPowerWorks.tsx": {
-    "file": "assets/HowSolarPowerWorks-DVRmI46C.js",
+    "file": "assets/HowSolarPowerWorks-Bjyqyfe3.js",
     "name": "HowSolarPowerWorks",
     "src": "src/pages/HowSolarPowerWorks.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_services-BJGDrADp.js",
-      "_SolarSchematic-_trOgLiy.js",
+      "_SolarSchematic-Bbxcj66x.js",
       "_solaris-india-residential-CjIw5Tur.js"
     ],
     "assets": [
@@ -471,36 +608,36 @@
     ]
   },
   "src/pages/NotFound.tsx": {
-    "file": "assets/NotFound-DwgzqP2Z.js",
+    "file": "assets/NotFound-Cfy5O00C.js",
     "name": "NotFound",
     "src": "src/pages/NotFound.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html"
     ]
   },
   "src/pages/Privacy.tsx": {
-    "file": "assets/Privacy-MHw5ISYq.js",
+    "file": "assets/Privacy-Cj7hgXxg.js",
     "name": "Privacy",
     "src": "src/pages/Privacy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_LegalPage-CU5MtY0y.js"
+      "_LegalPage-BlQBWlSJ.js"
     ]
   },
   "src/pages/ProjectGallery.tsx": {
-    "file": "assets/ProjectGallery-Wj6ydAIN.js",
+    "file": "assets/ProjectGallery-BTq2sFtR.js",
     "name": "ProjectGallery",
     "src": "src/pages/ProjectGallery.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
       "_solaris-square-about-CPJdjDRW.js",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_solaris-square-epc-CgHduD4Q.js",
       "_solaris-india-service-DaGUTFNj.js",
       "_solaris-india-industrial-C5AyaeWD.js",
@@ -515,47 +652,47 @@
     ]
   },
   "src/pages/ReturnCancellation.tsx": {
-    "file": "assets/ReturnCancellation-BXfPJBxU.js",
+    "file": "assets/ReturnCancellation-CxcxpOxy.js",
     "name": "ReturnCancellation",
     "src": "src/pages/ReturnCancellation.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_LegalPage-CU5MtY0y.js"
+      "_LegalPage-BlQBWlSJ.js"
     ]
   },
   "src/pages/Reviews.tsx": {
-    "file": "assets/Reviews-BjJrUf-9.js",
+    "file": "assets/Reviews-B9lT_EPS.js",
     "name": "Reviews",
     "src": "src/pages/Reviews.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
       "_solaris-panorama-about-Ci-7hGAy.js",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_testimonials-BMSEVI5n.js"
     ]
   },
   "src/pages/ShippingTransportation.tsx": {
-    "file": "assets/ShippingTransportation-Sa0eu3tF.js",
+    "file": "assets/ShippingTransportation-CXv9JO14.js",
     "name": "ShippingTransportation",
     "src": "src/pages/ShippingTransportation.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_LegalPage-CU5MtY0y.js"
+      "_LegalPage-BlQBWlSJ.js"
     ]
   },
   "src/pages/SolarPvSystem.tsx": {
-    "file": "assets/SolarPvSystem-B31cGuJN.js",
+    "file": "assets/SolarPvSystem-CNFdGvnU.js",
     "name": "SolarPvSystem",
     "src": "src/pages/SolarPvSystem.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_services-BJGDrADp.js",
       "_solaris-square-pv-system-CM6_ZoDw.js"
     ],
@@ -564,16 +701,16 @@
     ]
   },
   "src/pages/SystemFeatures.tsx": {
-    "file": "assets/SystemFeatures-DGmh0Ko_.js",
+    "file": "assets/SystemFeatures-BiW5Q2Nr.js",
     "name": "SystemFeatures",
     "src": "src/pages/SystemFeatures.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_site-CVl6yjuE.js",
-      "_Counter-CTUbLtIk.js",
+      "_Counter-BbkPNCuZ.js",
       "_solaris-square-features-DKsuxDwW.js"
     ],
     "assets": [
@@ -581,49 +718,49 @@
     ]
   },
   "src/pages/Terms.tsx": {
-    "file": "assets/Terms-t71X9-85.js",
+    "file": "assets/Terms-CTkX0frD.js",
     "name": "Terms",
     "src": "src/pages/Terms.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_LegalPage-CU5MtY0y.js"
+      "_LegalPage-BlQBWlSJ.js"
     ]
   },
   "src/pages/UsefulLinks.tsx": {
-    "file": "assets/UsefulLinks-B8Quqm_a.js",
+    "file": "assets/UsefulLinks-CpZIqCnG.js",
     "name": "UsefulLinks",
     "src": "src/pages/UsefulLinks.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_site-CVl6yjuE.js",
       "_solaris-india-residential-CjIw5Tur.js"
     ]
   },
   "src/pages/Warranty.tsx": {
-    "file": "assets/Warranty-DIBqr1NS.js",
+    "file": "assets/Warranty-C0C68Qun.js",
     "name": "Warranty",
     "src": "src/pages/Warranty.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_solaris-india-service-DaGUTFNj.js"
     ]
   },
   "src/pages/WhySolar.tsx": {
-    "file": "assets/WhySolar-8uXYhajq.js",
+    "file": "assets/WhySolar-CIOhQO6K.js",
     "name": "WhySolar",
     "src": "src/pages/WhySolar.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_site-CVl6yjuE.js",
       "_solaris-square-why-solar-C1Bm9xfR.js"
     ],
@@ -632,14 +769,14 @@
     ]
   },
   "src/pages/WhyUs.tsx": {
-    "file": "assets/WhyUs-N4AUFQBO.js",
+    "file": "assets/WhyUs-CRBdApXe.js",
     "name": "WhyUs",
     "src": "src/pages/WhyUs.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_Seo-OIywA5AH.js",
+      "_Seo-Dzo8aomm.js",
       "index.html",
-      "_primitives-B0tGbzRT.js",
+      "_primitives-CFypKVKn.js",
       "_site-CVl6yjuE.js",
       "_solaris-square-why-us-D4TWuANK.js"
     ],
