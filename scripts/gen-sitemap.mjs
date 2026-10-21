@@ -4,7 +4,8 @@
 //     preloads that compete with the real LCP hint, inline the app CSS
 //  2. generate sitemap.xml + robots.txt (into dist/ and public/)
 //  3. write meta-refresh stubs for the old WordPress URLs
-import { readdirSync, statSync, writeFileSync, readFileSync, mkdirSync } from 'node:fs'
+//  4. copy the self-hosted fonts' OFL licences into dist/assets
+import { readdirSync, statSync, writeFileSync, readFileSync, mkdirSync, copyFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 const DIST = 'dist'
@@ -123,3 +124,9 @@ for (const dir of [DIST, 'public']) {
 }
 
 console.log(`[sitemap] ${uniq.length} URLs written`)
+
+// SIL OFL 1.1: ship each self-hosted font's licence alongside the built font files
+const FONTS = 'src/assets/fonts'
+const licences = readdirSync(FONTS).filter((f) => f.endsWith('-OFL.txt'))
+for (const f of licences) copyFileSync(join(FONTS, f), join(DIST, 'assets', f))
+console.log(`[fonts] ${licences.length} OFL licences copied`)
