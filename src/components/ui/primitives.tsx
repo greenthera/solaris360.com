@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react'
+import { responsiveImageSrcSet } from '../../lib/responsiveImages'
 import { Link } from 'react-router-dom'
 import { Reveal } from './Reveal'
 import { VectorGround } from './VectorGround'
@@ -57,6 +58,8 @@ export function PageHero({
           <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-white/12 lg:ml-auto lg:mr-0">
             <img
               src={image}
+              srcSet={responsiveImageSrcSet(image)}
+              sizes="(min-width: 424px) 384px, calc(100vw - 40px)"
               alt=""
               aria-hidden="true"
               width={1536}
@@ -93,7 +96,7 @@ export function MediaRow({
   return (
     <Reveal className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
       <div className={`relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-white/12 ${flip ? 'md:order-2' : ''}`}>
-        <img src={image} alt={alt} loading="lazy" decoding="async" className="block h-full w-full object-cover" />
+        <img src={image} srcSet={responsiveImageSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" alt={alt} loading="lazy" decoding="async" className="block h-full w-full object-cover" />
         <div className="absolute inset-0 bg-linear-to-t from-ink/40 to-transparent" aria-hidden="true" />
       </div>
       <div className={flip ? 'md:order-1' : ''}>{children}</div>
@@ -106,7 +109,7 @@ export function ImageBand({ image, alt, caption }: { image: string; alt: string;
   return (
     <figure className="relative">
       <div className="aspect-[3/1] overflow-hidden border-y border-white/10">
-        <img src={image} alt={alt} loading="lazy" decoding="async" width={2400} height={800} className="block h-full w-full object-cover" />
+        <img src={image} srcSet={responsiveImageSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" alt={alt} loading="lazy" decoding="async" width={2400} height={800} className="block h-full w-full object-cover" />
       </div>
       {caption && (
         <figcaption className="container-x py-3 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-paper/80">

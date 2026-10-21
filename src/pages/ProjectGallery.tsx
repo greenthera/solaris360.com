@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { responsiveImageSrcSet } from '../lib/responsiveImages'
 import { Seo } from '../components/layout/Seo'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
@@ -76,6 +77,9 @@ export default function ProjectGallery() {
               >
                 <img
                   src={s.src}
+                  srcSet={responsiveImageSrcSet(s.src)}
+                  sizes="(min-width: 1312px) 406px, (min-width: 768px) calc((100vw - 96px) / 3), calc((100vw - 48px) / 2)"
+                  decoding="async"
                   alt={s.alt}
                   loading="lazy"
                   className="h-full w-full object-cover"

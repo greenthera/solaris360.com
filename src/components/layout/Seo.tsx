@@ -18,6 +18,8 @@ interface SeoProps {
   published?: string
   /** image URL to <link rel=preload as=image> (LCP hint) */
   preloadImage?: string
+  preloadImageSrcSet?: string
+  preloadImageSizes?: string
 }
 
 const SITE = company.domain
@@ -84,6 +86,8 @@ export function Seo({
   noindex = false,
   published,
   preloadImage,
+  preloadImageSrcSet,
+  preloadImageSizes,
 }: SeoProps) {
   const url = SITE + path
   const fullTitle = path === '/' ? title : `${title} - ${company.name}`
@@ -113,7 +117,7 @@ export function Seo({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
-      {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchPriority="high" />}
+      {preloadImage && <link rel="preload" as="image" href={preloadImage} imageSrcSet={preloadImageSrcSet} imageSizes={preloadImageSizes} fetchPriority="high" />}
       <meta
         name="robots"
         content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1'}

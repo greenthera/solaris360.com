@@ -5,7 +5,6 @@ import { PageHero, Section } from '../components/ui/primitives'
 import { Field } from '../components/emi/Field'
 import { BalanceChart } from '../components/emi/BalanceChart'
 import { simpleEmi, advancedEmi } from '../lib/emi'
-import { downloadEmiPdf, downloadSimpleEmiPdf } from '../lib/emiPdf'
 import { inr } from '../lib/format'
 import { wa, waMsg } from '../content/company'
 
@@ -63,6 +62,7 @@ function SimpleCalc() {
   const downloadPdf = async () => {
     setPdfBusy(true)
     try {
+      const { downloadSimpleEmiPdf } = await import('../lib/emiPdf')
       await downloadSimpleEmiPdf({ price, months }, r)
     } finally {
       setPdfBusy(false)
@@ -192,6 +192,7 @@ function AdvancedCalc() {
   const downloadPdf = async () => {
     setPdfBusy(true)
     try {
+      const { downloadEmiPdf } = await import('../lib/emiPdf')
       await downloadEmiPdf(
         {
           assetPrice,
