@@ -2,9 +2,10 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 /**
- * Full-bleed background-video band (Home only). Poster shows immediately; the
- * video loads and plays only when scrolled into view, and stays a still poster
- * under reduced motion or on a save-data connection.
+ * Full-bleed background-video band (Home only). The poster is attached about a
+ * screen before the band scrolls into view (an eager poster competed with the
+ * hero for mobile bandwidth); the video loads and plays only when in view, and
+ * stays a still poster under reduced motion or on a save-data connection.
  */
 export function VideoShowcase() {
   const ref = useRef<HTMLVideoElement>(null)
@@ -12,9 +13,20 @@ export function VideoShowcase() {
   useEffect(() => {
     const v = ref.current
     if (!v) return
+    const near = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          v.poster = v.dataset.poster || ''
+          near.disconnect()
+        }
+      },
+      { rootMargin: '100% 0px' },
+    )
+    near.observe(v)
+
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const saveData = (navigator as unknown as { connection?: { saveData?: boolean } }).connection?.saveData
-    if (reduce || saveData) return
+    if (reduce || saveData) return () => near.disconnect()
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -30,7 +42,10 @@ export function VideoShowcase() {
       { threshold: 0.15 },
     )
     io.observe(v)
-    return () => io.disconnect()
+    return () => {
+      near.disconnect()
+      io.disconnect()
+    }
   }, [])
 
   return (
@@ -38,7 +53,7 @@ export function VideoShowcase() {
       <video
         ref={ref}
         data-src={`${import.meta.env.BASE_URL}media/website-bg.mp4`}
-        poster={`${import.meta.env.BASE_URL}media/website-bg-poster.jpg`}
+        data-poster={`${import.meta.env.BASE_URL}media/website-bg-poster.webp`}
         muted
         loop
         playsInline

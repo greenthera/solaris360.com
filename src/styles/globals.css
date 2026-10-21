@@ -651,4 +651,4 @@
 
 /* index.html hides #root until this stylesheet has applied (no unstyled flash).
    Unlayered on purpose: a layered rule would lose to the inline unlayered one. */
-html #root { visibility: visible; }
+html #root { visibility: visible; height: auto; overflow: visible; }

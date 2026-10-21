@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en-IN">
   <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K5QTV3ZX');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0f0e24" />
@@ -32,6 +39,9 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <style>
+      /* Match globals.css up front: the async app CSS must not move anything already
+         painted (the UA 8px body margin alone scored CLS 1.0 on mobile). */
+      html, body { margin: 0; background: #0f0e24; }
       /* Boot splash - shown before the app hydrates, removed by Layout. */
       #boot {
         position: fixed;
@@ -45,8 +55,9 @@
       #boot.done { opacity: 0; visibility: hidden; pointer-events: none; }
       /* The app CSS loads non-blocking; keep the page unpainted until it applies
          (globals.css flips this) so slow connections never see - or count as layout
-         shift - an unstyled render. */
-      #root { visibility: hidden; }
+         shift - an unstyled render. Zero height + clip too: unstyled wide images
+         would otherwise widen the mobile layout viewport and move the splash. */
+      #root { visibility: hidden; height: 0; overflow: hidden; }
       #boot .boot-glow {
         position: absolute;
         top: 50%;
@@ -106,8 +117,26 @@
       />
     </noscript>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPCP96RNWK"></script>
+    <!-- Google tag (gtag.js) - fetched on the first interaction or 4s after load, so
+         its ~175 KB doesn't compete with first paint on mobile. Calls made before
+         then (page_view, clicks) queue in dataLayer and are sent once it loads. -->
+    <script>
+      ;(function () {
+        var done = false
+        var evts = ['pointerdown', 'keydown', 'scroll', 'touchstart']
+        function load() {
+          if (done) return
+          done = true
+          evts.forEach(function (e) { removeEventListener(e, load) })
+          var s = document.createElement('script')
+          s.async = true
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QPCP96RNWK'
+          document.head.appendChild(s)
+        }
+        evts.forEach(function (e) { addEventListener(e, load, { once: true, passive: true }) })
+        addEventListener('load', function () { setTimeout(load, 4000) })
+      })()
+    </script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -118,10 +147,14 @@
     </script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5QTV3ZX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="boot" aria-hidden="true">
       <span class="boot-glow"></span>
       <div style="display: grid; justify-items: center">
-        <img src="/logo-mark.png" alt="" width="380" height="78" fetchpriority="high" />
+        <img src="/logo-mark.webp" alt="" width="380" height="78" fetchpriority="high" />
         <span class="boot-bar"></span>
       </div>
     </div>

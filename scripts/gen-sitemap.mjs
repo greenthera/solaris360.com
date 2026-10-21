@@ -1,7 +1,7 @@
 // Postbuild:
 //  1. clean every built HTML head — charset first, drop the template's stale
 //     SEO tags (react-helmet-async owns the per-route ones), drop auto image
-//     preloads that compete with the real LCP hint
+//     preloads that compete with the real LCP hint, inline the app CSS
 //  2. generate sitemap.xml + robots.txt (into dist/ and public/)
 //  3. write meta-refresh stubs for the old WordPress URLs
 import { readdirSync, statSync, writeFileSync, readFileSync, mkdirSync } from 'node:fs'
@@ -32,18 +32,26 @@ function cleanHtml(file) {
     .replace(/<meta(?![^>]*data-rh)[^>]*name="twitter:[^"]*"[^>]*>/gi, '')
     // auto image preloads for statically-imported below-fold images
     .replace(/<link[^>]*rel="preload"[^>]*as="image"(?![^>]*data-rh)[^>]*>/gi, '')
+    // route-chunk modulepreloads: not needed to paint, and they compete with it
+    .replace(/<link rel="modulepreload"[^>]*>/gi, '')
     // any stray charset — we re-add it first
     .replace(/<meta[^>]*charset[^>]*>/gi, '')
-    // make the app stylesheet non-render-blocking so the inline boot splash
-    // paints immediately on slow connections (the splash masks any FOUC)
+    // inline the app stylesheet (~15 KB gzipped, one file for the whole site):
+    // first paint no longer waits on a second request, which was most of mobile LCP
     .replace(
-      /<link rel="stylesheet"([^>]*href="[^"]*\/assets\/[^"]*\.css"[^>]*)>/i,
-      (m, attrs) =>
-        `<link rel="stylesheet"${attrs} media="print" onload="this.media='all';this.onload=null">` +
-        `<noscript>${m}</noscript>`,
+      /<link rel="stylesheet"[^>]*href="[^"]*\/assets\/([^"]*\.css)"[^>]*>/i,
+      (m, css) => `<style>${readFileSync(join(DIST, 'assets', css), 'utf8')}</style>`,
     )
 
-  head = `<meta charset="utf-8">${head.trim()}`
+  // Google Tag Manager must be as high in <head> as possible (helmet's per-route
+  // tags are emitted ahead of the template's), so hoist it to just after charset
+  let gtm = ''
+  head = head.replace(/<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/, (m) => {
+    gtm = m
+    return ''
+  })
+
+  head = `<meta charset="utf-8">${gtm}${head.trim()}`
   writeFileSync(file, h.slice(0, headStart) + head + h.slice(headEnd))
 }
 
