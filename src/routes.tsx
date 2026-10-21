@@ -37,6 +37,8 @@ export const routes: RouteRecord[] = [
       { path: 'privacy/', lazy: () => import('./pages/Privacy').then(page) },
       { path: 'returns/', lazy: () => import('./pages/ReturnCancellation').then(page) },
       { path: 'shipping/', lazy: () => import('./pages/ShippingTransportation').then(page) },
+      // not linked from the menu or footer - reachable by URL and listed in the sitemap
+      { path: 'warranty/', lazy: () => import('./pages/Warranty').then(page) },
 
       { path: '*', lazy: () => import('./pages/NotFound').then(page) },
     ],
