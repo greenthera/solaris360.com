@@ -20,7 +20,8 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
   return (
     <div
       className={`fixed inset-0 z-[60] lg:hidden ${open ? '' : 'pointer-events-none'}`}
-      aria-hidden={!open}
+      // inert (not just aria-hidden): a closed drawer's links must leave the tab order too
+      inert={!open}
     >
       <div
         className={`absolute inset-0 bg-ink/70 transition-opacity ${open ? 'opacity-100' : 'opacity-0'}`}

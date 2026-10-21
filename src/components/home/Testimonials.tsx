@@ -4,7 +4,8 @@ import { company } from '../../content/company'
 
 function Stars({ n }: { n: number }) {
   return (
-    <span className="inline-flex gap-0.5" aria-label={`Rated ${n} out of 5`}>
+    // role="img": aria-label isn't permitted on a role-less span
+    <span className="inline-flex gap-0.5" role="img" aria-label={`Rated ${n} out of 5`}>
       {Array.from({ length: 5 }).map((_, k) => (
         <svg
           key={k}

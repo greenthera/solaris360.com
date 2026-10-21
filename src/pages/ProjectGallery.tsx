@@ -93,7 +93,7 @@ export default function ProjectGallery() {
           ))}
         </Reveal>
 
-        <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted/70">
+        <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted">
           AI-generated illustrations of solar installation and service in India.
         </p>
       </Section>
