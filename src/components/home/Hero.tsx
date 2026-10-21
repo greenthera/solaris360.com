@@ -3,24 +3,34 @@ import { VectorGround } from '../ui/VectorGround'
 import { LiveMeter } from './LiveMeter'
 import { HeroSolarScene } from './HeroSolarScene'
 import { wa, waMsg, company } from '../../content/company'
-import { heroBgUrl as heroImg, heroBgSrcSet } from '../../lib/heroBg'
+import {
+  heroBgUrl as heroImg, heroBgSrcSet, heroBgAvifSrcSet,
+  heroMobileUrl, heroMobileWebpUrl, heroTabletUrl, heroTabletWebpUrl,
+} from '../../lib/heroBg'
 
 /** Hero load-in is pure CSS (`hero-rise`, gated by `html.anim`). */
 export function Hero() {
   return (
     <section className="solar-hero relative overflow-hidden border-b border-white/10">
-      <img
-        src={heroImg}
-        srcSet={heroBgSrcSet}
-        sizes="100vw"
-        alt=""
-        aria-hidden="true"
-        className="hero-photo absolute inset-0 h-full w-full object-cover opacity-45"
-        fetchPriority="high"
-        decoding="async"
-        width={1360}
-        height={765}
-      />
+      <picture className="contents">
+        <source media="(max-width: 600px)" type="image/avif" srcSet={heroMobileUrl} />
+        <source media="(max-width: 600px)" type="image/webp" srcSet={heroMobileWebpUrl} />
+        <source media="(max-width: 1023px)" type="image/avif" srcSet={heroTabletUrl} />
+        <source media="(max-width: 1023px)" type="image/webp" srcSet={heroTabletWebpUrl} />
+        <source type="image/avif" srcSet={heroBgAvifSrcSet} sizes="100vw" />
+        <img
+          src={heroImg}
+          srcSet={heroBgSrcSet}
+          sizes="100vw"
+          alt=""
+          aria-hidden="true"
+          className="hero-photo absolute inset-0 h-full w-full object-cover opacity-45"
+          fetchPriority="high"
+          decoding="async"
+          width={1536}
+          height={1024}
+        />
+      </picture>
       <div
         className="absolute inset-0 bg-linear-to-r from-ink via-ink/85 to-ink/40"
         aria-hidden="true"

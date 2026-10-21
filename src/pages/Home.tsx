@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Seo } from '../components/layout/Seo'
 import { SolarEcosystem } from '../components/home/SolarEcosystem'
 import { Hero } from '../components/home/Hero'
-import { heroBgUrl, heroBgSrcSet } from '../lib/heroBg'
+import { heroImagePreloads } from '../lib/heroBg'
 import { VideoShowcase } from '../components/home/VideoShowcase'
 import { EmiTeaser } from '../components/home/EmiTeaser'
 import { SolarSchematic } from '../components/home/SolarSchematic'
@@ -32,9 +32,7 @@ export default function Home() {
         title="Solaris360 - Rooftop Solar EPC in Surat"
         description="Solaris360 designs, builds and monitors rooftop solar systems for homes and businesses in and around Surat. Go Green, Go Solar."
         path="/"
-        preloadImage={heroBgUrl}
-        preloadImageSrcSet={heroBgSrcSet}
-        preloadImageSizes="100vw"
+        preloadImages={heroImagePreloads}
       />
 
       <Hero />

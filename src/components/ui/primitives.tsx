@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react'
-import { responsiveImageSrcSet } from '../../lib/responsiveImages'
+import { responsiveImageSrcSet, responsiveAvifSrcSet } from '../../lib/responsiveImages'
 import { Link } from 'react-router-dom'
 import { Reveal } from './Reveal'
 import { VectorGround } from './VectorGround'
@@ -56,17 +56,21 @@ export function PageHero({
 
         {image && (
           <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-white/12 lg:ml-auto lg:mr-0">
-            <img
-              src={image}
-              srcSet={responsiveImageSrcSet(image)}
-              sizes="(min-width: 424px) 384px, calc(100vw - 40px)"
-              alt=""
-              aria-hidden="true"
-              width={1536}
-              height={1536}
-              decoding="async"
-              className="block h-full w-full object-cover"
-            />
+            <picture className="contents">
+              <source type="image/avif" srcSet={responsiveAvifSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" />
+              <img
+                src={image}
+                srcSet={responsiveImageSrcSet(image)}
+                sizes="(min-width: 424px) 384px, calc(100vw - 40px)"
+                alt=""
+                aria-hidden="true"
+                width={1536}
+                height={1536}
+                decoding="async"
+                className="block h-full w-full object-cover"
+                fetchPriority="high"
+              />
+            </picture>
             <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-ink/60 to-transparent" aria-hidden="true" />
             <span className="absolute bottom-3 left-3 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-paper/80">
               Solaris360 · Surat
@@ -96,7 +100,10 @@ export function MediaRow({
   return (
     <Reveal className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
       <div className={`relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-white/12 ${flip ? 'md:order-2' : ''}`}>
-        <img src={image} srcSet={responsiveImageSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" alt={alt} loading="lazy" decoding="async" className="block h-full w-full object-cover" />
+        <picture className="contents">
+          <source type="image/avif" srcSet={responsiveAvifSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" />
+          <img src={image} srcSet={responsiveImageSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" alt={alt} loading="lazy" decoding="async" className="block h-full w-full object-cover" />
+        </picture>
         <div className="absolute inset-0 bg-linear-to-t from-ink/40 to-transparent" aria-hidden="true" />
       </div>
       <div className={flip ? 'md:order-1' : ''}>{children}</div>
@@ -109,7 +116,10 @@ export function ImageBand({ image, alt, caption }: { image: string; alt: string;
   return (
     <figure className="relative">
       <div className="aspect-[3/1] overflow-hidden border-y border-white/10">
-        <img src={image} srcSet={responsiveImageSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" alt={alt} loading="lazy" decoding="async" width={2400} height={800} className="block h-full w-full object-cover" />
+        <picture className="contents">
+          <source type="image/avif" srcSet={responsiveAvifSrcSet(image)} sizes="100vw" />
+          <img src={image} srcSet={responsiveImageSrcSet(image)} sizes="100vw" alt={alt} loading="lazy" decoding="async" width={2400} height={800} className="block h-full w-full object-cover" />
+        </picture>
       </div>
       {caption && (
         <figcaption className="container-x py-3 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-paper/80">

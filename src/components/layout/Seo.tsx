@@ -17,9 +17,7 @@ interface SeoProps {
   /** ISO date for articles */
   published?: string
   /** image URL to <link rel=preload as=image> (LCP hint) */
-  preloadImage?: string
-  preloadImageSrcSet?: string
-  preloadImageSizes?: string
+  preloadImages?: { src: string; srcSet?: string; sizes?: string; type?: string; media?: string }[]
 }
 
 const SITE = company.domain
@@ -85,9 +83,7 @@ export function Seo({
   breadcrumbs,
   noindex = false,
   published,
-  preloadImage,
-  preloadImageSrcSet,
-  preloadImageSizes,
+  preloadImages,
 }: SeoProps) {
   const url = SITE + path
   const fullTitle = path === '/' ? title : `${title} - ${company.name}`
@@ -112,41 +108,46 @@ export function Seo({
   }
 
   return (
-    <Head>
-      <html lang="en-IN" />
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
-      {preloadImage && <link rel="preload" as="image" href={preloadImage} imageSrcSet={preloadImageSrcSet} imageSizes={preloadImageSizes} fetchPriority="high" />}
-      <meta
-        name="robots"
-        content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1'}
-      />
-
-      <meta property="og:site_name" content={company.name} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-      <meta property="og:locale" content="en_IN" />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={`${company.name} - ${title}`} />
-      {type === 'article' && published && (
-        <meta property="article:published_time" content={published} />
-      )}
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
-
-      {blocks.map((block, i) => (
-        <script key={i} type="application/ld+json">
-          {JSON.stringify(block)}
-        </script>
+    <>
+      {preloadImages?.map(({ src, srcSet, sizes, type, media }) => (
+        <link key={src} rel="preload" as="image" href={src} imageSrcSet={srcSet} imageSizes={sizes} type={type} media={media} fetchPriority="high" />
       ))}
-    </Head>
+      <Head>
+        <html lang="en-IN" />
+        <title>{fullTitle}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={url} />
+
+        <meta
+          name="robots"
+          content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1'}
+        />
+
+        <meta property="og:site_name" content={company.name} />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content={type} />
+        <meta property="og:url" content={url} />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={`${company.name} - ${title}`} />
+        {type === 'article' && published && (
+          <meta property="article:published_time" content={published} />
+        )}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+
+        {blocks.map((block, i) => (
+          <script key={i} type="application/ld+json">
+            {JSON.stringify(block)}
+          </script>
+        ))}
+      </Head>
+    </>
   )
 }

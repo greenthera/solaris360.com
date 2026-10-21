@@ -15,11 +15,31 @@
     </script>
     <!-- End Consent defaults -->
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K5QTV3ZX');</script>
+    <script>
+      (function (w, d) {
+        // Keep consent defaults and early page/conversion events in the queue;
+        // fetch the container after critical resources, or on first interaction.
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+        var started = false;
+        function loadTags() {
+          if (started) return;
+          started = true;
+          d.removeEventListener('pointerdown', loadTags);
+          d.removeEventListener('keydown', loadTags);
+          var script = d.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-K5QTV3ZX';
+          d.head.appendChild(script);
+        }
+        d.addEventListener('pointerdown', loadTags, { once: true, passive: true });
+        d.addEventListener('keydown', loadTags, { once: true });
+        w.addEventListener('load', function () {
+          if ('requestIdleCallback' in w) w.requestIdleCallback(loadTags, { timeout: 1500 });
+          else w.setTimeout(loadTags, 0);
+        }, { once: true });
+      })(window, document);
+    </script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -115,20 +135,9 @@
       }
     </style>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-      />
-    </noscript>
+    <link data-critical-font rel="preload" as="font" type="font/woff2" href="/src/assets/fonts/sora-latin-400.woff2" crossorigin />
+    <link data-critical-font rel="preload" as="font" type="font/woff2" href="/src/assets/fonts/inter-latin-400.woff2" crossorigin />
+    <link data-critical-font rel="preload" as="font" type="font/woff2" href="/src/assets/fonts/ibm-plex-mono-latin-400.woff2" crossorigin />
 
     <!-- GA4 commands - queued in dataLayer and run by the gtag.js that GTM loads
          (GTM-K5QTV3ZX includes the GA4 tag), so gtag.js isn't loaded a second time. -->
@@ -149,7 +158,10 @@
     <div id="boot" aria-hidden="true">
       <span class="boot-glow"></span>
       <div style="display: grid; justify-items: center">
+        <picture style="display:contents">
+        <source type="image/avif" srcset="/logo-mark.avif" />
         <img src="/logo-mark.webp" alt="" width="380" height="78" fetchpriority="high" />
+        </picture>
         <span class="boot-bar"></span>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Logo } from './Logo'
 import { footerNav } from '../../content/nav'
 import { company, wa, waMsg } from '../../content/company'
 import { showCookiePreferences } from '../../lib/cookieConsent'
+import { responsiveAvifSrcSet } from '../../lib/responsiveImages'
 import ctaImg from '../../assets/solaris-india-consultation.webp'
 
 const policies = [
@@ -19,14 +20,17 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-ink">
       {/* CTA strip ---------------------------------------------------- */}
       <div className="relative overflow-hidden border-b border-white/10">
-        <img
-          src={ctaImg}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
-        />
+        <picture className="contents">
+          <source type="image/avif" srcSet={responsiveAvifSrcSet(ctaImg)} sizes="100vw" />
+          <img
+            src={ctaImg}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover opacity-20"
+          />
+        </picture>
         <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/90 to-ink/50" aria-hidden="true" />
         <div className="container-x relative flex flex-col items-center gap-6 py-12 text-center md:flex-row md:items-center md:justify-between md:text-left">
           <div>

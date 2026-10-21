@@ -20,7 +20,7 @@ export function initReveal() {
 
   document.documentElement.classList.add('anim')
 
-  const pending = () => document.querySelectorAll<HTMLElement>('.reveal:not(.reveal-in)')
+  const pending = new Set<HTMLElement>()
 
   const io = new IntersectionObserver(
     (entries) => {
@@ -28,32 +28,71 @@ export function initReveal() {
         if (e.isIntersecting) {
           e.target.classList.add('reveal-in')
           io.unobserve(e.target)
+          pending.delete(e.target as HTMLElement)
         }
       }
     },
     { rootMargin: '0px 0px -8% 0px', threshold: 0.01 },
   )
 
-  const observe = () => pending().forEach((el) => io.observe(el))
+  const collect = (root: ParentNode) => {
+    const elements = root.querySelectorAll<HTMLElement>('.reveal:not(.reveal-in)')
+    for (const el of elements) {
+      if (pending.has(el)) continue
+      pending.add(el)
+      io.observe(el)
+    }
+    if (root instanceof HTMLElement && root.matches('.reveal:not(.reveal-in)') && !pending.has(root)) {
+      pending.add(root)
+      io.observe(root)
+    }
+  }
 
   const revealNear = () => {
     const limit = window.innerHeight * 1.2
-    pending().forEach((el) => {
-      if (el.getBoundingClientRect().top < limit) {
-        el.classList.add('reveal-in')
+    const ready: HTMLElement[] = []
+    const sectionTops = new Map<Element, number>()
+    // Read geometry together, then write classes. Measuring children of a distant
+    // content-visibility section would otherwise force its skipped layout.
+    for (const el of pending) {
+      if (!el.isConnected || el.classList.contains('reveal-in')) {
+        pending.delete(el)
         io.unobserve(el)
+        continue
       }
-    })
+      const section = el.closest('.cv-auto')
+      if (section) {
+        if (!sectionTops.has(section)) sectionTops.set(section, section.getBoundingClientRect().top)
+        if (sectionTops.get(section)! >= limit) continue
+      }
+      if (el.getBoundingClientRect().top < limit) ready.push(el)
+    }
+    for (const el of ready) {
+      el.classList.add('reveal-in')
+      pending.delete(el)
+      io.unobserve(el)
+    }
   }
 
-  const revealAll = () => pending().forEach((el) => el.classList.add('reveal-in'))
+  const revealAll = () => {
+    for (const el of pending) {
+      el.classList.add('reveal-in')
+      io.unobserve(el)
+    }
+    pending.clear()
+  }
 
-  observe()
+  collect(document)
   revealNear()
 
-  // SPA route changes add new .reveal nodes - re-scan.
-  new MutationObserver(() => {
-    observe()
+  // Register only newly inserted reveal nodes; live counters and review text
+  // updates don't need a full-document query or repeated observer registration.
+  new MutationObserver((records) => {
+    for (const record of records) {
+      for (const node of record.addedNodes) {
+        if (node instanceof HTMLElement) collect(node)
+      }
+    }
     revealNear()
   }).observe(document.body, { childList: true, subtree: true })
 

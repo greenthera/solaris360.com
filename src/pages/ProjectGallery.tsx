@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { responsiveImageSrcSet } from '../lib/responsiveImages'
+import { responsiveImageSrcSet, responsiveAvifSrcSet } from '../lib/responsiveImages'
 import { Seo } from '../components/layout/Seo'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
@@ -75,17 +75,21 @@ export default function ProjectGallery() {
                 className="absolute inset-0 h-full w-full cursor-zoom-in"
                 aria-label={`View ${s.title}`}
               >
-                <img
-                  src={s.src}
-                  srcSet={responsiveImageSrcSet(s.src)}
-                  sizes="(min-width: 1312px) 406px, (min-width: 768px) calc((100vw - 96px) / 3), calc((100vw - 48px) / 2)"
-                  decoding="async"
-                  alt={s.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                  width={800}
-                  height={800}
-                />
+                <picture className="contents">
+                  <source type="image/avif" srcSet={responsiveAvifSrcSet(s.src)} sizes="(min-width: 1312px) 406px, (min-width: 768px) calc((100vw - 96px) / 3), calc((100vw - 48px) / 2)" />
+                  <img
+                    src={s.src}
+                    srcSet={responsiveImageSrcSet(s.src)}
+                    sizes="(min-width: 1312px) 406px, (min-width: 768px) calc((100vw - 96px) / 3), calc((100vw - 48px) / 2)"
+                    decoding="async"
+                    alt={s.alt}
+                    loading={i < 2 ? 'eager' : 'lazy'}
+                    fetchPriority={i < 2 ? 'high' : 'auto'}
+                    className="h-full w-full object-cover"
+                    width={800}
+                    height={800}
+                  />
+                </picture>
               </button>
               <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-linear-to-t from-ink/85 to-transparent p-3">
                 <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-paper/90">{s.title}</span>

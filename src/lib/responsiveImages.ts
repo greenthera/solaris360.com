@@ -1,18 +1,28 @@
-// URL imports don't fetch the files. The browser downloads only its selected size.
+import dimensions from '../assets/image-dimensions.json'
+
+// Eager URL imports are build metadata: they don't download image data.
 const images = import.meta.glob<string>(
-  ['../assets/solaris-square-*.webp', '../assets/solaris-india-*.webp'],
+  ['../assets/solaris-*.webp', '../assets/solaris-*.avif'],
   { eager: true, query: '?url', import: 'default' },
 )
 
-const sources = new Map<string, string>()
-for (const [path, url] of Object.entries(images)) {
-  if (/-\d+\.webp$/.test(path)) continue
-  const small = images[path.replace('.webp', '-480.webp')]
-  const medium = images[path.replace('.webp', '-800.webp')]
-  if (small && medium) {
-    sources.set(url, `${small} 480w, ${medium} 800w, ${url} ${path.includes('square-') ? 1254 : 1536}w`)
+const webpSources = new Map<string, string>()
+const avifSources = new Map<string, string>()
+for (const [name, { width }] of Object.entries(dimensions)) {
+  const path = `../assets/${name}`
+  const original = images[path]
+  if (!original) continue
+  const sizes = [480, 800, 1200, 1440].filter((size) => size < width)
+  for (const [extension, sources] of [['webp', webpSources], ['avif', avifSources]] as const) {
+    const candidates = sizes.flatMap((size) => {
+      const url = images[path.replace('.webp', `-${size}.${extension}`)]
+      return url ? [`${url} ${size}w`] : []
+    })
+    const full = images[path.replace('.webp', `.${extension}`)]
+    if (full) candidates.push(`${full} ${width}w`)
+    if (candidates.length) sources.set(original, candidates.join(', '))
   }
 }
 
-/** Keep the full-size src as a fallback and for the original-image lightbox. */
-export const responsiveImageSrcSet = (src: string) => sources.get(src)
+export const responsiveImageSrcSet = (src: string) => webpSources.get(src)
+export const responsiveAvifSrcSet = (src: string) => avifSources.get(src)
