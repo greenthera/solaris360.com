@@ -1,12 +1,17 @@
 import type { LegalDoc } from './types'
 
-/** Verbatim from /privacy-policy-2/ (spelling only lightly corrected). */
+/**
+ * From /privacy-policy-2/ (spelling only lightly corrected). The cookie sections
+ * are rewritten to match the consent banner (src/lib/cookieConsent.ts) - keep the
+ * two in sync, and bump the banner's `revision` when categories change.
+ */
 export const privacy: LegalDoc = {
   title: 'Privacy Policy',
+  updated: 'Last updated: October 21, 2026',
   intro: [
     'At SOLARIS 360, accessible from www.solaris360.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains the types of information that is collected and recorded by SOLARIS 360 and how we use it.',
     'This Privacy Policy applies only to our online activities and is valid for visitors to our website with regard to the information that they share and/or that we collect on SOLARIS 360. This policy is not applicable to any information collected offline or via channels other than this website.',
-    'By using our website, you hereby consent to our Privacy Policy and agree to its terms.',
+    'By using our website, you agree to this Privacy Policy. Non-essential cookies (analytics and marketing) are only used if you allow them through our cookie banner - see “Cookies” below.',
   ],
   sections: [
     {
@@ -37,21 +42,43 @@ export const privacy: LegalDoc = {
       ],
     },
     {
-      heading: 'Cookies and Web Beacons',
+      heading: 'Cookies',
       body: [
-        'Like any other website, SOLARIS 360 uses “cookies”. These cookies are used to store information including visitors’ preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users’ experience by customizing our web page content based on visitors’ browser type and/or other information.',
+        'Cookies are small text files stored in your browser. SOLARIS 360 uses them to remember your cookie choice and, only if you allow it, to understand how visitors use the website and to support advertising.',
+        'When you first visit, a cookie banner lets you accept all cookies, reject all non-essential cookies, or choose by category. Until you make a choice, only strictly necessary cookies are used, and our analytics and marketing tags run in a “denied” state through Google Consent Mode, which means they do not set cookies.',
+        'Our tags are managed through Google Tag Manager, which loads them according to the choice you make.',
+      ],
+    },
+    {
+      heading: 'Cookies we use',
+      body: [
+        'Strictly necessary (always on):',
+        '- cc_cookie - remembers your cookie preferences. Expires after 6 months.',
+        'Analytics (only with your consent):',
+        '- Google Analytics 4: _ga and _ga_<ID> - distinguish visitors and sessions so we can count page views and see which pages are used. Expire after up to 2 years.',
+        '- Microsoft Clarity: _clck (1 year), _clsk (1 day) and CLID (1 year) - page usage, heatmaps and session recordings that help us improve the website.',
+        'Marketing (only with your consent):',
+        '- Advertising and remarketing cookies set by Google, described under “Google DoubleClick DART Cookie” and “Advertising Partners” below.',
+        'Google Analytics and Microsoft Clarity process this data on our behalf. You can read how they handle it in the Google Privacy Policy (https://policies.google.com/privacy) and the Microsoft Privacy Statement (https://privacy.microsoft.com/privacystatement).',
+      ],
+    },
+    {
+      heading: 'Changing or withdrawing your consent',
+      body: [
+        'You can change your choice at any time using the “Cookie settings” link at the bottom of every page. If you withdraw consent for analytics, the analytics cookies listed above are deleted from your browser. If we add new types of cookies, we will ask for your consent again.',
+        'You can also block or delete cookies through your browser settings. Blocking strictly necessary cookies means the website cannot remember your cookie choice.',
       ],
     },
     {
       heading: 'Google DoubleClick DART Cookie',
       body: [
-        'Google is one of the third-party vendors on our site. It uses cookies, known as DART cookies, to serve ads to our site visitors based on their visits to this and other sites on the internet. Visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at https://policies.google.com/technologies/ads.',
+        'These cookies are only used if you accept Marketing cookies. Google is one of the third-party vendors on our site. It uses cookies, known as DART cookies, to serve ads to our site visitors based on their visits to this and other sites on the internet. Visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at https://policies.google.com/technologies/ads.',
       ],
     },
     {
       heading: 'Advertising Partners',
       body: [
-        'Some advertisers on our site may use cookies and web beacons. Our advertising partner is Google. Each of our advertising partners has its own Privacy Policy for its policies on user data.',
+        'Some advertisers on our site may use cookies and web beacons, only if you accept Marketing cookies. Our advertising partner is Google. Each of our advertising partners has its own Privacy Policy for its policies on user data.',
         'Third-party ad servers or ad networks use technologies like cookies, JavaScript, or web beacons in their advertisements and links that appear on SOLARIS 360, which are sent directly to your browser. They automatically receive your IP address when this occurs. Note that SOLARIS 360 has no access to or control over these cookies.',
       ],
     },

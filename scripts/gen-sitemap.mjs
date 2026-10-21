@@ -44,14 +44,20 @@ function cleanHtml(file) {
     )
 
   // Google Tag Manager must be as high in <head> as possible (helmet's per-route
-  // tags are emitted ahead of the template's), so hoist it to just after charset
-  let gtm = ''
-  head = head.replace(/<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/, (m) => {
-    gtm = m
-    return ''
-  })
+  // tags are emitted ahead of the template's), so hoist it to just after charset -
+  // preceded by the Consent Mode defaults, which must run before GTM
+  const hoist = (re) => {
+    let block = ''
+    head = head.replace(re, (m) => {
+      block = m
+      return ''
+    })
+    return block
+  }
+  const consent = hoist(/<!-- Consent defaults[\s\S]*?<!-- End Consent defaults -->/)
+  const gtm = hoist(/<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/)
 
-  head = `<meta charset="utf-8">${gtm}${head.trim()}`
+  head = `<meta charset="utf-8">${consent}${gtm}${head.trim()}`
   writeFileSync(file, h.slice(0, headStart) + head + h.slice(headEnd))
 }
 

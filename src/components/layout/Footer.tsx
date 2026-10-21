@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Logo } from './Logo'
 import { footerNav } from '../../content/nav'
 import { company, wa, waMsg } from '../../content/company'
+import { showCookiePreferences } from '../../lib/cookieConsent'
 import ctaImg from '../../assets/solaris-india-consultation.webp'
 
 const policies = [
@@ -154,6 +155,9 @@ export function Footer() {
                 {p.label}
               </Link>
             ))}
+            <button type="button" onClick={showCookiePreferences} className="hover:text-paper">
+              Cookie settings
+            </button>
           </nav>
           <p>
             Developed by{' '}

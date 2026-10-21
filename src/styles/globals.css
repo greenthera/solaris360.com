@@ -652,3 +652,37 @@
 /* index.html hides #root until this stylesheet has applied (no unstyled flash).
    Unlayered on purpose: a layered rule would lose to the inline unlayered one. */
 html #root { visibility: visible; height: auto; overflow: visible; }
+
+/* Cookie consent banner (src/lib/cookieConsent.ts) in the site palette.
+   html.cc--darkmode outranks the library's own .cc--darkmode #cc-main theme. */
+html.cc--darkmode #cc-main {
+  --cc-font-family: var(--font-sans);
+  --cc-bg: var(--color-navy);
+  --cc-primary-color: var(--color-paper);
+  --cc-secondary-color: var(--color-muted);
+
+  --cc-btn-primary-bg: var(--color-orange);
+  --cc-btn-primary-color: var(--color-ink);
+  --cc-btn-primary-border-color: var(--color-orange);
+  --cc-btn-primary-hover-bg: #f5b14f;
+  --cc-btn-primary-hover-color: var(--color-ink);
+  --cc-btn-primary-hover-border-color: #f5b14f;
+
+  --cc-btn-secondary-bg: var(--color-panel-2);
+  --cc-btn-secondary-color: var(--color-paper);
+  --cc-btn-secondary-border-color: var(--color-panel-2);
+  --cc-btn-secondary-hover-bg: var(--color-panel);
+  --cc-btn-secondary-hover-color: var(--color-paper);
+  --cc-btn-secondary-hover-border-color: var(--color-orange);
+
+  --cc-toggle-on-bg: var(--color-orange);
+  --cc-toggle-off-bg: var(--color-panel-2);
+  --cc-cookie-category-block-bg: var(--color-panel);
+  --cc-cookie-category-block-border: var(--color-panel-2);
+  --cc-cookie-category-block-hover-bg: var(--color-panel-2);
+  --cc-separator-border-color: color-mix(in srgb, var(--color-paper) 12%, transparent);
+  --cc-overlay-bg: rgba(15, 14, 36, 0.75);
+
+  --cc-btn-border-radius: var(--radius-xs);
+  --cc-modal-border-radius: var(--radius-xs);
+}
