@@ -41,7 +41,15 @@ export default function EmiCalculator() {
       await submitLead({
         ...contact,
         source: 'EMI calculator',
-        details: `System price ${inr(price)} | ${months} months | ${ratePct}% p.a. | Monthly EMI ${inr(r.monthlyEmi)} | Total interest ${inr(r.totalInterest)} | Total payment ${inr(r.totalPayment)}`,
+        // one labelled value per line - reads cleanly in the Google Sheet
+        details: [
+          `System price: ${inr(price)}`,
+          `Months: ${months}`,
+          `Interest: ${ratePct}% p.a.`,
+          `Monthly EMI: ${inr(r.monthlyEmi)}`,
+          `Total interest: ${inr(r.totalInterest)}`,
+          `Total payment: ${inr(r.totalPayment)}`,
+        ].join('\n'),
       })
       const { downloadEmiPdf } = await import('../lib/emiPdf')
       await downloadEmiPdf({ price, months, ratePct }, r, contact)

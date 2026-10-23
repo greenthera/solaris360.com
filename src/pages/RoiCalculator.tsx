@@ -24,6 +24,29 @@ export default function RoiCalculator() {
   const result = validRoiInput(inputs) ? calcRoi(inputs) : null
   const fmt = (n: number, digits = 0) => n.toLocaleString(t.locale, { maximumFractionDigits: digits, minimumFractionDigits: digits })
   const money = (n: number) => `${settings.currencySymbol}${fmt(n)}`
+  // rates such as ₹7.5/kWh keep their decimals
+  const rate = (n: number) => `${settings.currencySymbol}${n.toLocaleString(t.locale, { maximumFractionDigits: 2 })}`
+
+  /** Readable Details cell for the Google Sheet: one labelled value per line. */
+  const leadDetails = (i: RoiInput, r: NonNullable<typeof result>) =>
+    [
+      `System size: ${fmt(i.systemSize, 1).replace(/\.0$/, '')} kWp`,
+      `System cost: ${money(i.systemCost)}`,
+      `Annual generation: ${fmt(r.annualGeneration)} kWh`,
+      `Annual savings: ${money(r.annualSavings)}`,
+      `Payback: ${Number.isFinite(r.paybackPeriod) ? `${r.paybackPeriod.toFixed(1)} years` : 'Not reached'}`,
+      `Net profit over ${i.systemLifetime} years: ${money(r.netProfit)}`,
+      `ROI: ${fmt(r.roi)}%`,
+      '',
+      'Assumptions',
+      `Electricity price: ${rate(i.electricityPrice)}/kWh`,
+      `Export tariff: ${rate(i.exportTariff)}/kWh`,
+      `Self-consumption: ${i.selfConsumption}%`,
+      `Specific yield: ${fmt(i.specificYield)} kWh per kWp a year`,
+      `Panel degradation: ${i.degradationRate}% a year`,
+      `Electricity price rise: ${i.electricityInflation}% a year`,
+      `System lifetime: ${i.systemLifetime} years`,
+    ].join('\n')
 
   // Restore shared calculation parameters after hydration; no settings or language storage.
   useEffect(() => {
@@ -61,7 +84,7 @@ export default function RoiCalculator() {
     setBusy(true)
     try {
       const { downloadRoiPdf } = await import('../lib/roiPdf')
-      await submitLead({ ...snapshot.contact, source: 'ROI calculator', details: `System ${inputs.systemSize} kWp | Cost ${money(inputs.systemCost)} | Annual generation ${fmt(result.annualGeneration)} kWh | Annual savings ${money(result.annualSavings)} | Payback ${Number.isFinite(result.paybackPeriod) ? result.paybackPeriod.toFixed(1) + ' years' : 'Not reached'} | Lifetime ${inputs.systemLifetime} years | Net profit ${money(result.netProfit)} | ROI ${fmt(result.roi)}% | Assumptions ${JSON.stringify(inputs)}` })
+      await submitLead({ ...snapshot.contact, source: 'ROI calculator', details: leadDetails(snapshot.inputs, snapshot.result) })
       await downloadRoiPdf(snapshot.inputs, snapshot.result, snapshot.contact, snapshot.currency)
       setNotice('Report downloaded. Our team will contact you about solar.')
     } catch { setNotice('The report could not be downloaded. Please try again.') }
