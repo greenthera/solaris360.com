@@ -1,13 +1,29 @@
+import { useEffect, useRef, useState } from 'react'
 import type { AmortRow } from '../../lib/emi'
 import { inr } from '../../lib/format'
 
-/** Inline SVG area chart of the outstanding balance, with labelled axes. */
+/**
+ * Inline SVG area chart of the outstanding balance, with labelled axes.
+ * Drawn at the container's real width (1 SVG unit = 1 CSS px), so labels stay
+ * the same size on every screen instead of scaling up on desktop and down on phones.
+ */
 export function BalanceChart({ rows }: { rows: AmortRow[] }) {
+  const ref = useRef<HTMLElement>(null)
+  const [W, setW] = useState(680) // prerender width; replaced by the measured one
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const ro = new ResizeObserver(([e]) => setW(Math.max(280, Math.round(e.contentRect.width))))
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
   if (rows.length < 2) return null
 
-  const W = 680
-  const H = 260
-  const pad = { l: 74, r: 16, t: 14, b: 34 }
+  const narrow = W < 520
+  const H = narrow ? 220 : 280
+  // t leaves room for the value label above the first point
+  const pad = { l: narrow ? 62 : 74, r: 12, t: 26, b: 34 }
   const iw = W - pad.l - pad.r
   const ih = H - pad.t - pad.b
 
@@ -26,17 +42,19 @@ export function BalanceChart({ rows }: { rows: AmortRow[] }) {
   const area = `${line} L${x(n - 1).toFixed(1)} ${y(0).toFixed(1)} L${x(0).toFixed(1)} ${y(0).toFixed(1)} Z`
 
   const yTicks = Array.from({ length: 5 }, (_, k) => (top / 4) * k)
-  // ~6 evenly spaced month labels, always including first and last
-  const xCount = Math.min(6, n)
+  // evenly spaced month labels (fewer on phones), always including first and last
+  const xCount = Math.min(narrow ? 4 : 6, n)
   const xTicks = Array.from({ length: xCount }, (_, k) =>
     Math.round((k / (xCount - 1)) * (n - 1)),
   ).filter((v, idx, a) => a.indexOf(v) === idx)
 
   return (
-    <figure className="overflow-x-auto">
+    <figure ref={ref}>
       <svg
         viewBox={`0 0 ${W} ${H}`}
-        className="w-full min-w-[520px]"
+        width={W}
+        height={H}
+        className="block max-w-full"
         role="img"
         aria-label="Outstanding loan balance for each month of the term"
       >
@@ -61,7 +79,7 @@ export function BalanceChart({ rows }: { rows: AmortRow[] }) {
             <text
               x={pad.l - 8}
               y={y(v) + 3}
-              fontSize="10"
+              fontSize="11"
               fill="#777476"
               textAnchor="end"
               fontFamily="var(--font-mono)"
@@ -85,7 +103,7 @@ export function BalanceChart({ rows }: { rows: AmortRow[] }) {
             <text
               x={x(i)}
               y={H - 18}
-              fontSize="10"
+              fontSize="11"
               fill="#777476"
               textAnchor="middle"
               fontFamily="var(--font-mono)"
@@ -97,7 +115,7 @@ export function BalanceChart({ rows }: { rows: AmortRow[] }) {
         <text
           x={pad.l + iw / 2}
           y={H - 4}
-          fontSize="9"
+          fontSize="10"
           fill="#777476"
           textAnchor="middle"
           fontFamily="var(--font-mono)"
@@ -116,7 +134,7 @@ export function BalanceChart({ rows }: { rows: AmortRow[] }) {
             <text
               x={x(i)}
               y={y(rows[i].opening) - 8}
-              fontSize="9.5"
+              fontSize="11"
               fill="#17163f"
               textAnchor={i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle'}
               fontFamily="var(--font-mono)"
@@ -126,9 +144,6 @@ export function BalanceChart({ rows }: { rows: AmortRow[] }) {
           </g>
         ))}
       </svg>
-      <figcaption className="mt-1 text-xs text-ash">
-        Outstanding balance at the start of each month. Axis on the left is the amount still owed.
-      </figcaption>
     </figure>
   )
 }

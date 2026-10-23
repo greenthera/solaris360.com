@@ -1,4 +1,5 @@
 import type { AmortRow, EmiInput, EmiResult } from './emi'
+import type { LeadContact } from './leads'
 import { company } from '../content/company'
 import logoDataUrl from '../assets/logo-mark.png?inline'
 
@@ -18,6 +19,14 @@ const NAVY: [number, number, number] = [23, 22, 63]
 /** Shivantra brand colour (#01014f) for the "Developed by" credit. */
 const SHIVANTRA: [number, number, number] = [1, 1, 79]
 const M = 40
+/** One vertical rhythm for the whole PDF: title -> its content, and section -> next section. */
+const TITLE_GAP = 16
+const SECTION_GAP = 24
+/** room above the chart for its value labels (drawn just above each point) */
+const CHART_TOP = 14
+const CHART_H = 180
+/** room below the chart for the month labels */
+const CHART_BOTTOM = 16
 
 async function loadJsPdf() {
   const [{ jsPDF }, autoTableMod] = await Promise.all([import('jspdf'), import('jspdf-autotable')])
@@ -113,7 +122,7 @@ function keyValueTable(
   return afterTable(doc)
 }
 
-export async function downloadEmiPdf(input: EmiInput, res: EmiResult) {
+export async function downloadEmiPdf(input: EmiInput, res: EmiResult, contact: LeadContact) {
   const { jsPDF, autoTable } = await loadJsPdf()
   const doc = new jsPDF({ unit: 'pt', format: 'a4' })
 
@@ -121,25 +130,46 @@ export async function downloadEmiPdf(input: EmiInput, res: EmiResult) {
   let y = 98
 
   y =
+    keyValueTable(doc, autoTable, 'Prepared for', [
+      ['Name', contact.name.trim()],
+      ['Phone', contact.phone.trim()],
+      ...(contact.email.trim() ? ([['Email', contact.email.trim()]] as Row[]) : []),
+    ], y) + SECTION_GAP
+
+  y =
     keyValueTable(doc, autoTable, 'Your inputs', [
       ['Solar system price (incl. GST)', rs(input.price)],
       ['Months', `${input.months} months`],
       ['Interest', `${input.ratePct}% p.a.`],
-    ], y) + 20
+    ], y) + SECTION_GAP
 
   y =
     keyValueTable(doc, autoTable, 'Summary', [
       ['Monthly EMI', rs(res.monthlyEmi)],
       ['Total interest', rs(res.totalInterest)],
       ['Total payment', rs(res.totalPayment)],
-    ], y) + 22
+    ], y) + 12
 
-  // ---- balance chart ----------------------------------------------------
+  // how the Summary figures are worked out - kept beside them
   const pageW = doc.internal.pageSize.getWidth()
   const pageH = doc.internal.pageSize.getHeight()
+  doc.setFontSize(8.5)
+  doc.setTextColor(90, 90, 100)
+  const note = doc.splitTextToSize(
+    'Standard reducing-balance EMI on the full system price: EMI = P x r x (1 + r)^n / ((1 + r)^n - 1), where r is the monthly interest rate and n the number of months.',
+    pageW - M * 2,
+  )
+  doc.text(note, M + 3, y)
+  y += note.length * doc.getLineHeight() + SECTION_GAP
+
+  // ---- balance chart ----------------------------------------------------
+  if (y + TITLE_GAP + CHART_TOP + CHART_H + CHART_BOTTOM > pageH - 60) {
+    doc.addPage()
+    y = 60
+  }
   y = section(doc, 'Outstanding balance over the term', y, M)
-  drawBalanceChart(doc, res.rows, M, y, pageW - M * 2, 180, ORANGE)
-  y += 180 + 28
+  drawBalanceChart(doc, res.rows, M, y + CHART_TOP, pageW - M * 2, CHART_H, ORANGE)
+  y += CHART_TOP + CHART_H + CHART_BOTTOM + SECTION_GAP
 
   // ---- schedule -------------------------------------------------------
   if (y + 80 > pageH - 60) {
@@ -149,12 +179,13 @@ export async function downloadEmiPdf(input: EmiInput, res: EmiResult) {
   y = section(doc, 'Amortisation schedule', y, M)
   autoTable(doc, {
     startY: y,
-    margin: { left: M, right: M, bottom: 60 },
+    // top only applies to continuation pages; bottom stays ~10pt clear of the footer
+    margin: { left: M, right: M, top: 30, bottom: 50 },
     theme: 'striped',
     headStyles: { fillColor: NAVY, fontSize: 8.5 },
     styles: { fontSize: 8, cellPadding: 2.5, halign: 'right' },
     columnStyles: { 0: { halign: 'left' } },
-    head: [['Month', 'Opening', 'EMI', 'Interest', 'Principal', 'Closing']],
+    head: [[{ content: 'Month', styles: { halign: 'left' } }, 'Opening', 'EMI', 'Interest', 'Principal', 'Closing']],
     body: res.rows.map((r) => [
       String(r.month),
       rs(r.opening),
@@ -164,22 +195,6 @@ export async function downloadEmiPdf(input: EmiInput, res: EmiResult) {
       rs(r.closing),
     ]),
   })
-  y = afterTable(doc) + 18
-  if (y + 30 > pageH - 60) {
-    doc.addPage()
-    y = 60
-  }
-
-  doc.setFontSize(9)
-  doc.setTextColor(90, 90, 100)
-  doc.text(
-    doc.splitTextToSize(
-      'Standard reducing-balance EMI on the full system price: EMI = P x r x (1 + r)^n / ((1 + r)^n - 1), where r is the monthly interest rate and n the number of months.',
-      pageW - M * 2,
-    ),
-    M,
-    y,
-  )
 
   drawFooter(doc, 'Indicative estimate. The final EMI depends on your lender policies, processing fees and charges.')
   doc.save('solaris360-emi-estimate.pdf')
@@ -196,7 +211,7 @@ function section(doc: import('jspdf').jsPDF, label: string, y: number, x: number
   doc.setLineWidth(1.5)
   doc.line(x, y + 5, x + 26, y + 5)
   doc.setFont('helvetica', 'normal')
-  return y + 16
+  return y + TITLE_GAP
 }
 
 function afterTable(doc: import('jspdf').jsPDF): number {
