@@ -1,158 +1,36 @@
 import type { AmortRow, EmiInput, EmiResult } from './emi'
 import type { LeadContact } from './leads'
-import { company } from '../content/company'
-import logoDataUrl from '../assets/logo-mark.png?inline'
-
-/** Intrinsic size (px) of logo-mark.png -> keeps the PDF placement in proportion. */
-const LOGO_W = 380
-const LOGO_H = 78
-
-const WA_URL = `https://wa.me/${company.phone.mainDigits}`
-const dashless = (s: string) => s.replace(/[–—]/g, '-')
-
-/** ₹ isn't in jsPDF's core fonts, so PDFs use "Rs". */
-const rsFmt = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 })
-const rs = (n: number) => `Rs ${rsFmt.format(Math.round(n))}`
-
-const ORANGE: [number, number, number] = [243, 160, 46]
-const NAVY: [number, number, number] = [23, 22, 63]
-/** Shivantra brand colour (#01014f) for the "Developed by" credit. */
-const SHIVANTRA: [number, number, number] = [1, 1, 79]
-const M = 40
-/** One vertical rhythm for the whole PDF: title -> its content, and section -> next section. */
-const TITLE_GAP = 16
-const SECTION_GAP = 24
-/** room above the chart for its value labels (drawn just above each point) */
-const CHART_TOP = 14
-const CHART_H = 180
-/** room below the chart for the month labels */
-const CHART_BOTTOM = 16
-
-async function loadJsPdf() {
-  const [{ jsPDF }, autoTableMod] = await Promise.all([import('jspdf'), import('jspdf-autotable')])
-  return { jsPDF, autoTable: autoTableMod.default }
-}
-
-function drawHeader(doc: import('jspdf').jsPDF) {
-  const pageW = doc.internal.pageSize.getWidth()
-  doc.setFillColor(...NAVY)
-  doc.rect(0, 0, pageW, 74, 'F')
-
-  // logo (light artwork, sits on the navy bar) -> links to the site
-  const logoH = 19
-  const logoW = (LOGO_W / LOGO_H) * logoH
-  doc.addImage(logoDataUrl, 'PNG', M, 18, logoW, logoH, 'sol-logo', 'SLOW')
-  doc.link(M, 18, logoW, logoH, { url: company.domain })
-
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(11)
-  doc.setTextColor(255, 255, 255)
-  doc.text('Solar loan EMI estimate', M, 58)
-  doc.setFontSize(9)
-  doc.setTextColor(210, 210, 220)
-  doc.text(
-    `Generated ${new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}`,
-    pageW - M,
-    32,
-    { align: 'right' },
-  )
-  doc.text('Indicative only', pageW - M, 50, { align: 'right' })
-}
-
-function drawFooter(doc: import('jspdf').jsPDF, note: string) {
-  const pageW = doc.internal.pageSize.getWidth()
-  const pageH = doc.internal.pageSize.getHeight()
-  const pages = doc.getNumberOfPages()
-  const GREY: [number, number, number] = [120, 116, 118]
-  // show the number itself (still links to WhatsApp): "+91 9998117531"
-  const waLabel = `+91 ${company.phone.mainDigits.replace(/^91/, '')}`
-
-  for (let p = 1; p <= pages; p++) {
-    doc.setPage(p)
-    doc.setFontSize(7.5)
-
-    // line 1: brand (-> website) + address (-> map) + phone number (-> WhatsApp)
-    let x = M
-    const y1 = pageH - 34
-    doc.setTextColor(...ORANGE)
-    doc.textWithLink('Solaris360', x, y1, { url: company.domain })
-    x += doc.getTextWidth('Solaris360')
-    doc.setTextColor(...GREY)
-    const mid = `, ${dashless(company.displayAddress)}   `
-    doc.text(mid, x, y1)
-    doc.link(x, y1 - 6, doc.getTextWidth(mid), 8, { url: company.mapUrl })
-    x += doc.getTextWidth(mid)
-    doc.setTextColor(...ORANGE)
-    doc.textWithLink(waLabel, x, y1, { url: WA_URL })
-
-    // line 2: the model / disclaimer note
-    doc.setTextColor(...GREY)
-    doc.text(note, M, pageH - 24)
-
-    // line 3: developed by Shivantra (-> shivantra.com)
-    doc.text('Developed by ', M, pageH - 14)
-    const w = doc.getTextWidth('Developed by ')
-    doc.setTextColor(...SHIVANTRA)
-    doc.textWithLink(company.developer.name, M + w, pageH - 14, { url: company.developer.url })
-
-    // page number
-    doc.setTextColor(...GREY)
-    doc.text(`Page ${p} / ${pages}`, pageW - M, y1, { align: 'right' })
-  }
-}
-
-type Row = [string, string]
-
-function keyValueTable(
-  doc: import('jspdf').jsPDF,
-  autoTable: Awaited<ReturnType<typeof loadJsPdf>>['autoTable'],
-  label: string,
-  rows: Row[],
-  y: number,
-): number {
-  const yy = section(doc, label, y, M)
-  autoTable(doc, {
-    startY: yy,
-    margin: { left: M, right: M },
-    theme: 'plain',
-    styles: { fontSize: 9, cellPadding: 3 },
-    columnStyles: { 0: { textColor: [90, 90, 100] }, 1: { halign: 'right', fontStyle: 'bold' } },
-    body: rows,
-  })
-  return afterTable(doc)
-}
+import { loadJsPdf, drawHeader, drawFooter, drawPreparedFor, pdfHeading, pdfCard, rs, ORANGE, M, NAVY, SECTION_GAP, CHART_TOP, CHART_H, CHART_BOTTOM } from './pdfShared'
 
 export async function downloadEmiPdf(input: EmiInput, res: EmiResult, contact: LeadContact) {
   const { jsPDF, autoTable } = await loadJsPdf()
   const doc = new jsPDF({ unit: 'pt', format: 'a4' })
 
   drawHeader(doc)
-  let y = 98
+  let y = drawPreparedFor(doc, contact) + SECTION_GAP
 
-  y =
-    keyValueTable(doc, autoTable, 'Prepared for', [
-      ['Name', contact.name.trim()],
-      ['Phone', contact.phone.trim()],
-      ...(contact.email.trim() ? ([['Email', contact.email.trim()]] as Row[]) : []),
-    ], y) + SECTION_GAP
-
-  y =
-    keyValueTable(doc, autoTable, 'Your inputs', [
-      ['Solar system price (incl. GST)', rs(input.price)],
-      ['Months', `${input.months} months`],
-      ['Interest', `${input.ratePct}% p.a.`],
-    ], y) + SECTION_GAP
-
-  y =
-    keyValueTable(doc, autoTable, 'Summary', [
-      ['Monthly EMI', rs(res.monthlyEmi)],
-      ['Total interest', rs(res.totalInterest)],
-      ['Total payment', rs(res.totalPayment)],
-    ], y) + 12
-
-  // how the Summary figures are worked out - kept beside them
   const pageW = doc.internal.pageSize.getWidth()
   const pageH = doc.internal.pageSize.getHeight()
+  const gap = 8, cardW = (pageW - M * 2 - gap * 2) / 3
+  if (y + 250 > pageH - 60) { doc.addPage(); y = 60 }
+  y = pdfHeading(doc, 'Loan Overview', y)
+  const inputs = [
+    ['Solar system price (incl. GST)', rs(input.price)],
+    ['Loan Tenure', `${input.months} months`],
+    ['Interest Rate', `${input.ratePct}% p.a.`],
+  ]
+  inputs.forEach(([label, value], i) => pdfCard(doc, M + i * (cardW + gap), y, cardW, 44, label, value))
+  y += 44 + SECTION_GAP
+  y = pdfHeading(doc, 'Financial Results', y)
+  const summary = [
+    ['Monthly EMI', rs(res.monthlyEmi), 'Monthly loan payment'],
+    ['Total Interest', rs(res.totalInterest), 'Over the loan tenure'],
+    ['Total Payment', rs(res.totalPayment), 'Principal plus interest'],
+  ]
+  summary.forEach(([label, value, sub], i) => pdfCard(doc, M + i * (cardW + gap), y, cardW, 72, label, value, sub, ORANGE))
+  y += 72 + SECTION_GAP
+
+  // Keep the calculation method beside the financial results.
   doc.setFontSize(8.5)
   doc.setTextColor(90, 90, 100)
   const note = doc.splitTextToSize(
@@ -163,11 +41,11 @@ export async function downloadEmiPdf(input: EmiInput, res: EmiResult, contact: L
   y += note.length * doc.getLineHeight() + SECTION_GAP
 
   // ---- balance chart ----------------------------------------------------
-  if (y + TITLE_GAP + CHART_TOP + CHART_H + CHART_BOTTOM > pageH - 60) {
+  if (y + 22 + CHART_TOP + CHART_H + CHART_BOTTOM > pageH - 60) {
     doc.addPage()
     y = 60
   }
-  y = section(doc, 'Outstanding balance over the term', y, M)
+  y = pdfHeading(doc, 'Outstanding balance over the term', y)
   drawBalanceChart(doc, res.rows, M, y + CHART_TOP, pageW - M * 2, CHART_H, ORANGE)
   y += CHART_TOP + CHART_H + CHART_BOTTOM + SECTION_GAP
 
@@ -176,7 +54,7 @@ export async function downloadEmiPdf(input: EmiInput, res: EmiResult, contact: L
     doc.addPage()
     y = 60
   }
-  y = section(doc, 'Amortisation schedule', y, M)
+  y = pdfHeading(doc, 'Amortisation schedule', y)
   autoTable(doc, {
     startY: y,
     // top only applies to continuation pages; bottom stays ~10pt clear of the footer
@@ -201,23 +79,6 @@ export async function downloadEmiPdf(input: EmiInput, res: EmiResult, contact: L
 }
 
 /* ------------------------------------------------------------------ */
-
-function section(doc: import('jspdf').jsPDF, label: string, y: number, x: number): number {
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(11)
-  doc.setTextColor(23, 22, 63)
-  doc.text(label, x, y)
-  doc.setDrawColor(243, 160, 46)
-  doc.setLineWidth(1.5)
-  doc.line(x, y + 5, x + 26, y + 5)
-  doc.setFont('helvetica', 'normal')
-  return y + TITLE_GAP
-}
-
-function afterTable(doc: import('jspdf').jsPDF): number {
-  // jspdf-autotable stashes the finished table on the doc
-  return (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY
-}
 
 function drawBalanceChart(
   doc: import('jspdf').jsPDF,

@@ -55,6 +55,7 @@ export const nav: NavGroup[] = [
           { label: 'FAQ', to: '/faq/' },
           { label: 'Useful Links', to: '/useful-links/' },
           { label: 'EMI Calculator', to: '/emi-calculator/' },
+          { label: 'ROI Calculator', to: '/roi-calculator/' },
         ],
       },
     ],
@@ -86,6 +87,7 @@ export const footerNav = {
     { label: 'FAQ', to: '/faq/' },
     { label: 'Useful Links', to: '/useful-links/' },
     { label: 'EMI Calculator', to: '/emi-calculator/' },
+    { label: 'ROI Calculator', to: '/roi-calculator/' },
   ],
   Policies: [
     { label: 'Terms & Conditions', to: '/terms/' },
