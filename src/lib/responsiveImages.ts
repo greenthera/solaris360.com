@@ -6,12 +6,14 @@ const images = import.meta.glob<string>(
   { eager: true, query: '?url', import: 'default' },
 )
 
+const intrinsicSizes = new Map<string, { width: number; height: number }>()
 const webpSources = new Map<string, string>()
 const avifSources = new Map<string, string>()
-for (const [name, { width }] of Object.entries(dimensions)) {
+for (const [name, { width, height }] of Object.entries(dimensions)) {
   const path = `../assets/${name}`
   const original = images[path]
   if (!original) continue
+  intrinsicSizes.set(original, { width, height })
   const sizes = [480, 800, 1200, 1440].filter((size) => size < width)
   for (const [extension, sources] of [['webp', webpSources], ['avif', avifSources]] as const) {
     const candidates = sizes.flatMap((size) => {
@@ -26,3 +28,6 @@ for (const [name, { width }] of Object.entries(dimensions)) {
 
 export const responsiveImageSrcSet = (src: string) => webpSources.get(src)
 export const responsiveAvifSrcSet = (src: string) => avifSources.get(src)
+
+/** Actual source dimensions; parent containers still control the intended crop. */
+export const responsiveImageDimensions = (src: string) => intrinsicSizes.get(src) ?? {}

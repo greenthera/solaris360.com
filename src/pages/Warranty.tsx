@@ -45,7 +45,7 @@ export default function Warranty() {
     <>
       <Seo
         title={warranty.title}
-        description={`${warranty.title} for Solaris360 (solaris360.com).`}
+        description={warranty.description}
         path="/warranty/"
       />
       <PageHero

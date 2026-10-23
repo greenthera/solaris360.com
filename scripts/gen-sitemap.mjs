@@ -5,11 +5,11 @@
 //  2. generate sitemap.xml + robots.txt (into dist/ and public/)
 //  3. write meta-refresh stubs for the old WordPress URLs
 //  4. copy the self-hosted fonts' OFL licences into dist/assets
-import { readdirSync, statSync, writeFileSync, readFileSync, mkdirSync, copyFileSync } from 'node:fs'
+import { readdirSync, statSync, writeFileSync, readFileSync, mkdirSync, copyFileSync, existsSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 const DIST = 'dist'
-const ORIGIN = 'https://www.solaris360.com'
+const ORIGIN = 'https://solaris360.com' // keep in step with company.domain
 // vite `base` as built (e.g. "/solaris360.com/" on GitHub Pages, "/" on the apex domain)
 const BASE =
   readFileSync(join(DIST, 'index.html'), 'utf8').match(/src="([^"]*\/)assets\/app-[^"]*\.js"/)?.[1] ?? '/'
@@ -65,6 +65,7 @@ function cleanHtml(file) {
 // old solaris360.com path -> new path
 const REDIRECTS = {
   'about-us': '/about/',
+  'roi-calculater': '/roi-calculator/',
   'contact-us2': '/contact/',
   'privacy-policy-2': '/privacy/',
   'terms-and-conditions': '/terms/',
@@ -124,6 +125,12 @@ for (const dir of [DIST, 'public']) {
 }
 
 console.log(`[sitemap] ${uniq.length} URLs written`)
+
+// every sitemap page needs its share image (Seo.tsx points og:image at /og/<slug>.jpg)
+const missingOg = uniq
+  .map((u) => (u === '/' ? 'home' : u.replace(/^\/|\/$/g, '')))
+  .filter((slug) => !existsSync(join(DIST, 'og', `${slug}.jpg`)))
+if (missingOg.length) console.warn(`[og] missing share images - run npm run og: ${missingOg.join(', ')}`)
 
 // SIL OFL 1.1: ship each self-hosted font's licence alongside the built font files
 const FONTS = 'src/assets/fonts'

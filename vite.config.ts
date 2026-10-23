@@ -6,9 +6,9 @@ import type {} from 'vite-react-ssg/node'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Served from a sub-path on GitHub Pages: greenthera.shivantra.com/solaris360.com/
-  // (repo name is "solaris360.com"). Change to '/' when moving to the apex domain.
-  base: '/solaris360.com/',
+  // Served from the domain root: GitHub Pages custom domain solaris360.com (public/CNAME).
+  // Was '/solaris360.com/' while staged at greenthera.shivantra.com/solaris360.com/.
+  base: '/',
   plugins: [react(), tailwindcss()],
   build: {
     target: 'es2022',

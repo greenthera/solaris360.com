@@ -11,7 +11,7 @@ export default function SystemFeatures() {
     <>
       <Seo
         title="System Features"
-        description="25-year module warranty, 10-year inverter warranty, 5-year plant service warranty, ~4-year payback, web monitoring, government subsidy up to 25%, and 24×7 toll-free inverter support."
+        description="25-year module and 10-year inverter warranty, 5-year plant service, about 4-year payback, web monitoring, up to 25% subsidy and 24x7 inverter support."
         path="/system-features/"
       />
       <PageHero image={pageHeroImg} eyebrow="EPC Services" title="Our system features" intro="What every Solaris360 rooftop system comes with." />

@@ -6,6 +6,8 @@ export interface LegalSection {
 
 export interface LegalDoc {
   title: string
+  /** meta description, 120-160 characters */
+  description: string
   updated?: string
   intro?: string[]
   sections: LegalSection[]

@@ -1,17 +1,22 @@
 import { Seo } from '../components/layout/Seo'
+import { serviceLd } from '../lib/schema'
 import pageHeroImg from '../assets/solaris-square-epc.webp'
 import contentImg from '../assets/solaris-panorama-epc.webp'
 import { PageHero, Section, SectionTitle, ImageBand } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
 import { epcScope, epcBlocks } from '../content/services'
 
+const EPC_DESCRIPTION =
+  "Solaris360's rooftop solar EPC service in Surat: design, GEDA and DISCOM approvals, supply of panels, inverter and structures, installation and commissioning."
+
 export default function EpcServices() {
   return (
     <>
       <Seo
-        title="EPC Services"
-        description="Solaris360's engineering, procurement and construction scope: design, GEDA/DISCOM liasoning, supply of panels, inverter and structures, installation, earthing and commissioning."
+        title="Rooftop Solar EPC Services in Surat"
+        description={EPC_DESCRIPTION}
         path="/epc-services/"
+        jsonLd={[serviceLd('Rooftop solar EPC', '/epc-services/', EPC_DESCRIPTION, 'Solar power EPC (engineering, procurement and construction)')]}
       />
       <PageHero image={pageHeroImg}
         eyebrow="EPC Services"

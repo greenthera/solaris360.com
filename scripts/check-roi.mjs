@@ -11,7 +11,7 @@ const errors=[];page.on('pageerror', e=>errors.push(e.message))
 const leads=[]
 await context.route('https://docs.google.com/forms/**', async route=> { leads.push(new URLSearchParams(route.request().postData()));await route.fulfill({status:200,body:''}) })
 await context.route('https://www.googletagmanager.com/**', route=>route.abort())
-const base = process.env.ROI_TEST_BASE_URL || 'http://127.0.0.1:5173/solaris360.com/'
+const base = process.env.ROI_TEST_BASE_URL || 'http://127.0.0.1:5173/'
 await page.goto(base+'roi-calculator/',{waitUntil:'networkidle'})
 await page.getByRole('heading',{name:'Solar ROI Calculator',exact:true}).waitFor()
 console.log('default',await page.locator('.roi-metrics').innerText())
@@ -54,8 +54,24 @@ assert.equal(leads.length,1)
 assert.equal(leads[0].get('entry.764862047'),'ROI calculator')
 assert.match(leads[0].get('entry.958728776'),/Specific|specificYield/)
 assert.ok((await fs.stat(path.join(artifacts, 'roi-report.pdf'))).size>5000)
-await page.getByRole('button',{name:'Share',exact:true}).click()
-const shared=await page.evaluate(()=>navigator.clipboard.readText())
+const shareButton = page.getByRole('button', { name: 'Share', exact: true })
+let shared
+if (await shareButton.count()) {
+ await shareButton.click()
+ shared = await page.evaluate(() => navigator.clipboard.readText())
+} else {
+ // Outgoing sharing is intentionally hidden; incoming links must still restore.
+ const fields = {
+  systemSize: 'System Size', systemCost: 'Installation Cost', electricityPrice: 'Electricity Price',
+  specificYield: 'Specific Yield', degradationRate: 'Panel Degradation', electricityInflation: 'Electricity Inflation',
+  systemLifetime: 'System Lifetime', selfConsumption: 'Self-Consumption', exportTariff: 'Export Tariff',
+ }
+ const input = Object.fromEntries(await Promise.all(Object.entries(fields).map(async ([key, label]) =>
+  [key, Number(await page.getByLabel(label, { exact: true }).inputValue())],
+ )))
+ const payload = { input, currency: 'INR', symbol: '₹' }
+ shared = `${base}roi-calculator/#share=${btoa(encodeURIComponent(JSON.stringify(payload)))}`
+}
 assert.ok(shared.includes('#share='));assert.ok(!decodeURIComponent(atob(shared.split('#share=')[1])).includes('ROI Test User'))
 const sharedPage=await context.newPage();await sharedPage.goto(shared,{waitUntil:'networkidle'});assert.equal(await sharedPage.getByLabel('Installation Cost',{exact:true}).inputValue(),'10000');await sharedPage.close()
 await page.getByLabel('Self-Consumption',{exact:true}).fill('101');assert.equal(await page.locator('.roi-metrics').count(),0);assert.equal(await page.getByRole('button',{name:'Export PDF',exact:true}).isDisabled(),true)

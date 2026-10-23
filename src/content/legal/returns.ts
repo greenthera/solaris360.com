@@ -3,6 +3,8 @@ import type { LegalDoc } from './types'
 /** Verbatim from /return-cancellation-policy/. */
 export const returns: LegalDoc = {
   title: 'Return & Cancellation Policy',
+  description:
+    "Solaris360's return and cancellation policy - cancelling before or after shipment, returns and replacements, exclusions and how to request a return.",
   sections: [
     {
       heading: 'Cancellation before shipment',

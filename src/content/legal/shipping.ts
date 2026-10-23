@@ -3,6 +3,8 @@ import type { LegalDoc } from './types'
 /** Verbatim from /shipping-transportation-policy/. */
 export const shipping: LegalDoc = {
   title: 'Shipping / Transportation Policy',
+  description:
+    "Solaris360's shipping and transportation policy - delivery process and locations, order tracking, estimated delivery times and transport charges.",
   sections: [
     {
       heading: 'Delivery process',

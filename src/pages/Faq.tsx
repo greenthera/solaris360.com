@@ -20,7 +20,7 @@ export default function Faq() {
   return (
     <>
       <Seo
-        title="FAQ"
+        title="Rooftop Solar FAQs"
         description="Frequently asked questions about rooftop solar - plant size, power cuts, back-up inverters, appliances, and the roof area you need."
         path="/faq/"
         jsonLd={jsonLd}

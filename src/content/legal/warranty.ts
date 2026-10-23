@@ -7,6 +7,8 @@ import type { LegalDoc } from './types'
  */
 export const warranty: LegalDoc = {
   title: 'Warranty',
+  description:
+    'Solaris360 rooftop solar warranty - solar module and inverter cover, the plant service (workmanship) warranty, what is not covered and how to claim.',
   intro: [
     'Solaris360 delivers rooftop solar as an EPC contractor: we design, supply, install and commission the system, then support it. The cover below combines the manufacturers’ product warranties on the equipment we supply with our own workmanship and service warranty on the installation.',
     'This page summarises the terms already stated across our EPC Services and System Features pages. Exact terms are confirmed in your project proposal and the manufacturer documentation handed over at commissioning.',

@@ -8,7 +8,7 @@ export function LegalPage({ doc, path }: { doc: LegalDoc; path: string }) {
     <>
       <Seo
         title={doc.title}
-        description={`${doc.title} for Solaris360 (solaris360.com).`}
+        description={doc.description}
         path={path}
         noindex={false}
       />

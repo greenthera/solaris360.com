@@ -8,8 +8,8 @@ export default function UsefulLinks() {
   return (
     <>
       <Seo
-        title="Useful Links"
-        description="Government and DISCOM portals for solar in Gujarat - Surya Gujarat, GEDA, Torrent Power and DGVCL."
+        title="Solar Subsidy and DISCOM Links"
+        description="Government and DISCOM portals for rooftop solar in Gujarat - Surya Gujarat, GEDA, Torrent Power and DGVCL - for subsidy, approvals and connections."
         path="/useful-links/"
       />
       <PageHero image={pageHeroImg} eyebrow="Knowledge Center" title="Useful links" intro="Government and DISCOM portals for going solar in Gujarat." />

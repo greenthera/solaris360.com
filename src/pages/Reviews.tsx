@@ -6,36 +6,12 @@ import { company } from '../content/company'
 import { testimonials } from '../content/testimonials'
 
 export default function Reviews() {
-  const jsonLd = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      // same entity as the site-wide LocalBusiness block (Seo.tsx) - merge, don't duplicate
-      '@id': `${company.domain}/#business`,
-      name: company.legalName,
-      url: company.domain,
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: Number(company.reviews.average),
-        reviewCount: company.reviews.count,
-        bestRating: 5,
-      },
-      review: testimonials.slice(0, 12).map((t) => ({
-        '@type': 'Review',
-        reviewRating: { '@type': 'Rating', ratingValue: t.rating, bestRating: 5 },
-        author: { '@type': 'Person', name: t.author },
-        reviewBody: t.text,
-      })),
-    },
-  ]
-
   return (
     <>
       <Seo
-        title="Reviews"
-        description={`What Solaris360 customers say - ${company.reviews.count} Google reviews, rated ${company.reviews.average} out of 5, for rooftop solar EPC across Surat.`}
+        title="Solar Installation Customer Reviews"
+        description={`What Solaris360 customers say about their rooftop solar - ${company.reviews.count} Google reviews, rated ${company.reviews.average} out of 5, for installation and service across Surat.`}
         path="/reviews/"
-        jsonLd={jsonLd}
       />
       <PageHero
         image={pageHeroImg}

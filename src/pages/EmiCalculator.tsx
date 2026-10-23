@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { Seo } from '../components/layout/Seo'
+import { calculatorLd } from '../lib/schema'
 import pageHeroImg from '../assets/solaris-india-consultation.webp'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Field } from '../components/emi/Field'
@@ -10,6 +11,9 @@ import { calcEmi } from '../lib/emi'
 import { submitLead, validateLead, type LeadContact, type LeadErrors } from '../lib/leads'
 import { inr } from '../lib/format'
 import { wa, waMsg } from '../content/company'
+
+const EMI_DESCRIPTION =
+  'Estimate the monthly EMI on a rooftop solar system from its price, loan tenure and interest rate - with total interest and total payment.'
 
 export default function EmiCalculator() {
   const [price, setPrice] = useState(400000)
@@ -63,8 +67,9 @@ export default function EmiCalculator() {
     <>
       <Seo
         title="Solar Loan EMI Calculator"
-        description="Estimate the monthly EMI on a rooftop solar system from its price, loan tenure and interest rate - with total interest and total payment."
+        description={EMI_DESCRIPTION}
         path="/emi-calculator/"
+        jsonLd={[calculatorLd('Solar Loan EMI Calculator', '/emi-calculator/', EMI_DESCRIPTION)]}
       />
       <PageHero
         image={pageHeroImg}

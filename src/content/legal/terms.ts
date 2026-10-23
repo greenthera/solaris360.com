@@ -3,6 +3,8 @@ import type { LegalDoc } from './types'
 /** Verbatim from /terms-and-conditions/ (light copy-editing of spelling only). */
 export const terms: LegalDoc = {
   title: 'Terms and Conditions',
+  description:
+    'Terms and conditions for using the Solaris360 website and its rooftop solar products and services - liability, content, accounts and governing law.',
   updated: 'Last updated: March 13, 2022',
   intro: ['Please read these terms and conditions carefully before using our service.'],
   sections: [

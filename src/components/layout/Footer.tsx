@@ -3,7 +3,7 @@ import { Logo } from './Logo'
 import { footerNav } from '../../content/nav'
 import { company, wa, waMsg } from '../../content/company'
 import { showCookiePreferences } from '../../lib/cookieConsent'
-import { responsiveAvifSrcSet } from '../../lib/responsiveImages'
+import { responsiveAvifSrcSet, responsiveImageSrcSet } from '../../lib/responsiveImages'
 import ctaImg from '../../assets/solaris-india-consultation.webp'
 
 const policies = [
@@ -24,6 +24,8 @@ export function Footer() {
           <source type="image/avif" srcSet={responsiveAvifSrcSet(ctaImg)} sizes="100vw" />
           <img
             src={ctaImg}
+            srcSet={responsiveImageSrcSet(ctaImg)}
+            sizes="100vw"
             alt=""
             aria-hidden="true"
             loading="lazy"

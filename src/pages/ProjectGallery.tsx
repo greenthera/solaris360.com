@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { responsiveImageSrcSet, responsiveAvifSrcSet } from '../lib/responsiveImages'
+import { responsiveImageSrcSet, responsiveAvifSrcSet, responsiveImageDimensions } from '../lib/responsiveImages'
 import { Seo } from '../components/layout/Seo'
 import { PageHero, Section } from '../components/ui/primitives'
 import { Reveal } from '../components/ui/Reveal'
@@ -42,7 +42,7 @@ export default function ProjectGallery() {
     <>
       <Seo
         title="Project Gallery"
-        description="Illustrative images of residential, commercial and industrial solar installation and maintenance in India."
+        description="Illustrative images of residential, commercial and industrial rooftop solar installation and maintenance - the kind of work Solaris360 does across Surat."
         path="/project-gallery/"
       />
       <PageHero eyebrow="EPC Services" title="Photo gallery" intro="Explore residential, industrial and commercial solar in an Indian setting." />
@@ -86,8 +86,7 @@ export default function ProjectGallery() {
                     loading={i < 2 ? 'eager' : 'lazy'}
                     fetchPriority={i < 2 ? 'high' : 'auto'}
                     className="h-full w-full object-cover"
-                    width={800}
-                    height={800}
+                    {...responsiveImageDimensions(s.src)}
                   />
                 </picture>
               </button>

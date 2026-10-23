@@ -122,6 +122,7 @@
 
   /* Light-ground sections (shop, legal, calculator body) */
   .surface-paper {
+    color-scheme: light;
     background: var(--color-paper);
     color: var(--color-navy);
   }

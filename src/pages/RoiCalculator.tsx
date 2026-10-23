@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Seo } from '../components/layout/Seo'
+import { calculatorLd } from '../lib/schema'
 import { PageHero } from '../components/ui/primitives'
 import pageHeroImg from '../assets/solaris-india-residential.webp'
 import { LeadFields } from '../components/ui/LeadFields'
@@ -14,6 +15,9 @@ import '../styles/roi.css'
 
 /** Share button hidden for now - set to true to show it again. Incoming #share= links still open. */
 const SHOW_SHARE = false
+
+const ROI_DESCRIPTION =
+  'Calculate solar generation, annual savings, payback, lifetime returns and CO2 reduction. Download your personalized Solaris360 ROI report.'
 
 export default function RoiCalculator() {
   const [settings, setSettings] = useState({ ...defaultRoiSettings })
@@ -100,7 +104,7 @@ export default function RoiCalculator() {
     catch { setShareUrl(url); setNotice('Copy the link below to share this estimate.') }
   }
   return <>
-    <Seo title="Solar ROI Calculator" description="Calculate solar generation, annual savings, payback, lifetime returns and CO2 reduction. Download your personalized Solaris360 ROI report." path="/roi-calculator/" />
+    <Seo title="Solar ROI Calculator" description={ROI_DESCRIPTION} path="/roi-calculator/" jsonLd={[calculatorLd('Solar ROI Calculator', '/roi-calculator/', ROI_DESCRIPTION)]} />
     <PageHero
       image={pageHeroImg}
       eyebrow="Knowledge Center"

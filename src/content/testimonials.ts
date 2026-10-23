@@ -1,5 +1,5 @@
 /**
- * Customer reviews (Google, via Outscraper export 2026-09-09).
+ * Customer reviews (Google, via Outscraper exports 2026-09-09 and 2026-10-23).
  * Verbatim review text; ordered longer / substantive first.
  */
 
@@ -45,6 +45,12 @@ Surat`,
     rating: 5,
     date: 'Apr 2025',
     text: `Well, the service is good and staff is polite. They helped me for long time in setup and made sure that the set up is done properly. It is very important that client also understands the working of solar plant, and for that, they always help. Full marks for them. Go for it.....`,
+  },
+  {
+    author: 'Ar. Nilkantha Burkhawala',
+    rating: 5,
+    date: 'Sep 2026',
+    text: `My solar installation is more than 5 years now. Everything was smooth during installation. Over the years, there has been no complains. There were a few times when I needed, and the response is prompt. Have recommended personally to a number of clients.`,
   },
   {
     author: 'Ikka Chitte',

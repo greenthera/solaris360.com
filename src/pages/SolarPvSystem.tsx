@@ -10,7 +10,7 @@ export default function SolarPvSystem() {
     <>
       <Seo
         title="Solar PV System"
-        description="Off-grid / standalone, grid-connected and hybrid solar power systems - how each works and where it fits."
+        description="Off-grid, grid-connected and hybrid rooftop solar systems explained - how each one works and which suits your home or business in Surat."
         path="/solar-pv-system/"
       />
       <PageHero image={pageHeroImg}

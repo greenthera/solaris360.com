@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react'
-import { responsiveImageSrcSet, responsiveAvifSrcSet } from '../../lib/responsiveImages'
+import { responsiveImageSrcSet, responsiveAvifSrcSet, responsiveImageDimensions } from '../../lib/responsiveImages'
 import { Link } from 'react-router-dom'
 import { Reveal } from './Reveal'
 import { VectorGround } from './VectorGround'
@@ -64,8 +64,7 @@ export function PageHero({
                 sizes="(min-width: 424px) 384px, calc(100vw - 40px)"
                 alt=""
                 aria-hidden="true"
-                width={1536}
-                height={1536}
+                {...responsiveImageDimensions(image)}
                 decoding="async"
                 className="block h-full w-full object-cover"
                 fetchPriority="high"
@@ -102,7 +101,7 @@ export function MediaRow({
       <div className={`relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-white/12 ${flip ? 'md:order-2' : ''}`}>
         <picture className="contents">
           <source type="image/avif" srcSet={responsiveAvifSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" />
-          <img src={image} srcSet={responsiveImageSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" alt={alt} loading="lazy" decoding="async" className="block h-full w-full object-cover" />
+          <img src={image} {...responsiveImageDimensions(image)} srcSet={responsiveImageSrcSet(image)} sizes="(min-width: 424px) 384px, calc(100vw - 40px)" alt={alt} loading="lazy" decoding="async" className="block h-full w-full object-cover" />
         </picture>
         <div className="absolute inset-0 bg-linear-to-t from-ink/40 to-transparent" aria-hidden="true" />
       </div>
@@ -118,7 +117,7 @@ export function ImageBand({ image, alt, caption }: { image: string; alt: string;
       <div className="aspect-[3/1] overflow-hidden border-y border-white/10">
         <picture className="contents">
           <source type="image/avif" srcSet={responsiveAvifSrcSet(image)} sizes="100vw" />
-          <img src={image} srcSet={responsiveImageSrcSet(image)} sizes="100vw" alt={alt} loading="lazy" decoding="async" width={2400} height={800} className="block h-full w-full object-cover" />
+          <img src={image} {...responsiveImageDimensions(image)} srcSet={responsiveImageSrcSet(image)} sizes="100vw" alt={alt} loading="lazy" decoding="async" className="block h-full w-full object-cover" />
         </picture>
       </div>
       {caption && (

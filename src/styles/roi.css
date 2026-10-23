@@ -1,5 +1,6 @@
 /* Scoped to the ROI workspace so existing pages and animations stay untouched. */
 .roi-workspace {
+    color-scheme: light;
     display: flex;
     background: #f8fafc;
     color: #1e293b;

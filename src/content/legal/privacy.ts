@@ -7,6 +7,8 @@ import type { LegalDoc } from './types'
  */
 export const privacy: LegalDoc = {
   title: 'Privacy Policy',
+  description:
+    'How Solaris360 collects, uses and protects your information - EMI and ROI calculator reports, cookies, Google Analytics and your consent choices.',
   updated: 'Last updated: October 23, 2026',
   intro: [
     'At SOLARIS 360, accessible from www.solaris360.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains the types of information that is collected and recorded by SOLARIS 360 and how we use it.',

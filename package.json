@@ -10,7 +10,9 @@
     "test": "vitest run",
     "preview": "vite preview --outDir dist",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -t"
+    "deploy": "gh-pages -d dist -t",
+    "og": "node scripts/gen-og.mjs",
+    "check:seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",

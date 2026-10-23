@@ -52,7 +52,7 @@ export const company = {
     youtube: 'https://www.youtube.com/channel/UCInkRQ7l75_8u5xVVPeFnAw',
   },
 
-  /** Google Business reviews (snapshot from the 2026-09-09 export). */
+  /** Google Business reviews (snapshot from the 2026-10-23 export - unchanged since 2026-09-09). */
   reviews: {
     count: 104,
     average: '5.0',
@@ -66,7 +66,8 @@ export const company = {
   },
 
   ga4: 'G-QPCP96RNWK',
-  domain: 'https://www.solaris360.com',
+  // canonical host - matches the GitHub Pages custom domain (public/CNAME); www redirects here
+  domain: 'https://solaris360.com',
 } as const
 
 /** Build a wa.me deep link with a pre-filled message. */
