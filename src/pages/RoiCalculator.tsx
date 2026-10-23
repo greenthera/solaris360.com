@@ -12,6 +12,9 @@ import { submitLead, validateLead, type LeadContact, type LeadErrors } from '../
 import t from '../content/roi/copy.json'
 import '../styles/roi.css'
 
+/** Share button hidden for now - set to true to show it again. Incoming #share= links still open. */
+const SHOW_SHARE = false
+
 export default function RoiCalculator() {
   const [settings, setSettings] = useState({ ...defaultRoiSettings })
   const [inputs, setInputs] = useState<RoiInput>(() => defaultRoiInput(defaultRoiSettings))
@@ -124,9 +127,9 @@ export default function RoiCalculator() {
               {numeric('electricityInflation', t.calc.electricityInflation, '% / yr', t.calc.tooltipInflation, 0.5)}
               {numeric('systemLifetime', t.calc.systemLifetime, t.common.years, t.calc.tooltipLifetime, 1)}
             </div></details>
-            <div className="roi-actions"><button type="button" className="roi-button" onClick={() => { setSettings({ ...defaultRoiSettings }); setInputs(defaultRoiInput(defaultRoiSettings)); setNotice(''); setShareUrl(''); window.history.replaceState(null, '', window.location.pathname + window.location.search) }}>{t.calc.resetInputs}</button><button type="button" className="roi-button" disabled={!result || busy} onClick={share}>{t.calc.shareLink}</button><button type="submit" className="roi-button roi-primary" disabled={!result || busy}>{busy ? t.calc.generatingPdf : t.calc.exportPDF}</button></div>
+            <div className="roi-actions"><button type="button" className="roi-button" onClick={() => { setSettings({ ...defaultRoiSettings }); setInputs(defaultRoiInput(defaultRoiSettings)); setNotice(''); setShareUrl(''); window.history.replaceState(null, '', window.location.pathname + window.location.search) }}>{t.calc.resetInputs}</button>{SHOW_SHARE && <button type="button" className="roi-button" disabled={!result || busy} onClick={share}>{t.calc.shareLink}</button>}<button type="submit" className="roi-button roi-primary" disabled={!result || busy}>{busy ? t.calc.generatingPdf : t.calc.exportPDF}</button></div>
             <p className="roi-note">Get a PDF with your results, graph and yearly schedule. We use your details only to contact you about solar. <Link to="/privacy/">Privacy Policy</Link></p>
-            {shareUrl && <label className="roi-field">Share link<input readOnly value={shareUrl} onFocus={e => e.target.select()} /></label>}
+            {SHOW_SHARE && shareUrl && <label className="roi-field">Share link<input readOnly value={shareUrl} onFocus={e => e.target.select()} /></label>}
             <p role="status" className="roi-notice">{notice}</p>
           </div>
           <div className="roi-results">
