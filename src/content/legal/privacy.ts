@@ -19,7 +19,7 @@ export const privacy: LegalDoc = {
       body: [
         'The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.',
         'If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.',
-        'When you generate an EMI report with our solar loan EMI calculator, we collect your name, phone number and (if you provide it) email address, together with the figures you entered. These details are stored in Google Forms and Google Sheets and are used only to contact you about solar financing and your enquiry.',
+        'When you generate a report with our solar loan EMI calculator or our solar ROI calculator, we collect your name, phone number and (if you provide it) email address, together with the figures you entered. These details are stored in Google Forms and Google Sheets and are used only to contact you about solar financing, your solar system and your enquiry.',
         'When you register for an account, we may ask for your contact information, including name, company name, address, email address, and telephone number.',
       ],
     },
