@@ -1,0 +1,1 @@
+var e=`/assets/solaris-india-service-B-1TGW88.webp`;export{e as t};

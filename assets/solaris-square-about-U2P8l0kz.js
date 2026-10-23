@@ -1,0 +1,1 @@
+var e=`/assets/solaris-square-about-DypjfxkT.webp`;export{e as t};

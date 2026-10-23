@@ -1,0 +1,1 @@
+var e=`/assets/solaris-india-residential-vVphWFh0.webp`;export{e as t};

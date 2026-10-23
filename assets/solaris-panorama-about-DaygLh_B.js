@@ -1,0 +1,1 @@
+var e=`/assets/solaris-panorama-about-Bh457D4v.webp`;export{e as t};

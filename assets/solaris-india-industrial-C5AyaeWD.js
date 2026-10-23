@@ -1,1 +1,0 @@
-var e=`/solaris360.com/assets/solaris-india-industrial-C34XJWf_.webp`;export{e as t};

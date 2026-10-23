@@ -1,0 +1,1 @@
+var e=`/assets/solaris-square-why-solar-BOMOfU-T.webp`;export{e as t};

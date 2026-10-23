@@ -1,0 +1,1 @@
+var e=`/assets/solaris-square-pv-system-BuOElEUH.webp`;export{e as t};

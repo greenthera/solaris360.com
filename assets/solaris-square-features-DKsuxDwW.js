@@ -1,1 +1,0 @@
-var e=`/solaris360.com/assets/solaris-square-features-C-HiY-ly.webp`;export{e as t};
