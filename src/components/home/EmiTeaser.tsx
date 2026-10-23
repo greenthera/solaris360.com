@@ -1,13 +1,14 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Reveal } from '../ui/Reveal'
-import { simpleEmi } from '../../lib/emi'
+import { calcEmi } from '../../lib/emi'
 import { inr } from '../../lib/format'
 
 export function EmiTeaser() {
   const [price, setPrice] = useState(400000)
   const [months, setMonths] = useState(60)
-  const { monthlyEmi } = useMemo(() => simpleEmi({ price, months }), [price, months])
+  // same model as the full calculator, at its default 9% p.a.
+  const { monthlyEmi } = useMemo(() => calcEmi({ price, months, ratePct: 9 }), [price, months])
 
   return (
     <div className="grid gap-8 md:grid-cols-2 md:items-center">
@@ -15,8 +16,8 @@ export function EmiTeaser() {
         <p className="font-mono text-xs uppercase tracking-[0.25em] text-orange">Financing</p>
         <h2 className="mt-3 text-2xl md:text-4xl">What will it cost per month?</h2>
         <p className="mt-4 max-w-sm text-muted">
-          Slide to estimate. The full calculator adds reducing-balance interest, processing fee, GST,
-          the PM Surya Ghar subsidy and a month-by-month schedule.
+          Slide to estimate at 9% p.a. The full calculator lets you set your own interest rate and
+          shows the total interest and total payment.
         </p>
         <Link to="/emi-calculator/" className="btn btn-ghost mt-6">
           Open the full calculator

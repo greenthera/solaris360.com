@@ -1,4 +1,4 @@
-import type { AdvancedResult, AmortRow, SimpleEmiResult } from './emi'
+import type { AmortRow, EmiInput, EmiResult } from './emi'
 import { company } from '../content/company'
 import logoDataUrl from '../assets/logo-mark.png?inline'
 
@@ -113,12 +113,7 @@ function keyValueTable(
   return afterTable(doc)
 }
 
-export interface SimpleEmiPdfInput {
-  price: number
-  months: number
-}
-
-export async function downloadSimpleEmiPdf(input: SimpleEmiPdfInput, res: SimpleEmiResult) {
+export async function downloadEmiPdf(input: EmiInput, res: EmiResult) {
   const { jsPDF, autoTable } = await loadJsPdf()
   const doc = new jsPDF({ unit: 'pt', format: 'a4' })
 
@@ -128,92 +123,20 @@ export async function downloadSimpleEmiPdf(input: SimpleEmiPdfInput, res: Simple
   y =
     keyValueTable(doc, autoTable, 'Your inputs', [
       ['Solar system price (incl. GST)', rs(input.price)],
-      ['Tenure', `${input.months} months`],
-      ['Down payment', '20%'],
-      ['Flat interest rate', '9% p.a.'],
+      ['Months', `${input.months} months`],
+      ['Interest', `${input.ratePct}% p.a.`],
     ], y) + 20
 
   y =
     keyValueTable(doc, autoTable, 'Summary', [
       ['Monthly EMI', rs(res.monthlyEmi)],
-      ['Down payment (20%)', rs(res.downPayment)],
-      ['Loan amount (80%)', rs(res.loanAmount)],
       ['Total interest', rs(res.totalInterest)],
       ['Total payment', rs(res.totalPayment)],
-    ], y) + 24
-
-  doc.setFontSize(9)
-  doc.setTextColor(90, 90, 100)
-  doc.text(
-    doc.splitTextToSize(
-      'Simple model: 20% down payment, 80% financed at a flat 9% p.a. Total interest = loan x 9% x years; EMI = (loan + total interest) / months. For a lender-grade reducing-balance schedule with fees, GST and subsidy, use the Advanced mode.',
-      doc.internal.pageSize.getWidth() - M * 2,
-    ),
-    M,
-    y,
-  )
-
-  drawFooter(doc, 'Indicative estimate. The final EMI depends on your lender policies, processing fees and charges.')
-  doc.save('solaris360-emi-estimate.pdf')
-}
-
-export interface EmiPdfInput {
-  assetPrice: number
-  loanAmount: number
-  flatRatePct: number
-  months: number
-  processingFeePct: number
-  advanceEmiMonths: number
-  useSubsidy: boolean
-  subsidy: number
-  subsidyMonth: number
-}
-
-export async function downloadEmiPdf(input: EmiPdfInput, res: AdvancedResult) {
-  const { jsPDF, autoTable } = await loadJsPdf()
-
-  const doc = new jsPDF({ unit: 'pt', format: 'a4' })
-  const pageW = doc.internal.pageSize.getWidth()
-  const pageH = doc.internal.pageSize.getHeight()
-
-  drawHeader(doc)
-  let y = 98
-
-  // ---- inputs ----------------------------------------------------------
-  y =
-    keyValueTable(doc, autoTable, 'Your inputs', [
-      ['Asset price', rs(input.assetPrice)],
-      ['Loan amount', rs(input.loanAmount)],
-      ['Flat interest rate', `${input.flatRatePct}% p.a.`],
-      ['Tenor', `${input.months} months`],
-      ['Processing fee', `${input.processingFeePct}%`],
-      ['Advance EMI', `${input.advanceEmiMonths} months`],
-      [
-        'Subsidy prepayment (PM Surya Ghar)',
-        input.useSubsidy ? `${rs(input.subsidy)} in month ${input.subsidyMonth}` : 'Not applied',
-      ],
-    ], y) + 18
-
-  // ---- summary -------------------------------------------------------
-  const summaryRows: Row[] = [
-    ['Reducing rate p.a. (equivalent)', `${res.reducingRatePct.toFixed(2)}%`],
-    ['Monthly EMI', rs(res.emi)],
-    ...(res.emiAfterSubsidy ? ([['EMI after subsidy', rs(res.emiAfterSubsidy)]] as Row[]) : []),
-    ['Total interest', rs(res.totalInterest)],
-    ['Total payment', rs(res.totalPayment)],
-    ['Processing fee + 18% GST', `${rs(res.processingFee)} + ${rs(res.processingFeeGst)}`],
-    ['Stamp fee', rs(res.stampFee)],
-    ['Margin money (down payment)', rs(res.marginMoney)],
-    ['Advance EMI payable', rs(res.advancePayable)],
-    ['Outlay at disbursal', rs(res.disbursalOutlay)],
-  ]
-  y = keyValueTable(doc, autoTable, 'Summary', summaryRows, y) + 22
+    ], y) + 22
 
   // ---- balance chart ----------------------------------------------------
-  if (y + 210 > pageH - 60) {
-    doc.addPage()
-    y = 60
-  }
+  const pageW = doc.internal.pageSize.getWidth()
+  const pageH = doc.internal.pageSize.getHeight()
   y = section(doc, 'Outstanding balance over the term', y, M)
   drawBalanceChart(doc, res.rows, M, y, pageW - M * 2, 180, ORANGE)
   y += 180 + 28
@@ -226,12 +149,12 @@ export async function downloadEmiPdf(input: EmiPdfInput, res: AdvancedResult) {
   y = section(doc, 'Amortisation schedule', y, M)
   autoTable(doc, {
     startY: y,
-    margin: { left: M, right: M },
+    margin: { left: M, right: M, bottom: 60 },
     theme: 'striped',
     headStyles: { fillColor: NAVY, fontSize: 8.5 },
     styles: { fontSize: 8, cellPadding: 2.5, halign: 'right' },
-    columnStyles: { 0: { halign: 'left' }, 6: { halign: 'left', textColor: ORANGE } },
-    head: [['Month', 'Opening', 'EMI', 'Interest', 'Principal', 'Closing', 'Note']],
+    columnStyles: { 0: { halign: 'left' } },
+    head: [['Month', 'Opening', 'EMI', 'Interest', 'Principal', 'Closing']],
     body: res.rows.map((r) => [
       String(r.month),
       rs(r.opening),
@@ -239,14 +162,26 @@ export async function downloadEmiPdf(input: EmiPdfInput, res: AdvancedResult) {
       rs(r.interest),
       rs(r.principal),
       rs(r.closing),
-      (r.note ?? '').replace(/₹\s?/g, 'Rs '),
     ]),
   })
+  y = afterTable(doc) + 18
+  if (y + 30 > pageH - 60) {
+    doc.addPage()
+    y = 60
+  }
 
-  drawFooter(
-    doc,
-    'Flat rate is converted to an equivalent reducing-balance rate. Figures depend on the lender and the disbursement date.',
+  doc.setFontSize(9)
+  doc.setTextColor(90, 90, 100)
+  doc.text(
+    doc.splitTextToSize(
+      'Standard reducing-balance EMI on the full system price: EMI = P x r x (1 + r)^n / ((1 + r)^n - 1), where r is the monthly interest rate and n the number of months.',
+      pageW - M * 2,
+    ),
+    M,
+    y,
   )
+
+  drawFooter(doc, 'Indicative estimate. The final EMI depends on your lender policies, processing fees and charges.')
   doc.save('solaris360-emi-estimate.pdf')
 }
 
