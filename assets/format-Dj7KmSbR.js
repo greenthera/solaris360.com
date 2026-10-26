@@ -1,0 +1,1 @@
+var e=new Intl.NumberFormat(`en-IN`,{maximumFractionDigits:0});function t(t){return`₹ ${e.format(Math.round(t))}`}function n(t){return e.format(Math.round(t))}export{n,t};

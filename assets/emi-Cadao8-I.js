@@ -1,0 +1,1 @@
+function e(e,t,n){if(t<=0)return 0;if(e===0)return n/t;let r=(1+e)**+t;return e*n*r/(r-1)}function t({price:t,months:n,ratePct:r}){let i=r/1200,a=e(i,n,t),o=[],s=t;for(let e=1;e<=n;e++){let t=s*i,r=e===n?s:a-t,c=Math.max(s-r,0);o.push({month:e,opening:s,emi:t+r,interest:t,principal:r,closing:c}),s=c}let c=a*n;return{monthlyEmi:a,totalInterest:c-t,totalPayment:c,rows:o}}export{t};
