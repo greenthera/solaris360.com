@@ -33,4 +33,11 @@ describe('validateLead', () => {
   it('flags a malformed email only when one is given', () => {
     expect(validateLead({ ...ok, email: 'not-an-email' }).email).toBeTruthy()
   })
+  it('requires email only for forms that request it', () => {
+    expect(validateLead(ok, { requireEmail: true }).email).toBeTruthy()
+    expect(validateLead({ ...ok, email: 'asha@example.com' }, { requireEmail: true })).toEqual({})
+    expect(validateLead({ ...ok, email: 'invalid' }, { requireEmail: true }).email).toBeTruthy()
+    expect(validateLead(ok)).toEqual({})
+  })
+
 })

@@ -6,7 +6,7 @@ The site uses navy and orange branding, self-hosted fonts, responsive images, ve
 
 ## Production status
 
-Status reported on 23 October 2026: the Solaris360 production website is live at `solaris360.com`. SSL certificate generation is in progress. HTTPS is expected to be available with a valid SSL certificate within one hour of provisioning starting.
+The Solaris360 production website is live at `https://solaris360.com`, served over HTTPS with an SSL certificate.
 
 ## Development
 
@@ -15,14 +15,14 @@ npm ci
 npm run dev
 ```
 
-The current Vite base is `/`. Open the local URL printed by Vite; calculator routes are `/emi-calculator/` and `/roi-calculator/`.
+The current Vite base is `/`. Open the local URL printed by Vite; calculator routes are `/emi-calculator/`, `/roi-calculator/`, and `/gujarat-solar-subsidy-calculator/`.
 
 | Command | Purpose |
 | --- | --- |
 | `npm run dev` | Start the development server |
 | `npm run build` | Type-check, generate static pages, and run sitemap/HTML post-processing |
 | `npm run preview` | Serve the production build from `dist/` |
-| `npm test` | Run EMI, ROI, and lead-validation unit tests |
+| `npm test` | Run EMI, ROI, subsidy, and lead-validation unit tests |
 | `npm run lint` | Run ESLint |
 | `npm run check:seo` | Validate the built pages, metadata, images, internal links, sitemap, and 404 |
 | `npm run og` | Generate per-page social images in `public/og/` using Playwright |
@@ -32,8 +32,9 @@ The current Vite base is `/`. Open the local URL printed by Vite; calculator rou
 
 - **EMI Calculator:** estimates monthly payments, total interest, and total repayment using a reducing-balance loan model. Includes a balance chart and full amortisation schedule.
 - **ROI Calculator:** estimates annual generation and savings, simple payback, lifetime returns, break-even year, and CO2 reduction. Includes advanced assumptions, an interactive chart, a yearly breakdown, reset, and share links.
-- **Lead capture:** both calculators reuse contact fields and validation. Name and Indian mobile number are required; email is optional. Report requests submit a lead to the shared Google Form. Its cross-origin `no-cors` response cannot confirm receipt, and network failure does not prevent downloading a report.
-- **PDF export:** jsPDF reports share the Solaris360 logo header, linked footer, recipient card, navy/orange styling, and overview/result cards. Each report includes its calculator's chart and schedule. PDFs use `Rs` for INR with the existing PDF fonts.
+- **Gujarat Solar Subsidy Calculator:** estimates central assistance, Gujarat top-up, customer contribution, generation, and payback, with General/SC-ST categories, existing capacity, quotations, eligibility controls, and editable assumptions. See [implementation and policy notes](docs/gujarat-solar-subsidy-calculator.md).
+- **Lead capture:** all calculators reuse contact fields and validation. Name and Indian mobile number are required; email is optional for EMI/ROI and required for the subsidy report. Report requests submit a lead to the shared Google Form. Its cross-origin `no-cors` response cannot confirm receipt, and network failure does not prevent downloading a report.
+- **PDF export:** jsPDF reports share the Solaris360 logo header, linked footer, recipient card, navy/orange styling, and overview/result cards. EMI/ROI reports include charts and schedules; subsidy reports include the financial breakdown, rates, eligibility assumptions, and sources. PDFs use `Rs` for INR with the existing PDF fonts.
 - **Sharing:** ROI links contain calculation inputs and currency metadata, without contact details. Calculations and report generation run locally and do not depend on an external calculator website.
 
 The Contact page separately opens WhatsApp with a message the visitor can review and send.
@@ -44,6 +45,7 @@ With the development server running, use:
 
 ```bash
 ROI_TEST_BASE_URL=http://localhost:5173/ node scripts/check-roi.mjs
+SUBSIDY_TEST_BASE_URL=http://localhost:5173/ node scripts/check-subsidy.mjs
 ```
 
 Change the URL if Vite selects a different port. To test a production preview, run `npm run build` and `npm run preview`, then use its URL, typically `http://localhost:4173/`.

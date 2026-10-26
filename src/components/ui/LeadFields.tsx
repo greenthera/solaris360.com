@@ -7,6 +7,7 @@ interface LeadFieldsProps {
   errors?: LeadErrors
   /** light = on a white card (EMI calculator), dark = on navy/ink (Contact page) */
   tone?: 'light' | 'dark'
+  emailRequired?: boolean
   /** wrapper layout - stacked by default; pass a grid for side-by-side fields */
   className?: string
 }
@@ -17,6 +18,7 @@ export function LeadFields({
   onChange,
   errors = {},
   tone = 'light',
+  emailRequired = false,
   className = 'space-y-4',
 }: LeadFieldsProps) {
   const id = useId()
@@ -38,7 +40,7 @@ export function LeadFields({
   }[] = [
     { key: 'name', label: 'Name', required: true, type: 'text', autoComplete: 'name' },
     { key: 'phone', label: 'Phone', required: true, type: 'tel', autoComplete: 'tel', inputMode: 'tel' },
-    { key: 'email', label: 'Email', required: false, type: 'email', autoComplete: 'email', inputMode: 'email' },
+    { key: 'email', label: 'Email', required: emailRequired, type: 'email', autoComplete: 'email', inputMode: 'email' },
   ]
 
   return (

@@ -61,7 +61,7 @@ for (const url of urls) {
   assert.ok(blocks.some((b) => b['@type'] === 'WebPage' && b.url === url), `${url}: missing WebPage structured data`)
   assert.ok(blocks.some((b) => b['@type'] === 'WebSite'), `${url}: missing WebSite structured data`)
   if (parsed.pathname !== '/') assert.ok(blocks.some((b) => b['@type'] === 'BreadcrumbList'), `${url}: missing breadcrumbs`)
-  if (/\/(emi|roi)-calculator\//.test(parsed.pathname)) assert.ok(blocks.some((b) => b['@type'] === 'WebApplication'), `${url}: missing calculator structured data`)
+  if (/\/(?:emi|roi|gujarat-solar-subsidy)-calculator\//.test(parsed.pathname)) assert.ok(blocks.some((b) => b['@type'] === 'WebApplication'), `${url}: missing calculator structured data`)
   const ratingBlocks = blocks.filter((b) => b['@id'] === `${origin}/#business` && (b.aggregateRating || b.review))
   assert.equal(ratingBlocks.length, 0, `${url}: self-serving business review markup`)
   for (const img of tags(html, 'img')) {

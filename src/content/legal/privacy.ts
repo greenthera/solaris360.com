@@ -8,8 +8,8 @@ import type { LegalDoc } from './types'
 export const privacy: LegalDoc = {
   title: 'Privacy Policy',
   description:
-    'How Solaris360 collects, uses and protects your information - EMI and ROI calculator reports, cookies, Google Analytics and your consent choices.',
-  updated: 'Last updated: October 23, 2026',
+    'How Solaris360 collects, uses and protects your information - EMI, ROI and solar subsidy calculator reports, cookies, Google Analytics and your consent choices.',
+  updated: 'Last updated: October 26, 2026',
   intro: [
     'At SOLARIS 360, accessible from www.solaris360.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains the types of information that is collected and recorded by SOLARIS 360 and how we use it.',
     'This Privacy Policy applies only to our online activities and is valid for visitors to our website with regard to the information that they share and/or that we collect on SOLARIS 360. This policy is not applicable to any information collected offline or via channels other than this website.',
@@ -21,7 +21,7 @@ export const privacy: LegalDoc = {
       body: [
         'The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.',
         'If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.',
-        'When you generate a report with our solar loan EMI calculator or our solar ROI calculator, we collect your name, phone number and (if you provide it) email address, together with the figures you entered. These details are stored in Google Forms and Google Sheets and are used only to contact you about solar financing, your solar system and your enquiry.',
+        'When you generate a report with our solar loan EMI calculator, solar ROI calculator or Gujarat solar subsidy calculator, we collect your name, phone number and (if you provide it) email address, together with the figures you entered. The subsidy calculator requires an email address as well as your name and phone number before downloading a report. These details are stored in Google Forms and Google Sheets and are used only to contact you about solar financing, your solar system and your enquiry.',
         'When you register for an account, we may ask for your contact information, including name, company name, address, email address, and telephone number.',
       ],
     },

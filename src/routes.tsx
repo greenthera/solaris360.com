@@ -30,6 +30,7 @@ export const routes: RouteRecord[] = [
       { path: 'faq/', lazy: () => import('./pages/Faq').then(page) },
       { path: 'useful-links/', lazy: () => import('./pages/UsefulLinks').then(page) },
 
+      { path: 'gujarat-solar-subsidy-calculator/', lazy: () => import('./pages/GujaratSolarSubsidyCalculator').then(page) },
       { path: 'roi-calculator/', lazy: () => import('./pages/RoiCalculator').then(page) },
       { path: 'emi-calculator/', lazy: () => import('./pages/EmiCalculator').then(page) },
       { path: 'contact/', lazy: () => import('./pages/Contact').then(page) },

@@ -56,6 +56,7 @@ export const nav: NavGroup[] = [
           { label: 'Useful Links', to: '/useful-links/' },
           { label: 'EMI Calculator', to: '/emi-calculator/' },
           { label: 'ROI Calculator', to: '/roi-calculator/' },
+          { label: 'Solar Subsidy Calculator', to: '/gujarat-solar-subsidy-calculator/' },
         ],
       },
     ],
@@ -88,6 +89,7 @@ export const footerNav = {
     { label: 'Useful Links', to: '/useful-links/' },
     { label: 'EMI Calculator', to: '/emi-calculator/' },
     { label: 'ROI Calculator', to: '/roi-calculator/' },
+    { label: 'Solar Subsidy Calculator', to: '/gujarat-solar-subsidy-calculator/' },
   ],
   Policies: [
     { label: 'Terms & Conditions', to: '/terms/' },

@@ -26,6 +26,7 @@ const pages = [
   { slug: 'faq', title: 'Solar questions, answered', line: 'Plant size, power cuts, roof area and more', image: 'solaris-india-service.webp' },
   { slug: 'useful-links', title: 'Useful solar links', line: 'Surya Gujarat, GEDA, Torrent Power and DGVCL', image: 'solaris-india-residential.webp' },
   { slug: 'emi-calculator', title: 'Solar loan EMI calculator', line: 'Monthly EMI, total interest and full schedule', image: 'solaris-india-consultation.webp' },
+  { slug: 'gujarat-solar-subsidy-calculator', title: 'Gujarat solar subsidy calculator', line: 'Central subsidy, Gujarat top-up and your solar cost', image: 'solaris-india-residential.webp' },
   { slug: 'roi-calculator', title: 'Solar ROI calculator', line: 'Savings, payback and lifetime returns', image: 'solaris-india-residential.webp' },
   { slug: 'contact', title: 'Contact Solaris360', line: 'Palladium, VIP Road, Vesu, Surat', image: 'solaris-india-consultation.webp' },
   { slug: 'warranty', title: 'Warranty', line: 'Solar modules, inverter and plant service cover', image: 'solaris-india-service.webp' },
@@ -69,10 +70,12 @@ p { margin-top: 22px; font: 400 29px/1.35 Inter, sans-serif; color: #d4d2e6; }
 mkdirSync(OUT, { recursive: true })
 const browser = await chromium.launch()
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } })
-for (const p of pages) {
+const selectedPages = process.env.OG_SLUG ? pages.filter(p => p.slug === process.env.OG_SLUG) : pages
+if (!selectedPages.length) throw new Error('Unknown OG_SLUG')
+for (const p of selectedPages) {
   await page.setContent(html(p), { waitUntil: 'load' })
   await page.evaluate(() => document.fonts.ready)
   await page.screenshot({ path: join(OUT, `${p.slug}.jpg`), type: 'jpeg', quality: 82 })
 }
 await browser.close()
-console.log(`[og] ${pages.length} images written to ${OUT}/`)
+console.log(`[og] ${selectedPages.length} images written to ${OUT}/`)

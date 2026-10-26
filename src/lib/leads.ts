@@ -37,13 +37,14 @@ export function normalisePhone(phone: string): string | null {
   return /^[6-9]\d{9}$/.test(digits) ? digits : null
 }
 
-/** Name and phone are required; email is optional but must look valid if given. */
-export function validateLead({ name, phone, email }: LeadContact): LeadErrors {
+/** Name and phone are required; forms can opt into required email without changing existing flows. */
+export function validateLead({ name, phone, email }: LeadContact, { requireEmail = false }: { requireEmail?: boolean } = {}): LeadErrors {
   const errors: LeadErrors = {}
   if (name.trim().length < 2) errors.name = 'Please enter your name.'
   if (!normalisePhone(phone)) errors.phone = 'Please enter a valid 10-digit mobile number.'
-  if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
-    errors.email = 'Please enter a valid email address, or leave it empty.'
+  if (requireEmail && !email.trim()) errors.email = 'Please enter your email address.'
+  else if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
+    errors.email = requireEmail ? 'Please enter a valid email address.' : 'Please enter a valid email address, or leave it empty.'
   return errors
 }
 
