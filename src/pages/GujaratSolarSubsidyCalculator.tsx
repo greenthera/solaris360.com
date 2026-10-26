@@ -88,7 +88,7 @@ export default function GujaratSolarSubsidyCalculator() {
             </div><p className="subsidy-note">Capacity checks do not establish final eligibility. Your DISCOM confirms the application, prior assistance and payable subsidy.</p></section>
             <details className="subsidy-card subsidy-advanced"><summary>Advanced rates</summary><div className="subsidy-advanced-grid">{subsidyRateFields.map(({ key, label, max, step, suffix }) => {
               const invalid = !Number.isFinite(rates[key]) || rates[key] < 0 || rates[key] > max
-              return <label key={key} className="subsidy-field">{label}<input className="subsidy-input" type="number" aria-label={label} min={0} max={max} step={step} value={Number.isFinite(rates[key]) ? rates[key] : ''} aria-invalid={invalid || undefined} onChange={e => { setRates(old => ({ ...old, [key]: e.target.value === '' ? NaN : Number(e.target.value) })); setNotice('') }}/><span>{invalid ? `Enter a value between 0 and ${max}.` : suffix}</span></label>
+              return <label key={key} className="subsidy-field">{label} <span>({suffix})</span><input className="subsidy-input" type="number" aria-label={label} min={0} max={max} step={step} value={Number.isFinite(rates[key]) ? rates[key] : ''} aria-invalid={invalid || undefined} onChange={e => { setRates(old => ({ ...old, [key]: e.target.value === '' ? NaN : Number(e.target.value) })); setNotice('') }}/>{invalid && <span>Enter a value between 0 and {max}.</span>}</label>
             })}</div><button type="button" className="subsidy-button" onClick={() => { setRates({ ...defaultSubsidyRates }); setNotice('') }}>Reset to default rates</button></details>
           </div>
           <div className="subsidy-results">
